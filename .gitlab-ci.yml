@@ -1,0 +1,42 @@
+stages:
+  - install_deps
+  - build
+  - deploy
+
+cache:
+  key: '$CI_BUILD_REF'
+  untracked: true
+  paths:
+    - node_modules/
+    - dist/
+
+# 安装依赖
+install_deps:
+  stage: install_deps
+  only:
+    - master
+  tags:
+    - ip-test
+  script:
+    - npm install
+
+# 编译
+build:
+  stage: build
+  only:
+    - master
+  tags:
+    - ip-test
+  script:
+    - npm run build
+
+# 部署测试服务器
+deploy:
+  stage: deploy
+  only:
+    - master
+  tags:
+    - ip-test
+  script:
+    - rm -rf /data/www/front_page/*
+    - cp -rf dist/* /data/www/front_page/
