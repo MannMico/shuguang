@@ -1,0 +1,197 @@
+@import '~@/styles/var';
+
+.plan-page {
+  font-weight: $weight_regular;
+
+  .plan__bar {
+    height: 100px;
+    line-height: 100px;
+    background-image: linear-gradient(-127deg, #1068FA 14%, #00329E 100%, #00329E 100%);
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 0.9px;
+    text-align: right;
+
+    padding: 0 40px 0 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .bar {
+    &__name-logo {
+      display: block;
+      width: 68px;
+      height: 36px;
+    }
+
+    &__tail {
+      display: flex;
+    }
+
+    &__user {
+      display: flex;
+      align-items: center;
+    }
+
+
+    &__logout {
+      margin-left: 36px;
+      font-size: 20px;
+      color: #FFFFFF;
+      letter-spacing: 0.9px;
+    }
+  }
+
+  .user {
+    &__avator {
+      display: block;
+      width: 36px;
+      height: 36px;
+    }
+
+    &__name {
+      margin-left: 8px;
+      font-size: 20px;
+      color: #FFFFFF;
+      letter-spacing: 0.9px;
+    }
+  }
+
+  .plan__body {
+    padding: 56px 160px;
+  }
+
+  .part__title {
+    position: relative;
+    font-size: 30px;
+    color: #0C5AE3;
+    letter-spacing: 1.35px;
+    padding-left: 22px;
+    height: 48px;
+    line-height: 48px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 6px;
+      height: 100%;
+      background: #0F64F3;
+    }
+  }
+
+  .part1 {
+    &__main {
+      margin-top: 46px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__left {
+      position: relative;
+    }
+
+    &__manager {
+      // position: absolute;
+      // top: 0;
+      // left: -161px;
+      margin-left: -160px;
+
+      img {
+        display: block;
+        width: 500px;
+        height: 500px;
+      }
+    }
+
+    &__desc {
+      // margin-top: 52px;
+      font-size: 20px;
+      color: #1068FB;
+      letter-spacing: 0.9px;
+      line-height: 36px;
+    }
+
+    &__suggestion {
+      position: relative;
+      margin-top: 90px;
+      background-image: linear-gradient(145deg, #1068FA 2%, #00329E 100%, #00329E 100%);
+      width: 100%;
+      padding: 36px 48px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+
+
+      &::before {
+        position: absolute;
+        top: -60px;
+        left: 0;
+        content: '';
+        display: block;
+        background: #1068FA;
+        width: 100%;
+        height: 1px;
+        transform: scaleY(0.5);
+      }
+
+      &::after {
+        position: absolute;
+        top: -79px;
+        left: 70px;
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-left: 40px solid transparent;
+        border-bottom: 40px solid #1068FA;
+      }
+    }
+  }
+
+  .case {
+    &__container {
+      width: 630px;
+      height: 392px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &__l1,
+    &__l2 {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__img {
+      display: block;
+      flex-shrink: 0;
+      width: 300px;
+      height: 180px;
+      background-color: #eee;
+    }
+  }
+
+  .suggestion {
+    &__title {
+      opacity: 0.5;
+      font-size: 24px;
+      color: #FFFFFF;
+      letter-spacing: 1.08px;
+    }
+
+    &__content {
+      margin-top: 18px;
+      font-size: 20px;
+      color: #FFFFFF;
+      letter-spacing: 0.9px;
+      line-height: 36px;
+    }
+  }
+}

@@ -1,22 +1,36 @@
+@import '~@/styles/var';
+
 .home-page {
   .home {
     &__header {
       width: 100%;
       height: 56vw; // 800/1440*100
     }
+
+    &__partner {
+      padding: 80px 0;
+    }
   }
 
   .header-slide1 {
+    background-image: url('~@/assets/bg_top_banner1.png');
+  }
+
+  .header-slide2 {
+    background-image: url('~@/assets/bg_top_banner2.png');
+  }
+
+  .header-slide {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('~@/assets/bg_top_banner.png');
+
     background-size: cover;
     color: #fffce8;
 
     &__text-container {
-      margin-top: 4vw;
+      margin-top: 8vw;
       text-align: center;
     }
 
@@ -29,12 +43,13 @@
     &__decs1 {
       margin-top: 12px;
       font-size: 30px;
-      lighting-color: 42px;
+      font-weight: $weight_light;
     }
 
     &__decs2 {
       margin-top: 44px;
       font-size: 20px;
+      font-weight: $weight_regular;
       line-height: 28px;
     }
 
@@ -47,4 +62,109 @@
       background-color: rgba($color: #fff, $alpha: 0.1);
     }
   }
+
+  // ===== 导航栏 START =====
+  // .home__topbar {
+  //   padding: 0 40px 0 160px;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   height: 100px;
+  //   border-bottom: 1px solid #eee;
+  // }
+
+  // .topbar {
+  //   &__name-logo {
+  //     width: 68px;
+  //     height: 36px;
+  //   }
+
+  //   &__right {
+  //     display: flex;
+  //     align-items: center;
+  //   }
+
+  //   &__nav {
+  //     display: inline-block;
+  //     border-bottom: none;
+
+  //     .el-menu-item,
+  //     .el-submenu__title {
+  //       font-size: 20px;
+  //     }
+  //   }
+
+  //   &__login-btn {
+  //     margin-left: 60px;
+  //     display: inline-block;
+  //   }
+  // }
+
+  // .nav {
+  //   &__submenu {
+  //     .el-menu--popup {
+  //       min-width: 0;
+  //     }
+  //   }
+  // }
+
+  // ===== 导航栏 END =====
+
+
+  // ===== 业务模块 START =====
+  .business__extra {
+    height: 27.8vw;
+    background-image: url('~@/assets/bg_banner.png');
+    background-size: cover;
+
+    padding: 74px 120px 0 120px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+
+  .extra-item {
+    width: 270px;
+    text-align: center;
+
+    &__img {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+    }
+
+    &__text {
+      margin-top: 22px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: $weight_light;
+      text-align: center;
+      line-height: 24px;
+    }
+  }
+
+  // ===== 业务模块 END =====
+
+
+  // ===== 合作伙伴 START =====
+  .partner {
+    &__title {
+      text-align: center;
+      font-size: 30px;
+      font-weight: $weight_medium;
+      color: #000000;
+      letter-spacing: 1.35px;
+      text-align: center;
+    }
+
+    &__items {
+      margin-top: 70px;
+      display: flex;
+      padding: 0 140px;
+      justify-content: space-between;
+    }
+  }
+
+  // ===== 合作伙伴 END =====
 }
