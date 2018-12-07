@@ -87,6 +87,7 @@
       </div>
     </div>
     <base-footer></base-footer>
+    <submit-success-pop v-if="showSuccessPop"></submit-success-pop>
   </div>
 </template>
 
@@ -95,13 +96,15 @@ import { DatePicker, Select, Option } from 'element-ui';
 import { addDemad, getCooperationModes } from '@/services/demand';
 import { sendCodeSms } from '@/services/code';
 import district from './district.js';
+import SubmitSuccessPop from './submit-success-pop.vue';
 
 import './issue.scss';
 export default {
   components: {
     elDatePicker: DatePicker,
     elSelect: Select,
-    elOption: Option
+    elOption: Option,
+    SubmitSuccessPop
   },
   data() {
     return {
@@ -121,7 +124,8 @@ export default {
         city: null, //	Number	所在地区 - 城市
         publish_time: null, //	Date	期待发布时间
         vcode: '' //	String	验证码
-      }
+      },
+      showSuccessPop: false
     };
   },
   created() {},
@@ -175,14 +179,15 @@ export default {
       });
       addDemad(data)
         .then(data => {
-          this.$alert('提交成功', '提示', {
-            confirmButtonText: '返回首页',
-            callback: action => {
-              this.$router.push({
-                path: '/'
-              });
-            }
-          });
+          this.showSuccessPop = true;
+          // this.$alert('提交成功', '提示', {
+          //   confirmButtonText: '返回首页',
+          //   callback: action => {
+          //     this.$router.push({
+          //       path: '/'
+          //     });
+          //   }
+          // });
         })
         .catch(err => {
           this.$message.error(err.message);
