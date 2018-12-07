@@ -57,16 +57,51 @@
         <div class="part__title">推荐IP：星座狗主页</div>
         <img class="part2__img" src alt>
       </div>
+      <div style="width:70%;margin:20px auto;height:400px">
+        <slider ref="slider" :options="options" @slide="slide" @tap="onTap" @init="onInit">
+          <slideritem
+            v-for="(item,index) in someList"
+            :key="index"
+            :style="item.style"
+          >{{item.html}}</slideritem>
+          <div slot="loading">
+            <div class="loadingDot">
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+          </div>
+        </slider>
+      </div>
     </div>
     <base-footer></base-footer>
   </div>
 </template>
 
 <script>
+import { slider, slideritem } from 'vue-concise-slider';
 import './plan.scss';
 export default {
+  components: {
+    slider,
+    slideritem
+  },
   data() {
-    return {};
+    return {
+      someList: [],
+      //Sliding configuration [obj]
+      options: {
+        pagination: true,
+        thresholdDistance: 100, // 滑动距离阈值判定
+        thresholdTime: 300, // 滑动时间阈值判定
+        grabCursor: true, // 抓标样式
+        speed: 300 // 滑动速度
+        // timingFunction: 'ease', // 滑动方式
+        // loop: false, // 无限循环
+        // autoplay: 0 // 自动播放:时间[ms]
+      }
+    };
   },
   created() {},
   mounted() {},
