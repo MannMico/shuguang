@@ -35,6 +35,7 @@
 .partner-component {
   width: 512px;
   height: 320px;
+  overflow: hidden;
   padding: 40px 30px;
   box-sizing: border-box;
 
@@ -72,7 +73,7 @@
       margin-left: 16px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: flex-start;
     }
     &__name {
       font-size: 20px;
@@ -85,6 +86,8 @@
       font-weight: $weight_regular;
       font-size: 16px;
       letter-spacing: 0.8px;
+      white-space: initial;
+      text-align: left;
     }
     &__desc {
       margin-top: 34px;

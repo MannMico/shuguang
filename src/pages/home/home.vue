@@ -20,7 +20,7 @@
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="home__body">
-      <base-navbar></base-navbar>
+      <base-navbar :loginCb="openLoginPop"></base-navbar>
       <div class="home__business-container">
         <bussiness-module>
           <template slot="title">IP跨界通：基于实战营销的订制化方案</template>
@@ -101,14 +101,36 @@
           <slider ref="slider" :options="options">
             <slideritem>
               <div class="partner-slider">
-                <partner></partner>
-                <partner></partner>
+                <partner>
+                  <img slot="avator" src="@/assets/profile_1.png" alt>
+                  <span slot="name">Miko</span>
+                  <span slot="position">百丽 跨界项目负责人</span>
+                  <span
+                    slot="desc"
+                  >我们鞋服领域经常会跟IP玩跨界，但能玩好的并不多。我们需要的不只是一个IP形象，而是需要IP带来产品溢价、人群赋能以及营销创意的价值。选择和束光团队长期合作，就是因为他们具有这种IP综合赋能的能力。</span>
+                </partner>
+                <partner>
+                  <img slot="avator" src="@/assets/profile_2.png" alt>
+                  <span slot="name">张国强</span>
+                  <span slot="position">良品铺子 联合创始人/首席品牌文化官</span>
+                  <span slot="desc">我们需要破局的时候，IP以合 适的方式出现，打了个漂亮仗。</span>
+                </partner>
               </div>
             </slideritem>
             <slideritem>
               <div class="partner-slider">
-                <partner></partner>
-                <partner></partner>
+                <partner>
+                  <img slot="avator" src="@/assets/profile_3.png" alt>
+                  <span slot="name">樊雪峰</span>
+                  <span slot="position">五芳斋 品牌中心项目总监</span>
+                  <span slot="desc">一帮踏实的人，不断给人带来惊喜，禀赋一颗持续创新的心。</span>
+                </partner>
+                <partner>
+                  <img slot="avator" src="@/assets/profile_4.png" alt>
+                  <span slot="name">邱伟</span>
+                  <span slot="position">吴茂兴本帮面 品牌创始人</span>
+                  <span slot="desc">没做(合作项目)之前，我们 作为行业老兵，也不会想到IP 结合行业可以这么玩。</span>
+                </partner>
               </div>
             </slideritem>
             <div slot="loading">
@@ -129,7 +151,6 @@
 
 <script>
 import './home.scss';
-
 import { slider, slideritem } from 'vue-concise-slider';
 // import { Menu, Submenu, MenuItem } from 'element-ui';
 import BussinessModule from './business-module.vue';
@@ -162,12 +183,16 @@ export default {
         // 滑动方式
         // loop: false, // 无限循环
         // autoplay: 0 // 自动播放:时间[ms]
-      }
+      },
+      showLoginBox: false
     };
   },
   created() {},
   mounted() {},
   methods: {
+    openLoginPop() {
+      console.log('openLoginPop');
+    },
     leftArrowClicked() {
       this.$refs.slider.$emit('slidePre');
     },
