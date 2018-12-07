@@ -41,6 +41,7 @@
   background: #fff;
   border: 0 solid #d9d9d9;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+  margin: 12px;
   color: #000000;
   .partner {
     &__header {
