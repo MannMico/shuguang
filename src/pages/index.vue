@@ -21,7 +21,7 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 1;
   color: #fff;
   padding: 20px;
   flex-direction: column;
@@ -80,6 +80,20 @@ body {
 .header-slide2 {
   background-image: url('~@/assets/bg_top_banner2.png');
 }
+.swiper-pagination {
+  bottom: 20px !important;
+  z-index: 999;
+}
+.swiper-pagination-bullet {
+  opacity: 0.5 !important;
+  background: #fff !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: #fff !important;
+  width: 30px !important;
+  border-radius: 8px !important;
+}
 </style>
 
 <template>
@@ -105,7 +119,8 @@ export default {
     return {
       swiperOption: {
         autoplay: true,
-        delay: 3000,
+        delay: 4000,
+        loop: true,
         pagination: {
           el: '.swiper-pagination'
         }
