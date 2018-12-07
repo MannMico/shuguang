@@ -156,6 +156,7 @@ export default {
   mounted() {},
   methods: {
     changeProvince(id) {
+      this.allCities = [];
       allCities.forEach(element => {
         if (element.provinceId === id) {
           this.cities.push(element);
