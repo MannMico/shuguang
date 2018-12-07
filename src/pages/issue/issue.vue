@@ -176,7 +176,7 @@ export default {
       addDemad(data)
         .then(data => {
           this.$alert('提交成功', '提示', {
-            confirmButtonText: '确定',
+            confirmButtonText: '返回首页',
             callback: action => {
               this.$router.push({
                 path: '/'
