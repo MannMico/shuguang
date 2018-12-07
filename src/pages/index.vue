@@ -19,7 +19,7 @@ body {
   background-position: center center;
 
   &__text-container {
-    margin-top: -9vw;
+    // margin-top: -9vw;
     position: absolute;
     z-index: 1;
     padding: 0 20px;
@@ -94,6 +94,13 @@ body {
   width: 30px !important;
   border-radius: 8px !important;
 }
+.qrcode {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
 </style>
 
 <template>
@@ -108,6 +115,7 @@ body {
       <div class="header-slide__decs1">专注IP的创新经纪营销平台</div>
       <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
       <button class="header-slide__btn">内测邀请中</button>
+      <img class="qrcode" v-if="isMobile" src="@/assets/qrcode.png" alt>
     </div>
   </div>
 </template>
