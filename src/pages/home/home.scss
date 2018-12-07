@@ -44,6 +44,10 @@
       margin-top: 12px;
       font-size: 30px;
       font-weight: $weight_light;
+
+      color: #FFFCE8;
+      letter-spacing: 1.35px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
     }
 
     &__decs2 {
@@ -51,6 +55,10 @@
       font-size: 20px;
       font-weight: $weight_regular;
       line-height: 28px;
+
+      color: #FFFCE8;
+      letter-spacing: 0.9px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
     }
 
     &__btn {

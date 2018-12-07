@@ -85,6 +85,7 @@
       letter-spacing: 1.08px;
       text-align: center;
       border-radius: 4px;
+      line-height: 64px;
     }
   }
 }
@@ -103,22 +104,22 @@
         <el-input type="password" placeholder="请输入您的密码"></el-input>
         <div class="login-box__tips">
           <span>还没有账号？请先发布需求将获得邀请</span>
-          <router-link to="/issue">立即发布需求</router-link>
+          <router-link to="/issue?type=kuajietong">立即发布需求</router-link>
         </div>
       </div>
       <div class="login-box__btn">登录</div>
     </el-dialog>
     <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
     <div class="navbar__right">
-      <el-menu class="el-menu-demo navbar__nav" mode="horizontal" text-color="#000">
-        <el-menu-item index="1">首页</el-menu-item>
+      <el-menu class="el-menu-demo navbar__nav" mode="horizontal" text-color="#000" router>
+        <el-menu-item index="#home">首页</el-menu-item>
         <el-submenu index="2" popper-class="nav__submenu">
           <template slot="title">产品服务</template>
-          <el-menu-item index="2-1">跨界通</el-menu-item>
-          <el-menu-item index="2-2">效易达</el-menu-item>
-          <el-menu-item index="2-3">好易卖</el-menu-item>
+          <el-menu-item index="#kjt">跨界通</el-menu-item>
+          <el-menu-item index="#xyd">效易达</el-menu-item>
+          <el-menu-item index="#hym">好易卖</el-menu-item>
         </el-submenu>
-        <el-menu-item index="3">合作品牌</el-menu-item>
+        <el-menu-item index="#partner">合作品牌</el-menu-item>
       </el-menu>
       <base-button class="navbar__login-btn" @click="loginBtnClicked">客户登录</base-button>
     </div>

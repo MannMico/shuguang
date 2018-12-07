@@ -37,6 +37,9 @@
           <template slot="img">
             <img src="@/assets/bussiness-kjt.png" alt>
           </template>
+          <template slot="btn">
+            <base-button @click="toIssuePage('kuajietong')">发布需求</base-button>
+          </template>
         </bussiness-module>
         <a href="#xyd"></a>
         <bussiness-module negative>
@@ -50,6 +53,9 @@
           <template slot="img">
             <img src="@/assets/bussiness-xyd.png" alt>
           </template>
+          <template slot="btn">
+            <base-button @click="toIssuePage('xiaoyida')">发布需求</base-button>
+          </template>
         </bussiness-module>
         <a href="#hym"></a>
         <bussiness-module>
@@ -62,6 +68,9 @@
           </template>
           <template slot="img">
             <img src="@/assets/bussiness-hym.png" alt>
+          </template>
+          <template slot="btn">
+            <base-button @click="toIssuePage('haoyimai')">发布需求</base-button>
           </template>
         </bussiness-module>
         <div class="business__extra">
@@ -83,6 +92,7 @@
           </div>
         </div>
       </div>
+      <a href="#partner"></a>
       <div class="home__partner">
         <div class="partner__title">全球众多合作伙伴，值得信赖</div>
         <!-- <div class="partner__items">
@@ -176,6 +186,8 @@ export default {
   data() {
     return {
       swiperOption: {
+        autoplay: true,
+        delay: 3000,
         pagination: {
           el: '.swiper-pagination'
         }
@@ -206,6 +218,9 @@ export default {
     },
     rightArrowClicked() {
       this.$refs.slider.$emit('slideNext');
+    },
+    toIssuePage(query) {
+      this.$router.push({ path: `/issue?type=${query}` });
     }
   }
 };
