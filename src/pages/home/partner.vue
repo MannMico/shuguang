@@ -11,10 +11,10 @@
         <img class="partner__avator">
       </slot>
       <div class="partner__person">
-        <div class="partner-person__name">
+        <div class="partner__name">
           <slot name="name">xxx</slot>
         </div>
-        <div class="partner-person__position">
+        <div class="partner__position">
           <slot name="position">xxxxxxxxxxx</slot>
         </div>
       </div>
@@ -91,6 +91,9 @@
       font-weight: $weight_light;
       letter-spacing: 1px;
       line-height: 32px;
+      white-space: initial;
+      word-break: break-all;
+      text-align: left;
     }
   }
 }

@@ -85,6 +85,30 @@
           <partner></partner>
           <partner></partner>
         </div>
+        <div class="partner__items">
+          <slider ref="slider" :options="options" @slide="slide" @tap="onTap" @init="onInit">
+            <slideritem>
+              <div class="partner-slider">
+                <partner></partner>
+                <partner></partner>
+              </div>
+            </slideritem>
+            <slideritem>
+              <div class="partner-slider">
+                <partner></partner>
+                <partner></partner>
+              </div>
+            </slideritem>
+            <div slot="loading">
+              <div class="loadingDot">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </div>
+          </slider>
+        </div>
       </div>
     </div>
     <base-footer></base-footer>
@@ -93,11 +117,15 @@
 
 <script>
 import './home.scss';
+
+import { slider, slideritem } from 'vue-concise-slider';
 // import { Menu, Submenu, MenuItem } from 'element-ui';
 import BussinessModule from './business-module.vue';
 import Partner from './partner.vue';
 export default {
   components: {
+    slider,
+    slideritem,
     // elMenu: Menu,
     // elSubmenu: Submenu,
     // elMenuItem: MenuItem,

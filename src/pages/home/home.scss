@@ -76,7 +76,6 @@
     box-sizing: border-box;
   }
 
-
   .extra-item {
     width: 270px;
     text-align: center;
@@ -99,7 +98,6 @@
 
   // ===== 业务模块 END =====
 
-
   // ===== 合作伙伴 START =====
   .partner {
     &__title {
@@ -120,4 +118,11 @@
   }
 
   // ===== 合作伙伴 END =====
+}
+
+.partner-slider {
+  width: 100%;
+  // flex: 1;
+  display: flex;
+  justify-content: space-between;
 }
