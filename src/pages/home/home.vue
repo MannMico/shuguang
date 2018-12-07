@@ -81,12 +81,24 @@
       </div>
       <div class="home__partner">
         <div class="partner__title">全球众多合作伙伴，值得信赖</div>
-        <div class="partner__items">
+        <!-- <div class="partner__items">
           <partner></partner>
           <partner></partner>
-        </div>
+        </div>-->
         <div class="partner__items">
-          <slider ref="slider" :options="options" @slide="slide" @tap="onTap" @init="onInit">
+          <img
+            class="slider__arrow slider__arrow-left"
+            src="@/assets/left.png"
+            alt
+            @click="leftArrowClicked"
+          >
+          <img
+            class="slider__arrow slider__arrow-right"
+            src="@/assets/right.png"
+            alt
+            @click="rightArrowClicked"
+          >
+          <slider ref="slider" :options="options">
             <slideritem>
               <div class="partner-slider">
                 <partner></partner>
@@ -155,6 +167,13 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {}
+  methods: {
+    leftArrowClicked() {
+      this.$refs.slider.$emit('slidePre');
+    },
+    rightArrowClicked() {
+      this.$refs.slider.$emit('slideNext');
+    }
+  }
 };
 </script>
