@@ -85,6 +85,30 @@
           <partner></partner>
           <partner></partner>
         </div>
+        <div class="partner__items">
+          <slider ref="slider" :options="options" @slide="slide" @tap="onTap" @init="onInit">
+            <slideritem>
+              <div class="partner-slider">
+                <partner></partner>
+                <partner></partner>
+              </div>
+            </slideritem>
+            <slideritem>
+              <div class="partner-slider">
+                <partner></partner>
+                <partner></partner>
+              </div>
+            </slideritem>
+            <div slot="loading">
+              <div class="loadingDot">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </div>
+          </slider>
+        </div>
       </div>
     </div>
     <base-footer></base-footer>
@@ -93,11 +117,15 @@
 
 <script>
 import './home.scss';
+
+import { slider, slideritem } from 'vue-concise-slider';
 // import { Menu, Submenu, MenuItem } from 'element-ui';
 import BussinessModule from './business-module.vue';
 import Partner from './partner.vue';
 export default {
   components: {
+    slider,
+    slideritem,
     // elMenu: Menu,
     // elSubmenu: Submenu,
     // elMenuItem: MenuItem,
@@ -110,6 +138,18 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         }
+      },
+      someList: [],
+      options: {
+        pagination: true,
+        thresholdDistance: 100, // 滑动距离阈值判定
+        thresholdTime: 300, // 滑动时间阈值判定
+        grabCursor: true, // 抓标样式
+        speed: 300 // 滑动速度
+        // timingFunction: 'ease',
+        // 滑动方式
+        // loop: false, // 无限循环
+        // autoplay: 0 // 自动播放:时间[ms]
       }
     };
   },
