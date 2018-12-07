@@ -1,0 +1,10 @@
+.issue-page {
+  .issue {
+    &__header {
+      background-image: url('~@/assets/bg_banner.png');
+      width: 100%;
+      height: 27.8vw;
+      background-size: cover;
+    }
+  }
+}
