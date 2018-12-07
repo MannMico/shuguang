@@ -187,7 +187,7 @@ export default {
     return {
       swiperOption: {
         autoplay: true,
-        delay: 3000,
+        delay: 4000,
         pagination: {
           el: '.swiper-pagination'
         }
