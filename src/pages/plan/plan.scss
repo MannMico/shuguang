@@ -58,8 +58,13 @@
     }
   }
 
+
   .plan__body {
     padding: 56px 160px;
+  }
+
+  .plan__part2 {
+    margin-top: 80px;
   }
 
   .part__title {
@@ -91,20 +96,55 @@
     }
 
     &__left {
-      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
     }
 
     &__manager {
-      // position: absolute;
-      // top: 0;
-      // left: -161px;
-      margin-left: -160px;
+      position: relative;
+      transform: translateX(-180px);
 
-      img {
+      .manager__avatar {
         display: block;
         width: 500px;
         height: 500px;
       }
+
+      .manager__info {
+        color: #0951D4;
+        position: absolute;
+        bottom: 2.2%;
+        left: 404px;
+        white-space: nowrap;
+      }
+
+      .manager-info {
+
+
+        &__title {
+          opacity: 0.5;
+          font-size: 16px;
+          letter-spacing: 0.72px;
+        }
+
+        &__name {
+          margin-top: 18px;
+          font-weight: $weight_medium;
+          font-size: 36px;
+          letter-spacing: 1.62px;
+        }
+
+        &__level,
+        &__school {
+          margin-top: 8px;
+          font-weight: $weight_light;
+          font-size: 20px;
+          letter-spacing: 0.9px;
+        }
+
+      }
+
     }
 
     &__desc {
@@ -150,6 +190,17 @@
         border-left: 40px solid transparent;
         border-bottom: 40px solid #1068FA;
       }
+    }
+  }
+
+  .part2 {
+    &__img {
+      display: block;
+      width: 1120px;
+      height: 540px;
+      background-color: #eee;
+      margin: 0 auto;
+      margin-top: 50px;
     }
   }
 

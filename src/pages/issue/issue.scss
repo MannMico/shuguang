@@ -1,10 +1,98 @@
+@import '~@/styles/var';
+
 .issue-page {
+  font-weight: $weight_regular;
+
   .issue {
     &__header {
       background-image: url('~@/assets/bg_banner.png');
       width: 100%;
       height: 27.8vw;
       background-size: cover;
+      text-align: center;
+      padding-top: 8vw;
+    }
+
+    &__body {
+      margin: 0 160px;
+      background-color: #fff;
+      padding: 100px;
+    }
+
+    &__form {
+      margin: 0 160px;
+      padding: 100px;
+      transform: translate(0, -140px);
+      background-color: #fff;
+      border-radius: 4px;
+
+      padding: 100px;
+    }
+  }
+
+  .header {
+    &__title {
+      font-weight: $weight_medium;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: 1.35px;
+      text-align: center;
+    }
+
+    &__desc {
+      margin-top: 24px;
+      font-size: 20px;
+      color: #FFFFFF;
+      letter-spacing: 0.9px;
+    }
+  }
+
+  .form {
+    &__title {
+      font-family: PingFangSC-Medium;
+      font-size: 30px;
+      color: #000000;
+      letter-spacing: 1.35px;
+      margin-bottom: 60px;
+    }
+
+    &__item--style1,
+    &__item--style2 {
+      margin-bottom: 48px;
+      font-size: 24px;
+      letter-spacing: 1.08px;
+    }
+
+    &__item--style1 {
+      display: flex;
+      border-bottom: 1px solid #E8E8E8;
+    }
+
+    &__submit-btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .form-item {
+
+    &__title {
+      min-width: 244px;
+    }
+
+    &__content {
+      display: flex;
+
+      .el-input__inner {
+        border: none;
+        font-size: 24px;
+      }
+    }
+
+    &__captcha {
+      font-size: 24px;
+      color: #0C5AE3;
+      letter-spacing: 1.08px;
     }
   }
 }

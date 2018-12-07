@@ -16,7 +16,13 @@
         <div class="part1__main">
           <div class="part1__left">
             <div class="part1__manager">
-              <img src="@/assets/Group 4.png" alt>
+              <img class="manager__avatar" src="@/assets/agent.png" alt>
+              <div class="manager__info">
+                <div class="manager-info__title">您的IP经纪人</div>
+                <div class="manager-info__name">May Zhao</div>
+                <div class="manager-info__level">等级: 金牌经纪人</div>
+                <div class="manager-info__school">中山大学传播学院</div>
+              </div>
             </div>
           </div>
           <div class="part1__case">
@@ -46,6 +52,10 @@
             这个话题。
           </div>
         </div>
+      </div>
+      <div class="plan__part2">
+        <div class="part__title">推荐IP：星座狗主页</div>
+        <img class="part2__img" src alt>
       </div>
     </div>
     <base-footer></base-footer>

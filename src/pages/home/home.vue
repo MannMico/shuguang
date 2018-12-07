@@ -21,22 +21,6 @@
     </swiper>
     <div class="home__body">
       <base-navbar></base-navbar>
-      <!-- <div class="home__topbar">
-        <img class="topbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
-        <div class="topbar__right">
-          <el-menu class="el-menu-demo topbar__nav" mode="horizontal" text-color="#000">
-            <el-menu-item index="1">首页</el-menu-item>
-            <el-submenu index="2" popper-class="nav__submenu">
-              <template slot="title">产品服务</template>
-              <el-menu-item index="2-1">跨界通</el-menu-item>
-              <el-menu-item index="2-2">效易达</el-menu-item>
-              <el-menu-item index="2-3">好易卖</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="3">合作品牌</el-menu-item>
-          </el-menu>
-          <base-button class="topbar__login-btn">客户登录</base-button>
-        </div>
-      </div>-->
       <div class="home__business-container">
         <bussiness-module>
           <template slot="title">IP跨界通：基于实战营销的订制化方案</template>

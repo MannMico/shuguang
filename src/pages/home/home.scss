@@ -63,57 +63,9 @@
     }
   }
 
-  // ===== 导航栏 START =====
-  // .home__topbar {
-  //   padding: 0 40px 0 160px;
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   height: 100px;
-  //   border-bottom: 1px solid #eee;
-  // }
-
-  // .topbar {
-  //   &__name-logo {
-  //     width: 68px;
-  //     height: 36px;
-  //   }
-
-  //   &__right {
-  //     display: flex;
-  //     align-items: center;
-  //   }
-
-  //   &__nav {
-  //     display: inline-block;
-  //     border-bottom: none;
-
-  //     .el-menu-item,
-  //     .el-submenu__title {
-  //       font-size: 20px;
-  //     }
-  //   }
-
-  //   &__login-btn {
-  //     margin-left: 60px;
-  //     display: inline-block;
-  //   }
-  // }
-
-  // .nav {
-  //   &__submenu {
-  //     .el-menu--popup {
-  //       min-width: 0;
-  //     }
-  //   }
-  // }
-
-  // ===== 导航栏 END =====
-
-
   // ===== 业务模块 START =====
   .business__extra {
-    height: 27.8vw;
+    height: 400px;
     background-image: url('~@/assets/bg_banner.png');
     background-size: cover;
 
@@ -121,6 +73,7 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
 
