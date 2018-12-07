@@ -10,14 +10,14 @@
       <div class="form__item--style1">
         <div class="form-item__title">*品牌或公司名称</div>
         <div class="form-item__content">
-          <input type="text" placeholder="必填项">
+          <input type="text" v-model="form.company" placeholder="必填项">
         </div>
       </div>
       <div class="form__item--style1">
         <div class="form-item__title">*所在地区</div>
         <div class="form-item__content">
           <div class="form-item__provins">
-            <el-select v-model="provinceId" placeholder="请选择" @change="changeProvince">
+            <el-select v-model="form.province" placeholder="请选择" @change="changeProvince">
               <el-option
                 v-for="item in provinces"
                 :key="item.provinceId"
@@ -27,7 +27,7 @@
             </el-select>省
           </div>
           <div class="form-item__cities">
-            <el-select v-model="cityId" placeholder="请选择">
+            <el-select v-model="form.city" placeholder="请选择">
               <el-option
                 v-for="item in cities"
                 :key="item.cityId"
@@ -42,60 +42,26 @@
         <div class="form-item__title">选择合作类型（可多选）</div>
         <div class="form-item__content">
           <div class="form-item__type">
-            <template v-if="businessType == 1">
-              <img src="@/assets/cooperation_1.png" alt @click="clickType('1')">
-              <img src="@/assets/cooperation_1_unselected.png" alt @click="clickType('1')">
-              
-              <img
-                :src="type['1'] ? '../../assets/cooperation_1.png' : '../../assets/cooperation_1_unselected.png'"
-                alt
-                @click="clickType('1')"
-              >
-              <img
-                :src="type['2'] ? '@/assets/cooperation_2.png' : '@/assets/cooperation_2.png'"
-                alt
-                @click="clickType('2')"
-              >
-              <img
-                :src="type['3'] ? '@/assets/cooperation_3.png' : '@/assets/cooperation_3_unselected.png'"
-                alt
-                @click="clickType('3')"
-              >
-              <img
-                :src="type['4'] ? '@/assets/cooperation_4.png' : '@/assets/cooperation_4_unselected.png'"
-                alt
-                @click="clickType('4')"
-              >
-              <img
-                :src="type['5'] ? '@/assets/cooperation_5.png' : '@/assets/cooperation_5_unselected.png'"
-                alt
-                @click="clickType('5')"
-              >
-            </template>
-            <template v-if="businessType == 2">
-              <img
-                :src="type['6'] ? '@/assets/cooperation_6.png' : '@/assets/cooperation_6_unselected.png'"
-                alt
-                @click="clickType('6')"
-              >
-            </template>
-            <template v-if="businessType == 3">
-              <img
-                :src="type['7'] ? '@/assets/cooperation_7.png' : '@/assets/cooperation_7_unselected.png'"
-                alt
-                @click="clickType('7')"
-              >
-            </template>
+            <div class="form-item__typeitem" v-for="(mode,index) in modes" :key="mode.id">
+              <img :src="mode.image" @click="onSeletcMode(index)">
+              <span>
+                <i v-if="mode.select" class="el-icon-circle-check"></i>
+                <i v-else class="el-icon-circle-check-outline"></i>
+              </span>
+            </div>
           </div>
         </div>
         <div class="form-item__textarea">
-          <textarea name id placeholder="1.请补充说明您的品牌介绍及意向合作品类  2.请补充说明您的意向IP/意向IP风格"></textarea>
+          <textarea
+            v-model="form.detail_demand"
+            placeholder="1.请补充说明您的品牌介绍及意向合作品类  2.请补充说明您的意向IP/意向IP风格"
+          ></textarea>
         </div>
       </div>
       <div class="form__item--style1">
         <div class="form-item__title">*期待上线日期</div>
         <div class="form-item__content">
-          <el-date-picker v-model="date" type="date" placeholder="请选择"></el-date-picker>
+          <el-date-picker v-model="form.publish_time" type="date" placeholder="请选择"></el-date-picker>
         </div>
       </div>
 
@@ -103,20 +69,20 @@
       <div class="form__item--style1">
         <div class="form-item__title">*联系人姓名</div>
         <div class="form-item__content">
-          <input type="text" placeholder="必填项">
+          <input type="text" placeholder="必填项" v-model="form.nickname">
         </div>
       </div>
       <div class="form__item--style1">
         <div class="form-item__title">*联系人电话</div>
         <div class="form-item__content">
-          <input type="text" placeholder="必填项">
+          <input type="text" placeholder="必填项" v-model="form.phone">
         </div>
         <div class="form-item__content">
-          <input type="text" placeholder="请输入短信验证码">
-          <div class="form-item__title form-item__captcha">获取验证码</div>
+          <input type="text" placeholder="请输入短信验证码" v-model="form.vcode">
+          <div class="form-item__title form-item__captcha" @click="onCode">获取验证码</div>
         </div>
       </div>
-      <div class="form__submit-btn">
+      <div class="form__submit-btn" @click="onSend">
         <base-button>立即发布需求</base-button>
       </div>
     </div>
@@ -126,9 +92,11 @@
 
 <script>
 import { DatePicker, Select, Option } from 'element-ui';
+import { addDemad, getCooperationModes } from '@/services/demand';
+import { sendCodeSms } from '@/services/code';
 import district from './district.js';
+
 import './issue.scss';
-const allCities = district.cities;
 export default {
   components: {
     elDatePicker: DatePicker,
@@ -137,34 +105,88 @@ export default {
   },
   data() {
     return {
-      businessType: 1, // 1.跨界通 2.效易达 3. 好易卖
-      date: '',
-      provinces: district.provinces,
-      cities: [],
-      provinceId: '',
-      cityId: '',
-      type: {}
+      type: this.$route.query.type || 'kuajietong',
+      // businessType: 1, // 1.跨界通 2.效易达 3. 好易卖
+      provinces: district.provinces, // 省份
+      cities: [], // 城市
+      modes: [],
+      form: {
+        nickname: '', //	String	联系人姓名
+        phone: '', //	String	联系电话
+        company: '', //	String	客户公司或品牌
+        mode_ids: [], //	Number[]	合作方式ID数组
+        detail_demand: '', //	String	详细需求
+        country: 1, //	Number	所在地区 - 国家
+        province: null, //	Number	所在地区 - 省份
+        city: null, //	Number	所在地区 - 城市
+        publish_time: null, //	Date	期待发布时间
+        vcode: '' //	String	验证码
+      }
     };
   },
-  created() {
-    if (this.businessType == 2) {
-      this.type['6'] = true;
-    } else if (this.businessType == 3) {
-      this.type['7'] = true;
-    }
+  created() {},
+  mounted() {
+    this.fetchModes();
   },
-  mounted() {},
   methods: {
     changeProvince(id) {
       this.cities = [];
-      allCities.forEach(element => {
-        if (element.provinceId === id) {
-          this.cities.push(element);
+      district.cities.forEach(ctiy => {
+        if (ctiy.provinceId === id) {
+          this.cities.push(ctiy);
         }
       });
     },
-    clickType(n) {
-      this.type[n] = !this.type[n];
+    onSeletcMode(index) {
+      const mode = this.modes[index];
+      mode.select = !mode.select;
+      this.modes.splice(index, 1, mode);
+    },
+    fetchModes() {
+      getCooperationModes({ service_code: this.type })
+        .then(data => {
+          this.modes = data.cooperation_modes.map(mode => {
+            mode.select = false;
+            return mode;
+          });
+        })
+        .catch(err => {});
+    },
+    onCode() {
+      const { phone } = this.form;
+      if (phone) {
+        sendCodeSms({ phone })
+          .then(data => {
+            this.$message.success('发送成功!');
+          })
+          .catch(err => {
+            this.$message.error(err.message);
+          });
+      }
+    },
+    onSend() {
+      const mode_ids = this.modes.map(mode => {
+        return mode.id;
+      });
+      const data = Object.assign({}, this.form, {
+        mode_ids: mode_ids,
+        province: Number(this.form.province),
+        city: Number(this.form.city)
+      });
+      addDemad(data)
+        .then(data => {
+          this.$alert('提交成功', '提示', {
+            confirmButtonText: '确定',
+            callback: action => {
+              this.$router.push({
+                path: '/'
+              });
+            }
+          });
+        })
+        .catch(err => {
+          this.$message.error(err.message);
+        });
     }
   }
 };
