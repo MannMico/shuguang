@@ -42,7 +42,7 @@
     &__desc {
       margin-top: 24px;
       font-size: 20px;
-      color: #FFFFFF;
+      color: #ffffff;
       letter-spacing: 0.9px;
     }
   }
@@ -65,7 +65,7 @@
 
     &__item--style1 {
       display: flex;
-      border-bottom: 1px solid #E8E8E8;
+      border-bottom: 1px solid #e8e8e8;
     }
 
     &__submit-btn {
@@ -75,7 +75,6 @@
   }
 
   .form-item {
-
     &__title {
       min-width: 244px;
     }
@@ -88,22 +87,37 @@
         border: none;
         font-size: 24px;
       }
-
-
-
     }
 
     &__type {
       flex: 1;
       display: flex;
       justify-content: flex-start;
-
+    }
+    &__typeitem {
+      display: block;
+      width: 150px;
+      height: 150px;
+      margin-right: 26px;
+      margin-top: 10px;
+      position: relative;
       img {
         display: block;
         width: 150px;
         height: 150px;
-        margin-right: 26px;
-        margin-top: 10px;
+      }
+      span {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+      }
+      .el-icon-circle-check {
+        color: #0c5ae3;
       }
     }
 
@@ -116,14 +130,13 @@
         font-size: 20px;
         width: 100%;
         height: 160px;
-        ;
-        background-color: #F9F9F9;
+        background-color: #f9f9f9;
       }
     }
 
     &__captcha {
       font-size: 24px;
-      color: #0C5AE3;
+      color: #0c5ae3;
       letter-spacing: 1.08px;
     }
   }
