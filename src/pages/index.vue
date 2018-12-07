@@ -30,7 +30,7 @@ body {
 }
 .header-slide {
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
 
   &__text-container {
     margin-top: -8vw;
