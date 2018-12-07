@@ -12,7 +12,7 @@
 </style>
 
 <template>
-  <div class="base-button">
+  <div class="base-button" @click="btnClicked">
     <slot></slot>
   </div>
 </template>
@@ -22,6 +22,11 @@ export default {
   name: 'base-button',
   data() {
     return {};
+  },
+  methods: {
+    btnClicked() {
+      this.$emit('click');
+    }
   }
 };
 </script>
