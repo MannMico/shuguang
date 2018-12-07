@@ -33,7 +33,7 @@ body {
   background-position: center center;
 
   &__text-container {
-    margin-top: 8vw;
+    margin-top: -8vw;
     text-align: center;
   }
 
@@ -76,9 +76,15 @@ body {
 .header-slide1 {
   background-image: url('~@/assets/bg_top_banner1.png');
 }
+.header-slide1-m {
+  background-image: url('~@/assets/mobie1.jpg');
+}
 
 .header-slide2 {
   background-image: url('~@/assets/bg_top_banner2.png');
+}
+.header-slide2-m {
+  background-image: url('~@/assets/mobie2.jpg');
 }
 .swiper-pagination {
   bottom: 20px !important;
@@ -99,8 +105,8 @@ body {
 <template>
   <div class="demo">
     <swiper class="home__header" :options="swiperOption">
-      <swiper-slide class="header-slide header-slide1"></swiper-slide>
-      <swiper-slide class="header-slide header-slide2"></swiper-slide>
+      <swiper-slide class="header-slide" :class="`header-slide1${isMobile?'-m':''}`"></swiper-slide>
+      <swiper-slide class="header-slide" :class="`header-slide2${isMobile?'-m':''}`"></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="text-wrap">
@@ -117,6 +123,7 @@ body {
 export default {
   data() {
     return {
+      isMobile: false,
       swiperOption: {
         autoplay: true,
         delay: 4000,
@@ -126,6 +133,15 @@ export default {
         }
       }
     };
+  },
+  created() {
+    const ua = window.navigator.userAgent;
+
+    const ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+    const isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+    const isAndroid = ua.match(/(Android)\s+([\d.]+)/);
+    const isMobile = isIphone || isAndroid;
+    this.isMobile = isMobile;
   }
 };
 </script>
