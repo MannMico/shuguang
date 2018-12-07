@@ -33,7 +33,7 @@
             来什么。
           </template>
           <template slot="img">
-            <img src alt>
+            <img src="@/assets/bussiness-kjt.png" alt>
           </template>
         </bussiness-module>
         <bussiness-module negative>
@@ -45,7 +45,7 @@
             能量力而为、有效而归。
           </template>
           <template slot="img">
-            <img src alt>
+            <img src="@/assets/bussiness-xyd.png" alt>
           </template>
         </bussiness-module>
         <bussiness-module>
@@ -57,7 +57,7 @@
             品力的企业，用得起IP、会用IP
           </template>
           <template slot="img">
-            <img src alt>
+            <img src="@/assets/bussiness-hym.png" alt>
           </template>
         </bussiness-module>
         <div class="business__extra">

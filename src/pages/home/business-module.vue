@@ -15,6 +15,7 @@
     width: 507px;
     height: 340px;
     background-color: #9e9e9e;
+    border-radius: 4px;
   }
   .business {
     &__title {
