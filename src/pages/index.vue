@@ -94,7 +94,7 @@ body {
         <img src="@/assets/logo.png" alt class="header-slide__name-logo">
         <div class="header-slide__decs1">专注IP的创新经济营销平台</div>
         <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
-        <button class="header-slide__btn">开启营销新增长</button>
+        <button class="header-slide__btn">内测邀请中</button>
       </div>
     </div>
   </div>
