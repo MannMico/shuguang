@@ -14,26 +14,20 @@ body {
   }
 }
 
-.text-wrap {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  color: #fff;
-  padding: 20px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .header-slide {
   background-size: cover;
   background-position: center center;
 
   &__text-container {
-    margin-top: -8vw;
+    margin-top: -9vw;
+    position: absolute;
+    z-index: 1;
+    padding: 0 20px;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
     text-align: center;
   }
 
@@ -109,13 +103,11 @@ body {
       <swiper-slide class="header-slide" :class="`header-slide2${isMobile?'-m':''}`"></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <div class="text-wrap">
-      <div class="header-slide__text-container">
-        <img src="@/assets/logo.png" alt class="header-slide__name-logo">
-        <div class="header-slide__decs1">专注IP的创新经纪营销平台</div>
-        <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
-        <button class="header-slide__btn">内测邀请中</button>
-      </div>
+    <div class="header-slide__text-container">
+      <img src="@/assets/logo.png" alt class="header-slide__name-logo">
+      <div class="header-slide__decs1">专注IP的创新经纪营销平台</div>
+      <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
+      <button class="header-slide__btn">内测邀请中</button>
     </div>
   </div>
 </template>
