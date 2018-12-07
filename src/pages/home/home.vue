@@ -19,9 +19,11 @@
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
+    <a href="#home"></a>
     <div class="home__body">
       <base-navbar :loginCb="openLoginPop"></base-navbar>
       <div class="home__business-container">
+        <a href="#kjt"></a>
         <bussiness-module>
           <template slot="title">IP跨界通：基于实战营销的订制化方案</template>
           <template slot="desc">
@@ -36,6 +38,7 @@
             <img src="@/assets/bussiness-kjt.png" alt>
           </template>
         </bussiness-module>
+        <a href="#xyd"></a>
         <bussiness-module negative>
           <template slot="title">IP效易达：小快灵的［IP＋空间体验］新模式</template>
           <template slot="desc">
@@ -48,6 +51,7 @@
             <img src="@/assets/bussiness-xyd.png" alt>
           </template>
         </bussiness-module>
+        <a href="#hym"></a>
         <bussiness-module>
           <template slot="title">IP好易卖：多元竞争时代，更简单有效的［IP＋产品］</template>
           <template slot="desc">

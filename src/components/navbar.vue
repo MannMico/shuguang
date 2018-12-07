@@ -100,7 +100,7 @@
       <div class="login-box__body">
         <div class="login-box__label">账号密码登录</div>
         <el-input placeholder="请输入您的账号"></el-input>
-        <el-input placeholder="请输入您的密码"></el-input>
+        <el-input type="password" placeholder="请输入您的密码"></el-input>
         <div class="login-box__tips">
           <span>还没有账号？请先发布需求将获得邀请</span>
           <router-link to="/issue">立即发布需求</router-link>
