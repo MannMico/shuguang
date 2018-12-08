@@ -1,10 +1,13 @@
 @import '~@/styles/var';
 
 .home-page {
+  width: 100%;
+  height: 100%;
+
   .home {
     &__header {
       width: 100%;
-      height: 56vw; // 800/1440*100
+      height: 100%; // 800/1440*100
     }
 
     &__partner {
@@ -12,25 +15,25 @@
     }
   }
 
-  .header-slide1 {
-    background-image: url('~@/assets/bg_top_banner1.png');
-  }
-
-  .header-slide2 {
-    background-image: url('~@/assets/bg_top_banner2.png');
+  // ===== BANNER START =====
+  .swiper-container {
+    height: 100%;
   }
 
   .header-slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     background-size: cover;
-    color: #fffce8;
+    background-position: center center;
 
     &__text-container {
-      margin-top: 8vw;
+      // margin-top: -9vw;
+      position: absolute;
+      z-index: 1;
+      padding: 0 20px;
+      color: #fff;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
       text-align: center;
     }
 
@@ -45,9 +48,9 @@
       font-size: 30px;
       font-weight: $weight_light;
 
-      color: #FFFCE8;
+      color: #fffce8;
       letter-spacing: 1.35px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     &__decs2 {
@@ -56,9 +59,9 @@
       font-weight: $weight_regular;
       line-height: 28px;
 
-      color: #FFFCE8;
+      color: #fffce8;
       letter-spacing: 0.9px;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.50);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     &__btn {
@@ -70,6 +73,50 @@
       background-color: rgba($color: #fff, $alpha: 0.1);
     }
   }
+
+  .header-slide1 {
+    background-image: url('~@/assets/bg_top_banner1.png');
+  }
+
+  .header-slide1-m {
+    background-image: url('~@/assets/mobie1.jpg');
+  }
+
+  .header-slide2 {
+    background-image: url('~@/assets/bg_top_banner2.png');
+  }
+
+  .header-slide2-m {
+    background-image: url('~@/assets/mobie2.jpg');
+  }
+
+  .swiper-pagination {
+    bottom: 20px !important;
+    z-index: 999;
+  }
+
+  .swiper-pagination-bullet {
+    opacity: 0.5 !important;
+    background: #fff !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    background: #fff !important;
+    width: 30px !important;
+    border-radius: 8px !important;
+  }
+
+  .qrcode {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  // ===== BANNER END =====
+
 
   // ===== 业务模块 START =====
   .business__extra {

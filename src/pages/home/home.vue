@@ -1,25 +1,18 @@
 <template>
   <div class="home-page">
     <swiper class="home__header" :options="swiperOption">
-      <swiper-slide class="header-slide header-slide1">
-        <div class="header-slide__text-container">
-          <img src="@/assets/logo.png" alt class="header-slide__name-logo">
-          <div class="header-slide__decs1">专注IP的创新经济营销平台</div>
-          <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
-          <button class="header-slide__btn">开启营销新增长</button>
-        </div>
-      </swiper-slide>
-      <swiper-slide class="header-slide header-slide2">
-        <div class="header-slide__text-container">
-          <img src="@/assets/logo.png" alt class="header-slide__name-logo">
-          <div class="header-slide__decs1">专注IP的创新经济营销平台</div>
-          <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
-          <button class="header-slide__btn">开启营销新增长</button>
-        </div>
-      </swiper-slide>
+      <swiper-slide class="header-slide" :class="`header-slide1${isMobile?'-m':''}`"></swiper-slide>
+      <swiper-slide class="header-slide" :class="`header-slide2${isMobile?'-m':''}`"></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <a href="#home"></a>
+    <div class="header-slide__text-container">
+      <img src="@/assets/logo.png" alt class="header-slide__name-logo">
+      <div class="header-slide__decs1">专注IP的创新经纪营销平台</div>
+      <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
+      <button class="header-slide__btn">开启营销新增长</button>
+      <!-- <img class="qrcode" v-if="isMobile" src="@/assets/qrcode.png" alt> -->
+    </div>
+    <a name="home"></a>
     <div class="home__body">
       <base-navbar :loginCb="openLoginPop"></base-navbar>
       <div class="home__business-container">
@@ -41,7 +34,7 @@
             <base-button @click="toIssuePage('kuajietong')">发布需求</base-button>
           </template>
         </bussiness-module>
-        <a href="#xyd"></a>
+        <div name="home" style="display:none;"></div>
         <bussiness-module negative>
           <template slot="title">IP效易达：小快灵的［IP＋空间体验］新模式</template>
           <template slot="desc">
@@ -194,6 +187,7 @@ export default {
           el: '.swiper-pagination'
         }
       },
+      isMobile: false,
       someList: [],
       options: {
         pagination: true,
@@ -209,7 +203,15 @@ export default {
       showLoginBox: false
     };
   },
-  created() {},
+  created() {
+    const ua = window.navigator.userAgent;
+
+    const ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+    const isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+    const isAndroid = ua.match(/(Android)\s+([\d.]+)/);
+    const isMobile = isIphone || isAndroid;
+    this.isMobile = isMobile;
+  },
   mounted() {},
   methods: {
     openLoginPop() {
