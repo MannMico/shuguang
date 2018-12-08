@@ -14,7 +14,7 @@ cache:
 install_deps:
   stage: install_deps
   only:
-    - master
+    - develop
   tags:
     - ip-test
   script:
@@ -24,7 +24,7 @@ install_deps:
 build:
   stage: build
   only:
-    - master
+    - develop
   tags:
     - ip-test
   script:
@@ -34,7 +34,7 @@ build:
 deploy:
   stage: deploy
   only:
-    - master
+    - develop
   tags:
     - ip-test
   script:
