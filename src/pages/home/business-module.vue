@@ -40,7 +40,7 @@
 </style>
 
 <template>
-  <div class="business-module" :style="{backgroundColor: negative ? 'rgba(0,0,0,0.2)' : '#fff'}">
+  <div class="business-module">
     <template v-if="negative">
       <div class="business-module__left">
         <slot name="img"></slot>

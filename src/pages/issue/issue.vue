@@ -92,7 +92,6 @@
 </template>
 
 <script>
-import { DatePicker, Select, Option } from 'element-ui';
 import { addDemad, getCooperationModes } from '@/services/demand';
 import { sendCodeSms } from '@/services/code';
 import district from './district.js';
@@ -101,9 +100,6 @@ import SubmitSuccessPop from './submit-success-pop.vue';
 import './issue.scss';
 export default {
   components: {
-    elDatePicker: DatePicker,
-    elSelect: Select,
-    elOption: Option,
     SubmitSuccessPop
   },
   data() {

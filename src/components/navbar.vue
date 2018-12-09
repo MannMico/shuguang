@@ -47,10 +47,12 @@
       font-weight: $weight_regular;
       border-radius: 2px;
     }
+    .el-dialog__body {
+      padding: 0 72px 72px 72px;
+    }
     &__title {
       display: flex;
       justify-content: center;
-      font-weight: $weight_light;
       font-size: 24px;
       color: #000000;
       letter-spacing: 1.08px;
@@ -65,14 +67,20 @@
       letter-spacing: 0.9px;
     }
     &__label {
+      color: #000;
+      font-size: 20px;
       line-height: 50px;
       margin-top: 10px;
     }
     .el-input {
-      margin-bottom: 10px;
+      margin-bottom: 24px;
+    }
+    .el-input__inner {
+      height: 64px;
+      line-height: 64px;
     }
     &__tips {
-      font-size: 16px;
+      font-size: 20px;
       color: #888888;
       letter-spacing: 0.9px;
     }
@@ -93,7 +101,7 @@
 
 <template>
   <div class="base-navbar">
-    <el-dialog :visible.sync="showLoginBox" class="login-box" width="32%">
+    <el-dialog :visible.sync="showLoginBox" class="login-box" width="640px">
       <div class="login-box__title">
         <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
         <span>专注IP的创新经纪营销平台</span>
@@ -127,16 +135,8 @@
 </template>
 
 <script>
-import { Menu, Submenu, MenuItem, Dialog, Input } from 'element-ui';
 export default {
   name: 'base-navbar',
-  components: {
-    elMenu: Menu,
-    elSubmenu: Submenu,
-    elMenuItem: MenuItem,
-    elDialog: Dialog,
-    elInput: Input
-  },
   props: ['loginCb'],
   data() {
     return {

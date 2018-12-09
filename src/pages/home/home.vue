@@ -144,14 +144,6 @@
                 </partner>
               </div>
             </slideritem>
-            <div slot="loading">
-              <div class="loadingDot">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-              </div>
-            </div>
           </slider>
         </div>
       </div>
@@ -163,16 +155,12 @@
 <script>
 import './home.scss';
 import { slider, slideritem } from 'vue-concise-slider';
-// import { Menu, Submenu, MenuItem } from 'element-ui';
 import BussinessModule from './business-module.vue';
 import Partner from './partner.vue';
 export default {
   components: {
     slider,
     slideritem,
-    // elMenu: Menu,
-    // elSubmenu: Submenu,
-    // elMenuItem: MenuItem,
     BussinessModule,
     Partner
   },
@@ -183,9 +171,7 @@ export default {
         speed: 500,
         delay: 4000,
         loop: true,
-        pagination: {
-          el: '.swiper-pagination'
-        }
+        pagination: false
       },
       isMobile: false,
       someList: [],
