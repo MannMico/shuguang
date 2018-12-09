@@ -7,11 +7,6 @@ export default {
      * A-F
      */
     {
-      provinceId: '33',
-      provinceName: '澳门',
-      category: 'A-F'
-    },
-    {
       provinceId: '12',
       provinceName: '安徽',
       category: 'A-F'
@@ -181,11 +176,7 @@ export default {
       provinceName: '新疆',
       category: 'T-Z'
     },
-    {
-      provinceId: '32',
-      provinceName: '香港',
-      category: 'T-Z'
-    },
+
     {
       provinceId: '25',
       provinceName: '云南',
@@ -195,6 +186,16 @@ export default {
       provinceId: '11',
       provinceName: '浙江',
       category: 'T-Z'
+    },
+    {
+      provinceId: '32',
+      provinceName: '香港',
+      category: 'T-Z'
+    },
+    {
+      provinceId: '33',
+      provinceName: '澳门',
+      category: 'A-F'
     }
   ],
 
