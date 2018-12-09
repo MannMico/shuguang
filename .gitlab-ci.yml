@@ -11,7 +11,7 @@ cache:
     - dist/
 
 # 安装依赖
-install_deps:
+install_dev:
   stage: install_deps
   only:
     - develop
@@ -20,23 +20,54 @@ install_deps:
   script:
     - npm install
 
+install_prod:
+  stage: install_deps
+  only:
+    - master
+  tags:
+    - ip-prod1
+    - ip-prod2
+  script:
+    - npm install
+
 # 编译
-build:
+build_dev:
   stage: build
   only:
     - develop
   tags:
     - ip-test
   script:
+    - npm run build:staging
+
+build_prod:
+  stage: build
+  only:
+    - master
+  tags:
+    - ip-prod1
+    - ip-prod2
+  script:
     - npm run build
 
-# 部署测试服务器
-deploy:
+# 部署
+deploy_dev:
   stage: deploy
   only:
     - develop
   tags:
     - ip-test
+  script:
+    - rm -rf /data/www/front_page/*
+    - cp -rf dist/* /data/www/front_page/
+
+deploy_prod:
+  stage: deploy
+  only:
+    - master
+  tags:
+    - ip-prod1
+    - ip-prod2
   script:
     - rm -rf /data/www/front_page/*
     - cp -rf dist/* /data/www/front_page/
