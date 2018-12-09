@@ -171,12 +171,12 @@ export default {
         speed: 500,
         delay: 4000,
         loop: true,
-        pagination: false
+        pagination: true
       },
       isMobile: false,
       someList: [],
       options: {
-        pagination: true,
+        pagination: false,
         thresholdDistance: 100, // 滑动距离阈值判定
         thresholdTime: 300, // 滑动时间阈值判定
         grabCursor: true, // 抓标样式
