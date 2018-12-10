@@ -9,14 +9,24 @@
       <img src="@/assets/logo.png" alt class="header-slide__name-logo">
       <div class="header-slide__decs1">专注IP的创新经纪营销平台</div>
       <div class="header-slide__decs2">做IP营销，找束光；专业IP经纪人对接更专业，更省事，更有效。</div>
-      <button class="header-slide__btn">开启营销新增长</button>
+      <button class="header-slide__btn" @click="scrollToDOM('#home')">开启营销新增长</button>
       <!-- <img class="qrcode" v-if="isMobile" src="@/assets/qrcode.png" alt> -->
     </div>
-    <a name="home"></a>
+    <a id="home"></a>
     <div class="home__body">
-      <base-navbar :loginCb="openLoginPop"></base-navbar>
+      <base-navbar
+        :loginCb="openLoginPop"
+        @change="scrollToDOM"
+        :style="{visibility: showFixed ? 'hidden' : 'visible'}"
+      ></base-navbar>
+      <base-navbar
+        class="base-navbar--fixed"
+        :loginCb="openLoginPop"
+        @change="scrollToDOM"
+        v-show="showFixed"
+      ></base-navbar>
       <div class="home__business-container">
-        <a href="#kjt"></a>
+        <a id="kjt"></a>
         <bussiness-module>
           <template slot="title">IP跨界通：基于实战营销的订制化方案</template>
           <template slot="desc">
@@ -34,7 +44,7 @@
             <base-button @click="toIssuePage('kuajietong')">发布需求</base-button>
           </template>
         </bussiness-module>
-        <div name="home" style="display:none;"></div>
+        <a id="xyd"></a>
         <bussiness-module negative>
           <template slot="title">IP效易达：小快灵的［IP＋空间体验］新模式</template>
           <template slot="desc">
@@ -50,7 +60,7 @@
             <base-button @click="toIssuePage('xiaoyida')">发布需求</base-button>
           </template>
         </bussiness-module>
-        <a href="#hym"></a>
+        <a id="hym"></a>
         <bussiness-module>
           <template slot="title">IP好易卖：多元竞争时代，更简单有效的［IP＋产品］</template>
           <template slot="desc">
@@ -85,7 +95,7 @@
           </div>
         </div>
       </div>
-      <a href="#partner"></a>
+      <a id="partner"></a>
       <div class="home__partner">
         <div class="partner__title">全球众多合作伙伴，值得信赖</div>
         <!-- <div class="partner__items">
@@ -154,6 +164,7 @@
 
 <script>
 import './home.scss';
+import { throttle } from '@/libs/util';
 import { slider, slideritem } from 'vue-concise-slider';
 import BussinessModule from './business-module.vue';
 import Partner from './partner.vue';
@@ -186,7 +197,8 @@ export default {
         // loop: false, // 无限循环
         // autoplay: 0 // 自动播放:时间[ms]
       },
-      showLoginBox: false
+      showLoginBox: false,
+      showFixed: false
     };
   },
   created() {
@@ -198,8 +210,41 @@ export default {
     const isMobile = isIphone || isAndroid;
     this.isMobile = isMobile;
   },
-  mounted() {},
+  mounted() {
+    const dNavbar = document.querySelector('.base-navbar');
+    var throttled = throttle(() => {
+      console.log('dNavbarRect.top = ' + dNavbar.getBoundingClientRect().top);
+      if (dNavbar.getBoundingClientRect().top <= 0) {
+        this.showFixed = true;
+      } else {
+        this.showFixed = false;
+      }
+    }, 60);
+    window.onscroll = throttled;
+    // 根据hash跳转到指定位置
+    if (this.$route.hash) {
+      this.scrollToDOM(this.$route.hash);
+    }
+  },
   methods: {
+    scrollToDOM(select) {
+      let offset = 60; // 偏移量
+      const s = select || this.$route.hash;
+      if (s === '#home') {
+        offset = 0;
+      }
+      console.log('scrollToDOM: ' + s);
+      const destDOM = document.querySelector(s);
+      const destTop =
+        document.body.scrollTop +
+        document.documentElement.scrollTop +
+        destDOM.getBoundingClientRect().top -
+        offset;
+      // window.scrollTo(0, destTop);
+      document.body.scrollTop
+        ? (document.body.scrollTop = destTop)
+        : (document.documentElement.scrollTop = destTop);
+    },
     openLoginPop() {
       console.log('openLoginPop');
     },
