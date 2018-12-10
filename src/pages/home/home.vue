@@ -182,7 +182,10 @@ export default {
         speed: 500,
         delay: 4000,
         loop: true,
-        pagination: true
+        // pagination: true
+        pagination: {
+          el: '.swiper-pagination'
+        }
       },
       isMobile: false,
       someList: [],
