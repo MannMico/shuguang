@@ -10,7 +10,7 @@
         <div class="bar__logout">退出</div>
       </div>
     </div>
-    <div class="plan__body">
+    <div class="plan__body width-fixed">
       <div class="plan__part1">
         <div class="part__title">经纪人May为您匹配的IP营销方案</div>
         <div class="part1__main">
@@ -58,7 +58,7 @@
         <img class="part2__img" src alt>
       </div>
       <div style="width:70%;margin:20px auto;height:400px">
-        <slider ref="slider" :options="options" @slide="slide" @tap="onTap" @init="onInit">
+        <slider ref="slider" :options="options">
           <slideritem
             v-for="(item,index) in someList"
             :key="index"

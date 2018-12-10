@@ -25,7 +25,7 @@
         @change="scrollToDOM"
         v-show="showFixed"
       ></base-navbar>
-      <div class="home__business-container">
+      <div class="home__business-container width-fixed">
         <a id="kjt"></a>
         <bussiness-module>
           <template slot="title">IP跨界通：基于实战营销的订制化方案</template>
@@ -96,7 +96,7 @@
         </div>
       </div>
       <a id="partner"></a>
-      <div class="home__partner">
+      <div class="home__partner width-fixed">
         <div class="partner__title">全球众多合作伙伴，值得信赖</div>
         <!-- <div class="partner__items">
           <partner></partner>
@@ -216,7 +216,6 @@ export default {
   mounted() {
     const dNavbar = document.querySelector('.base-navbar');
     var throttled = throttle(() => {
-      console.log('dNavbarRect.top = ' + dNavbar.getBoundingClientRect().top);
       if (dNavbar.getBoundingClientRect().top <= 0) {
         this.showFixed = true;
       } else {
