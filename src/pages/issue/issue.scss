@@ -29,7 +29,7 @@
       background-color: #fff;
       border-radius: 4px;
       border: 1px solid #e8e8e8;
-      padding: 100px 160px;
+      padding: 100px 100px;
 
       .el-form-item__label {
         font-size: 24px;
@@ -40,7 +40,6 @@
       .el-form-item__error {
         left: 15px;
       }
-
     }
   }
 
@@ -120,17 +119,18 @@
 
       span {
         position: absolute;
-        width: 26px;
-        height: 26px;
-        line-height: 26px;
+        display: block;
+        width: 30px;
+        height: 30px;
         text-align: center;
         top: 10px;
         right: 10px;
         font-size: 20px;
+        background-size: 100% 100%;
+        background-image: url('~@/assets/unselected.png');
       }
-
-      .el-icon-circle-check {
-        color: #0c5ae3;
+      span.selected {
+        background-image: url('~@/assets/selected.png');
       }
     }
 
