@@ -5,20 +5,22 @@
       <div class="header__title">发布需求</div>
       <div class="header__desc">提交后系统立即匹配专业IP经纪人为您定制方案</div>
     </div>
-    <div class="issue__form width-fixed">
+    <el-form
+      ref="issue_form"
+      class="issue__form width-fixed"
+      label-position="left"
+      label-width="224px"
+      :model="form"
+      :rules="rules"
+    >
       <div class="form__title">您的项目背景和要求：</div>
-      <div class="form__item--style1">
-        <div class="form-item__title">*品牌或公司名称</div>
-        <div class="form-item__content">
-          <el-input v-model="form.company" placeholder="必填项"></el-input>
-        </div>
-      </div>
-      <div class="form__item--style1">
-        <div class="form-item__title">*所在地区</div>
-        <div class="form-item__content">
-          <div class="form-item__provins">
+      <el-form-item class="form__border-bottom" label="品牌或公司名称" prop="company">
+        <el-input v-model="form.company" placeholder="必填项"></el-input>
+      </el-form-item>
+      <el-form-item class="form__border-bottom" label="所在地区" required>
+        <el-col :span="12">
+          <el-form-item prop="province">
             <el-select v-model="form.province" placeholder="请选择" @change="changeProvince">
-              <!-- <el-option value ></el-option> -->
               <el-option
                 v-for="item in provinces"
                 :key="item.provinceId"
@@ -26,8 +28,10 @@
                 :value="item.provinceId"
               ></el-option>
             </el-select>
-          </div>
-          <div class="form-item__cities">
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item prop="city">
             <el-select v-model="form.city" placeholder="请选择">
               <el-option
                 v-for="item in cities"
@@ -36,73 +40,77 @@
                 :value="item.cityId"
               ></el-option>
             </el-select>
+          </el-form-item>
+        </el-col>
+      </el-form-item>
+      <el-row>
+        <el-form-item label="选择合作类型（可多选）" label-width="400px"></el-form-item>
+        <div class="form-item__type">
+          <div class="form-item__typeitem" v-for="(mode,index) in modes" :key="mode.id">
+            <img
+              :src="mode.image"
+              :class="{'form-item__typeitem--gray': !mode.select}"
+              @click="onSeletcMode(index)"
+            >
+            <span>
+              <i v-if="mode.select" class="el-icon-circle-check"></i>
+              <i v-else class="el-icon-circle-check-outline"></i>
+            </span>
           </div>
         </div>
-      </div>
-      <div class="form__item--style2">
-        <div class="form-item__title">选择合作类型（可多选）</div>
-        <div class="form-item__content">
-          <div class="form-item__type">
-            <div class="form-item__typeitem" v-for="(mode,index) in modes" :key="mode.id">
-              <img
-                :src="mode.image"
-                :class="{'form-item__typeitem--gray': !mode.select}"
-                @click="onSeletcMode(index)"
-              >
-              <span>
-                <i v-if="mode.select" class="el-icon-circle-check"></i>
-                <i v-else class="el-icon-circle-check-outline"></i>
-              </span>
-            </div>
-          </div>
-        </div>
+      </el-row>
+      <el-row>
         <div class="form-item__textarea">
           <textarea
             v-model="form.detail_demand"
             placeholder="1.请补充说明您的品牌介绍及意向合作品类  2.请补充说明您的意向IP/意向IP风格"
           ></textarea>
         </div>
-      </div>
-      <div class="form__item--style1">
-        <div class="form-item__title">*期待上线日期</div>
-        <div class="form-item__content">
-          <el-date-picker v-model="form.publish_time" type="date" placeholder="请选择"></el-date-picker>
-        </div>
-      </div>
+      </el-row>
 
+      <el-form-item class="form__border-bottom" label="期待上线日期" prop="publish_time">
+        <el-date-picker v-model="form.publish_time" type="date" placeholder="请选择"></el-date-picker>
+      </el-form-item>
       <div class="form__title">联系方式：</div>
-      <div class="form__item--style1">
-        <div class="form-item__title">*联系人姓名</div>
-        <div class="form-item__content">
-          <el-input placeholder="必填项" v-model="form.nickname"></el-input>
-        </div>
-      </div>
-      <div class="form__item--tight">
-        <div class="form__item--style1" style="width:55%;">
-          <div class="form-item__title">*联系人电话</div>
-          <div class="form-item__content">
+      <el-form-item class="form__border-bottom" label="联系人姓名" prop="nickname">
+        <el-input placeholder="必填项" v-model="form.nickname"></el-input>
+      </el-form-item>
+      <el-row>
+        <el-col :span="14">
+          <el-form-item label="联系人电话" class="form__border-bottom" prop="phone">
             <el-input placeholder="必填项" v-model="form.phone"></el-input>
-          </div>
-        </div>
-        <div class="form__item--style1" style="marginLeft: 20px;width:45%;">
-          <el-input placeholder="短信验证码" v-model="form.vcode"></el-input>
-          <div class="form-item__title form-item__captcha" v-if="!codeTime" @click="onCode">获取验证码</div>
-          <div
-            class="form-item__title form-item__captcha form-item__captcha--gray"
-            v-else
-          >{{codeTime}}s后重新发送</div>
-        </div>
-      </div>
+          </el-form-item>
+        </el-col>
+        <el-col :span="10">
+          <el-form-item class="form__border-bottom" label-width="10px" prop="vcode">
+            <el-col :span="12">
+              <el-input placeholder="短信验证码" v-model="form.vcode"></el-input>
+            </el-col>
+            <el-col :span="12">
+              <div
+                class="form-item__title form-item__captcha"
+                v-if="!codeTime"
+                @click="onCode"
+              >获取验证码</div>
+              <div
+                class="form-item__title form-item__captcha form-item__captcha--gray"
+                v-else
+              >{{codeTime}}s后重新发送</div>
+            </el-col>
+          </el-form-item>
+        </el-col>
+      </el-row>
       <div class="form__submit-btn">
         <base-button @click="onSend">立即发布需求</base-button>
       </div>
-    </div>
+    </el-form>
     <base-footer></base-footer>
     <submit-success-pop v-if="showSuccessPop"></submit-success-pop>
   </div>
 </template>
 
 <script>
+import { Form, Input, Col, Row } from 'element-ui';
 import { addDemad, getCooperationModes } from '@/services/demand';
 import { sendCodeSms } from '@/services/code';
 import district from './district.js';
@@ -111,7 +119,11 @@ import SubmitSuccessPop from './submit-success-pop.vue';
 import './issue.scss';
 export default {
   components: {
-    SubmitSuccessPop
+    SubmitSuccessPop,
+    elForm: Form,
+    elInput: Input,
+    elCol: Col,
+    elRow: Row
   },
   data() {
     return {
@@ -131,6 +143,15 @@ export default {
         city: null, //	Number	所在地区 - 城市
         publish_time: null, //	Date	期待发布时间
         vcode: '' //	String	验证码
+      },
+      rules: {
+        company: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        province: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        city: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        publish_time: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        nickname: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        phone: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
+        vcode: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
       showSuccessPop: false,
       codeTime: 0
@@ -195,21 +216,28 @@ export default {
       }
     },
     onSend() {
-      const mode_ids = this.modes.map(mode => {
-        return mode.id;
+      this.$refs.issue_form.validate(valid => {
+        if (valid) {
+          const mode_ids = this.modes.map(mode => {
+            return mode.id;
+          });
+          const data = Object.assign({}, this.form, {
+            mode_ids: mode_ids,
+            province: Number(this.form.province),
+            city: Number(this.form.city)
+          });
+          addDemad(data)
+            .then(data => {
+              this.showSuccessPop = true;
+            })
+            .catch(err => {
+              this.$message.error(err.message);
+            });
+        } else {
+          this.$message.error('请先填写必要信息，再发布需求');
+          return false;
+        }
       });
-      const data = Object.assign({}, this.form, {
-        mode_ids: mode_ids,
-        province: Number(this.form.province),
-        city: Number(this.form.city)
-      });
-      addDemad(data)
-        .then(data => {
-          this.showSuccessPop = true;
-        })
-        .catch(err => {
-          this.$message.error(err.message);
-        });
     }
   }
 };

@@ -106,7 +106,7 @@
 </style>
 
 <template>
-  <div class="base-navbar">
+  <div>
     <el-dialog :visible.sync="showLoginBox" class="login-box" width="640px">
       <div class="login-box__title">
         <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
@@ -123,25 +123,27 @@
       </div>
       <div class="login-box__btn">登录</div>
     </el-dialog>
-    <div class="base-navbar__container width-fixed padding-fixed">
-      <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
-      <el-menu
-        class="el-menu-demo navbar__nav"
-        mode="horizontal"
-        text-color="#000"
-        router
-        @select="selectMenu"
-      >
-        <el-menu-item index="/#home">首页</el-menu-item>
-        <el-submenu index="2" popper-class="nav__submenu">
-          <template slot="title">产品服务</template>
-          <el-menu-item index="/#kjt">跨界通</el-menu-item>
-          <el-menu-item index="/#xyd">效易达</el-menu-item>
-          <el-menu-item index="/#hym">好易卖</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="/#partner">合作品牌</el-menu-item>
-      </el-menu>
-      <base-button class="navbar__login-btn" @click="loginBtnClicked">客户登录</base-button>
+    <div class="base-navbar">
+      <div class="base-navbar__container width-fixed padding-fixed">
+        <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
+        <el-menu
+          class="el-menu-demo navbar__nav"
+          mode="horizontal"
+          text-color="#000"
+          router
+          @select="selectMenu"
+        >
+          <el-menu-item index="/#home">首页</el-menu-item>
+          <el-submenu index="2" popper-class="nav__submenu">
+            <template slot="title">产品服务</template>
+            <el-menu-item index="/#kjt">跨界通</el-menu-item>
+            <el-menu-item index="/#xyd">效易达</el-menu-item>
+            <el-menu-item index="/#hym">好易卖</el-menu-item>
+          </el-submenu>
+          <el-menu-item index="/#partner">合作品牌</el-menu-item>
+        </el-menu>
+        <base-button class="navbar__login-btn" @click="loginBtnClicked">客户登录</base-button>
+      </div>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@ import store from './store/index';
 import inject from './inject';
 
 import App from './App.vue';
-import { Input } from 'element-ui';
+
 import Button from './components/button.vue';
 import Footer from './components/footer.vue';
 import Navbar from './components/navbar.vue';
@@ -18,8 +18,6 @@ Vue.config.productionTip = false;
 
 Vue.use(inject);
 Vue.use(VueAwesomeSwiper);
-
-Vue.use(Input);
 
 Vue.component(Button.name, Button);
 Vue.component(Footer.name, Footer);
