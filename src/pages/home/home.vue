@@ -15,13 +15,13 @@
     <a id="home"></a>
     <div class="home__body">
       <base-navbar
-        :loginCb="openLoginPop"
+        :cb="openLoginPop"
         @change="scrollToDOM"
         :style="{visibility: showFixed ? 'hidden' : 'visible'}"
       ></base-navbar>
       <base-navbar
         class="base-navbar--fixed"
-        :loginCb="openLoginPop"
+        :cb="openLoginPop"
         @change="scrollToDOM"
         v-show="showFixed"
       ></base-navbar>

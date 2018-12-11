@@ -18,8 +18,10 @@
 
   .base-navbar--fixed {
     position: fixed;
+    z-index: 10;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   // ===== BANNER START =====

@@ -2,22 +2,23 @@
 @import '~@/styles/var';
 .base-navbar {
   width: 100%;
-  padding: 0 40px 0 160px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100px;
   border-bottom: 1px solid #eee;
-  background-color: #fff;
+  &__container {
+    position: relative;
+    height: 100%;
+    padding-left: 160px;
+    padding-right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #fff;
+  }
   .navbar {
     &__name-logo {
       width: 68px;
       height: 36px;
-    }
-
-    &__right {
-      display: flex;
-      align-items: center;
     }
 
     &__nav {
@@ -27,12 +28,17 @@
       .el-menu-item,
       .el-submenu__title {
         font-size: 20px;
+        width: 200px;
       }
     }
 
     &__login-btn {
+      position: absolute;
       margin-left: 60px;
       display: inline-block;
+      top: 50%;
+      right: -100px;
+      transform: translateY(-50%);
     }
   }
 
@@ -119,8 +125,8 @@
       </div>
       <div class="login-box__btn">登录</div>
     </el-dialog>
-    <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
-    <div class="navbar__right">
+    <div class="base-navbar__container width-fixed">
+      <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
       <el-menu
         class="el-menu-demo navbar__nav"
         mode="horizontal"
@@ -145,7 +151,7 @@
 <script>
 export default {
   name: 'base-navbar',
-  props: ['loginCb'],
+  props: ['cb'],
   data() {
     return {
       showLoginBox: false
@@ -156,7 +162,7 @@ export default {
   methods: {
     loginBtnClicked() {
       this.showLoginBox = true;
-      this.loginCb();
+      this.cb();
     },
     selectMenu(index) {
       const hash = index.split('/')[1];
