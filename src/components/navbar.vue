@@ -10,6 +10,7 @@
   height: 100px;
   border-bottom: 1px solid #eee;
   background-color: #fff;
+  overflow: hidden;
 
   .el-menu-item,
   .el-submenu {
