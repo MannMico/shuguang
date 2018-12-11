@@ -10,7 +10,7 @@
       <div class="form__item--style1">
         <div class="form-item__title">*品牌或公司名称</div>
         <div class="form-item__content">
-          <input type="text" v-model="form.company" placeholder="必填项">
+          <el-input v-model="form.company" placeholder="必填项"></el-input>
         </div>
       </div>
       <div class="form__item--style1">
@@ -74,19 +74,23 @@
       <div class="form__item--style1">
         <div class="form-item__title">*联系人姓名</div>
         <div class="form-item__content">
-          <input type="text" placeholder="必填项" v-model="form.nickname">
+          <el-input placeholder="必填项" v-model="form.nickname"></el-input>
         </div>
       </div>
       <div class="form__item--tight">
-        <div class="form__item--style1">
+        <div class="form__item--style1" style="width:60%;">
           <div class="form-item__title">*联系人电话</div>
           <div class="form-item__content">
-            <input type="text" placeholder="必填项" v-model="form.phone">
+            <el-input placeholder="必填项" v-model="form.phone"></el-input>
           </div>
         </div>
-        <div class="form__item--style1" style="marginLeft: 20px;">
-          <input type="text" placeholder="请输入短信验证码" v-model="form.vcode">
-          <div class="form-item__title form-item__captcha" @click="onCode">获取验证码</div>
+        <div class="form__item--style1" style="marginLeft: 20px;width:40%;">
+          <el-input placeholder="短信验证码" v-model="form.vcode"></el-input>
+          <div class="form-item__title form-item__captcha" v-if="!codeTime" @click="onCode">获取验证码</div>
+          <div
+            class="form-item__title form-item__captcha form-item__captcha--gray"
+            v-else
+          >{{codeTime}}s后重新发送</div>
         </div>
       </div>
       <div class="form__submit-btn">
@@ -128,7 +132,8 @@ export default {
         publish_time: null, //	Date	期待发布时间
         vcode: '' //	String	验证码
       },
-      showSuccessPop: false
+      showSuccessPop: false,
+      codeTime: 0
     };
   },
   created() {},
@@ -137,6 +142,9 @@ export default {
       ? (document.body.scrollTop = 0)
       : (document.documentElement.scrollTop = 0);
     this.fetchModes();
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
   methods: {
     changeProvince(id) {
@@ -164,14 +172,19 @@ export default {
     },
     onCode() {
       const { phone } = this.form;
-      if (phone && this.canSendCode) {
+      if (phone && this.codeTime === 0) {
         sendCodeSms({ phone })
           .then(data => {
             this.$message.success('发送成功!');
-            this.canSendCode = false;
-            setTimeout(() => {
-              this.canSendCode = true;
-            }, 60000);
+            clearInterval(this.interval);
+            this.codeTime = 59;
+            this.interval = setInterval(() => {
+              this.codeTime -= 1;
+              if (this.codeTime <= 0) {
+                clearInterval(this.interval);
+                this.codeTime = 0;
+              }
+            }, 1000);
           })
           .catch(err => {
             this.$message.error(err.message);

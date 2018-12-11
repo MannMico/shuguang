@@ -3,6 +3,15 @@
 .issue-page {
   font-weight: $weight_regular;
 
+  .el-input {
+    width: 100%;
+  }
+
+  .el-input__inner {
+    border: none;
+    font-size: 24px;
+  }
+
   .issue {
     &__header {
       background-image: url('~@/assets/bg_banner.png');
@@ -64,15 +73,6 @@
 
     &__item--tight {
       display: flex;
-
-      input {
-        border: none;
-        font-size: 24px;
-      }
-
-      div {
-        width: 50%;
-      }
     }
 
     &__submit-btn {
@@ -154,6 +154,11 @@
       font-size: 24px;
       color: #0c5ae3;
       letter-spacing: 1.08px;
+      min-width: 160px;
+
+      &--gray {
+        color: #999;
+      }
     }
   }
 }
