@@ -1,10 +1,14 @@
 <style lang="scss">
 @import '~@/styles/var';
 .business-module {
-  padding: 130px 160px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding-top: 130px;
+  padding-bottom: 130px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__left {
   }
   &__right {
@@ -40,47 +44,51 @@
 </style>
 
 <template>
-  <div class="business-module">
+  <div class="business-module padding-fixed">
     <template v-if="negative">
-      <div class="business-module__left">
-        <slot name="img"></slot>
-      </div>
-      <div class="business-module__right">
-        <div class="business__title">
-          <slot name="title"></slot>
+      <div class="business-module__container width-fixed">
+        <div class="business-module__left">
+          <slot name="img"></slot>
         </div>
-        <div class="business__desc">
-          <slot name="desc"></slot>
-        </div>
-        <div class="business__btn">
-          <slot name="btn">
-            <base-button>发布需求</base-button>
-          </slot>
-        </div>
-        <div class="business__note">
-          <slot name="note">由专业IP经纪人帮您定制授权方案</slot>
+        <div class="business-module__right">
+          <div class="business__title">
+            <slot name="title"></slot>
+          </div>
+          <div class="business__desc">
+            <slot name="desc"></slot>
+          </div>
+          <div class="business__btn">
+            <slot name="btn">
+              <base-button>发布需求</base-button>
+            </slot>
+          </div>
+          <div class="business__note">
+            <slot name="note">由专业IP经纪人帮您定制授权方案</slot>
+          </div>
         </div>
       </div>
     </template>
     <template v-else>
-      <div class="business-module__left">
-        <div class="business__title">
-          <slot name="title"></slot>
+      <div class="business-module__container width-fixed">
+        <div class="business-module__left">
+          <div class="business__title">
+            <slot name="title"></slot>
+          </div>
+          <div class="business__desc">
+            <slot name="desc"></slot>
+          </div>
+          <div class="business__btn">
+            <slot name="btn">
+              <base-button>发布需求</base-button>
+            </slot>
+          </div>
+          <div class="business__note">
+            <slot name="note">由专业IP经纪人帮您定制授权方案</slot>
+          </div>
         </div>
-        <div class="business__desc">
-          <slot name="desc"></slot>
+        <div class="business-module__right">
+          <slot name="img"></slot>
         </div>
-        <div class="business__btn">
-          <slot name="btn">
-            <base-button>发布需求</base-button>
-          </slot>
-        </div>
-        <div class="business__note">
-          <slot name="note">由专业IP经纪人帮您定制授权方案</slot>
-        </div>
-      </div>
-      <div class="business-module__right">
-        <slot name="img"></slot>
       </div>
     </template>
   </div>

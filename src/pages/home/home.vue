@@ -25,9 +25,9 @@
         @change="scrollToDOM"
         v-show="showFixed"
       ></base-navbar>
-      <div class="home__business-container width-fixed">
+      <div class="home__business-container">
         <a id="kjt"></a>
-        <bussiness-module>
+        <bussiness-module class="width-fixed">
           <template slot="title">IP跨界通：基于实战营销的订制化方案</template>
           <template slot="desc">
             如果普通的“甩手掌柜式授权”已经无法解决您的痛点，这是专
@@ -45,23 +45,25 @@
           </template>
         </bussiness-module>
         <a id="xyd"></a>
-        <bussiness-module negative>
-          <template slot="title">IP效易达：小快灵的［IP＋空间体验］新模式</template>
-          <template slot="desc">
-            针对餐饮、零售、连锁、文娱量身打造的效果导向型IP跨界模式。将
-            IP有效贯穿线下消费场景的“空间轴”，重新优化线下消费行为的“体
-            验链”同时，高聚焦，轻启动，低负担，短平快让每一个合作伙伴都
-            能量力而为、有效而归。
-          </template>
-          <template slot="img">
-            <img src="@/assets/bussiness-xyd.png" alt>
-          </template>
-          <template slot="btn">
-            <base-button @click="toIssuePage('xiaoyida')">发布需求</base-button>
-          </template>
-        </bussiness-module>
+        <div class="business-module--second">
+          <bussiness-module class="width-fixed" negative>
+            <template slot="title">IP效易达：小快灵的［IP＋空间体验］新模式</template>
+            <template slot="desc">
+              针对餐饮、零售、连锁、文娱量身打造的效果导向型IP跨界模式。将
+              IP有效贯穿线下消费场景的“空间轴”，重新优化线下消费行为的“体
+              验链”同时，高聚焦，轻启动，低负担，短平快让每一个合作伙伴都
+              能量力而为、有效而归。
+            </template>
+            <template slot="img">
+              <img src="@/assets/bussiness-xyd.png" alt>
+            </template>
+            <template slot="btn">
+              <base-button @click="toIssuePage('xiaoyida')">发布需求</base-button>
+            </template>
+          </bussiness-module>
+        </div>
         <a id="hym"></a>
-        <bussiness-module>
+        <bussiness-module class="width-fixed">
           <template slot="title">IP好易卖：多元竞争时代，更简单有效的［IP＋产品］</template>
           <template slot="desc">
             按国际经典范式打造的［IP＋产品］的授权合作服务。从产品
@@ -78,7 +80,7 @@
         </bussiness-module>
       </div>
       <div class="business__extra">
-        <div class="business-extra__container width-fixed">
+        <div class="business-extra__container width-fixed padding-fixed">
           <div class="extra-item">
             <img class="extra-item__img" src="@/assets/option1.png" alt>
             <div class="extra-item__text">专业IP经纪人为品牌匹配门当户对的IP，给予品牌真赋能</div>
@@ -98,7 +100,7 @@
         </div>
       </div>
       <a id="partner"></a>
-      <div class="home__partner width-fixed">
+      <div class="home__partner width-fixed padding-fixed">
         <div class="partner__title">全球众多合作伙伴，值得信赖</div>
         <div class="partner__items">
           <img

@@ -36,7 +36,7 @@
   color: #000;
   position: relative;
   &__container {
-    padding: 60px 200px;
+    padding: 60px 128px;
   }
   .footer {
     &__container {

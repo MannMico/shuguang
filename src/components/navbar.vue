@@ -8,8 +8,7 @@
   &__container {
     position: relative;
     height: 100%;
-    padding-left: 160px;
-    padding-right: 260px;
+    padding-right: 180px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -124,7 +123,7 @@
       </div>
       <div class="login-box__btn">登录</div>
     </el-dialog>
-    <div class="base-navbar__container width-fixed">
+    <div class="base-navbar__container width-fixed padding-fixed">
       <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
       <el-menu
         class="el-menu-demo navbar__nav"

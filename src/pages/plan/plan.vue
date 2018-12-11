@@ -1,16 +1,18 @@
 <template>
   <div class="plan-page">
-    <div class="plan__bar">
-      <img class="bar__name-logo" src="@/assets/logo_up_navigation_white.png" alt>
-      <div class="bar__tail">
-        <div class="bar__user">
-          <img class="user__avator" src="@/assets/user_login.png" alt>
-          <div class="user__name">xxxxx</div>
+    <div class="plan-bar">
+      <div class="plan-bar__container width-fixed padding-fixed">
+        <img class="bar__name-logo" src="@/assets/logo_up_navigation_white.png" alt>
+        <div class="bar__tail">
+          <div class="bar__user">
+            <img class="user__avator" src="@/assets/user_login.png" alt>
+            <div class="user__name">湖北张学友</div>
+          </div>
+          <div class="bar__logout">退出</div>
         </div>
-        <div class="bar__logout">退出</div>
       </div>
     </div>
-    <div class="plan__body width-fixed">
+    <div class="plan__body width-fixed padding-fixed">
       <div class="plan__part1">
         <div class="part__title">经纪人May为您匹配的IP营销方案</div>
         <div class="part1__main">
