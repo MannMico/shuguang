@@ -16,6 +16,7 @@
   height: 590px;
   background-color: #fff;
   border-radius: 4px;
+  border: 1px solid rgba(151, 151, 151, 0.3);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -45,6 +46,12 @@
     }
     &__back-btn {
       margin-top: 72px;
+      width: 256px;
+      height: 62px;
+      text-align: center;
+      line-height: 62px;
+      padding: 0;
+      border-radius: 31px;
     }
   }
 }

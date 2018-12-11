@@ -45,7 +45,7 @@
             <div class="form-item__typeitem" v-for="(mode,index) in modes" :key="mode.id">
               <img
                 :src="mode.image"
-                :class="{'form-item__typeitem--gray': mode.select}"
+                :class="{'form-item__typeitem--gray': !mode.select}"
                 @click="onSeletcMode(index)"
               >
               <span>
@@ -161,10 +161,14 @@ export default {
     },
     onCode() {
       const { phone } = this.form;
-      if (phone) {
+      if (phone && this.canSendCode) {
         sendCodeSms({ phone })
           .then(data => {
             this.$message.success('发送成功!');
+            this.canSendCode = false;
+            setTimeout(() => {
+              this.canSendCode = true;
+            }, 60000);
           })
           .catch(err => {
             this.$message.error(err.message);
@@ -183,14 +187,6 @@ export default {
       addDemad(data)
         .then(data => {
           this.showSuccessPop = true;
-          // this.$alert('提交成功', '提示', {
-          //   confirmButtonText: '返回首页',
-          //   callback: action => {
-          //     this.$router.push({
-          //       path: '/'
-          //     });
-          //   }
-          // });
         })
         .catch(err => {
           this.$message.error(err.message);
