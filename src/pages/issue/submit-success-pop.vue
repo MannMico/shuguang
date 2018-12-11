@@ -1,20 +1,20 @@
 <template>
   <div class="submit-success-pop">
     <img class="pop__icon" src="@/assets/icon_ok.png" alt>
-    <div class="pop__success-tips">需求提交成功</div>
-    <div>IP经纪人将为您分析需求并尽快与您联系，请保持电话畅通~</div>
-    <base-button @click="backToHome()">返回首页</base-button>
+    <div class="pop__result-text">需求提交成功</div>
+    <div class="pop__result-tip">IP经纪人将为您分析需求并尽快与您联系，请保持电话畅通~</div>
+    <base-button class="pop__back-btn" @click="backToHome()">返回首页</base-button>
   </div>
 </template>
 
 <style lang="scss">
 @import '~@/styles/var';
 .submit-success-pop {
-  padding: 68px 0;
-  min-width: 900px;
-  height: 500px;
+  font-weight: $weight_regular;
+  padding: 62px 0 64px 0;
+  width: 1120px;
+  height: 590px;
   background-color: #fff;
-  border: 1px solid #979797;
   border-radius: 4px;
   position: fixed;
   top: 50%;
@@ -23,7 +23,6 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   .pop {
     &__icon {
@@ -31,11 +30,21 @@
       width: 180px;
       height: 180px;
     }
-    &__success-tips {
+    &__result-text {
+      margin-top: 56px;
       font-weight: $weight_medium;
       font-size: 30px;
       color: #000000;
       letter-spacing: 1.35px;
+    }
+    &__result-tip {
+      margin-top: 24px;
+      font-size: 20px;
+      color: #000000;
+      letter-spacing: 0.9px;
+    }
+    &__back-btn {
+      margin-top: 72px;
     }
   }
 }

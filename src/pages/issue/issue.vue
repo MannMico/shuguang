@@ -86,8 +86,8 @@
           <div class="form-item__title form-item__captcha" @click="onCode">获取验证码</div>
         </div>
       </div>
-      <div class="form__submit-btn" @click="onSend">
-        <base-button>立即发布需求</base-button>
+      <div class="form__submit-btn">
+        <base-button @click="onSend">立即发布需求</base-button>
       </div>
     </div>
     <base-footer></base-footer>
