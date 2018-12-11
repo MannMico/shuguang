@@ -77,7 +77,7 @@
         <el-input type="password" placeholder="请输入您的密码"></el-input>
         <div class="login-box__tips">
           <span>还没有账号？请先发布需求将获得邀请</span>
-          <router-link to="/issue?type=kuajietong">立即发布需求</router-link>
+          <a @click="jmpIssue" href="javascript:;">立即发布需求</a>
         </div>
       </div>
       <div class="login-box__btn">登录</div>
@@ -94,6 +94,10 @@ export default {
     onClose() {
       this.$store.commit('toggleLogin', false);
       return true;
+    },
+    jmpIssue() {
+      this.$store.commit('toggleLogin', false);
+      this.$router.push('/issue?type=kuajietong');
     }
   }
 };

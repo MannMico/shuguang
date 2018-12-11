@@ -58,10 +58,10 @@
       </el-row>
       <el-row>
         <div class="form-item__textarea">
-          <textarea
-            v-model="form.detail_demand"
-            placeholder="1.请补充说明您的品牌介绍及意向合作品类  2.请补充说明您的意向IP/意向IP风格"
-          ></textarea>
+          <div class="placeholder" v-show="!form.detail_demand">1.请补充说明您的品牌介绍及意向合作品类
+            <br>2.请补充说明您的意向IP/意向IP风格
+          </div>
+          <textarea id="detail_demand" v-model="form.detail_demand" placeholder></textarea>
         </div>
       </el-row>
 
@@ -102,7 +102,6 @@
       </div>
     </el-form>
     <base-footer></base-footer>
-    <submit-success-pop v-if="showSuccessPop"></submit-success-pop>
   </div>
 </template>
 
@@ -111,12 +110,10 @@ import { Form, Input, Col, Row } from 'element-ui';
 import { addDemad, getCooperationModes } from '@/services/demand';
 import { sendCodeSms } from '@/services/code';
 import district from './district.js';
-import SubmitSuccessPop from './submit-success-pop.vue';
 
 import './issue.scss';
 export default {
   components: {
-    SubmitSuccessPop,
     elForm: Form,
     elInput: Input,
     elCol: Col,
@@ -150,7 +147,6 @@ export default {
         phone: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         vcode: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      showSuccessPop: false,
       codeTime: 0
     };
   },
@@ -225,7 +221,7 @@ export default {
           });
           addDemad(data)
             .then(data => {
-              this.showSuccessPop = true;
+              this.$router.push({ path: '/issue-done' });
             })
             .catch(err => {
               this.$message.error(err.message);
