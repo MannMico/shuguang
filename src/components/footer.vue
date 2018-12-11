@@ -1,25 +1,27 @@
 <template>
   <div class="base-footer">
-    <div class="footer__container">
-      <div class="footer__left">
-        <img class="footer__name-logo" src="@/assets/logo_up_navigation.png" alt>
-        <div class="footer__desc">专注IP的创新经纪营销平台</div>
-      </div>
-      <div class="footer__mid">
-        <div class="footer__main-text">IP授权营销</div>
-        <div class="footer__sub-text">
-          <div>邮箱：may@shujiguang.com</div>
-          <div>电话：13537520823</div>
+    <div class="base-footer__container width-fixed">
+      <div class="footer__container">
+        <div class="footer__left">
+          <img class="footer__name-logo" src="@/assets/logo_up_navigation.png" alt>
+          <div class="footer__desc">专注IP的创新经纪营销平台</div>
+        </div>
+        <div class="footer__mid">
+          <div class="footer__main-text">IP授权营销</div>
+          <div class="footer__sub-text">
+            <div>邮箱：may@shujiguang.com</div>
+            <div>电话：13537520823</div>
+          </div>
+        </div>
+        <div class="footer__right">
+          <div class="footer__main-text">IP版权入驻</div>
+          <div class="footer__sub-text">邮箱：crater@shujiguang.com</div>
         </div>
       </div>
-      <div class="footer__right">
-        <div class="footer__main-text">IP版权入驻</div>
-        <div class="footer__sub-text">邮箱：crater@shujiguang.com</div>
+      <div class="footer__copyright">
+        COPYRIGHT © 2018 深圳市束光文化科技有限公司
+        <a href="http://www.miit.gov.cn/">粤ICP备18071035号-1</a>
       </div>
-    </div>
-    <div class="footer__copyright">
-      COPYRIGHT © 2018 深圳市束光文化科技有限公司
-      <a href="http://www.miit.gov.cn/">粤ICP备18071035号-1</a>
     </div>
   </div>
 </template>
@@ -29,10 +31,13 @@
 .base-footer {
   background: #f6f6f6;
   height: 300px;
-  padding: 60px 200px;
+
   box-sizing: border-box;
   color: #000;
   position: relative;
+  &__container {
+    padding: 60px 200px;
+  }
   .footer {
     &__container {
       display: flex;

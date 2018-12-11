@@ -18,13 +18,14 @@
         <div class="form-item__content">
           <div class="form-item__provins">
             <el-select v-model="form.province" placeholder="请选择" @change="changeProvince">
+              <!-- <el-option value ></el-option> -->
               <el-option
                 v-for="item in provinces"
                 :key="item.provinceId"
                 :label="item.provinceName"
                 :value="item.provinceId"
               ></el-option>
-            </el-select>省
+            </el-select>
           </div>
           <div class="form-item__cities">
             <el-select v-model="form.city" placeholder="请选择">
@@ -34,7 +35,7 @@
                 :label="item.cityName"
                 :value="item.cityId"
               ></el-option>
-            </el-select>市
+            </el-select>
           </div>
         </div>
       </div>
@@ -83,7 +84,7 @@
             <input type="text" placeholder="必填项" v-model="form.phone">
           </div>
         </div>
-        <div class="form__item--style1">
+        <div class="form__item--style1" style="marginLeft: 20px;">
           <input type="text" placeholder="请输入短信验证码" v-model="form.vcode">
           <div class="form-item__title form-item__captcha" @click="onCode">获取验证码</div>
         </div>
