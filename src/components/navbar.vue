@@ -1,10 +1,20 @@
 <style lang="scss">
 @import '~@/styles/var';
+
+.nav__submenu .el-menu-item {
+  font-size: 18px;
+  text-align: center;
+}
 .base-navbar {
   width: 100%;
   height: 100px;
   border-bottom: 1px solid #eee;
   background-color: #fff;
+
+  .el-menu-item,
+  .el-submenu {
+    border-bottom: 2px solid transparent;
+  }
   &__container {
     position: relative;
     height: 100%;
@@ -29,13 +39,17 @@
         width: 200px;
         text-align: center;
       }
+      .el-menu-item:hover,
+      .is-opened .el-submenu__title {
+        border-bottom-color: rgb(73, 110, 214) !important;
+      }
     }
 
     &__login-btn {
       position: absolute;
       display: block;
       top: 50%;
-      right: 40px;
+      right: -40px;
       transform: translateY(-50%);
     }
   }
@@ -130,7 +144,9 @@
           class="el-menu-demo navbar__nav"
           mode="horizontal"
           text-color="#000"
+          active-text-color="#496ED6"
           router
+          :default-active="`/${$route.hash}`"
           @select="selectMenu"
         >
           <el-menu-item index="/#home">首页</el-menu-item>

@@ -1,5 +1,6 @@
 @import './reset.css';
 @import './base';
+@import './var';
 
 html,
 body {
@@ -13,6 +14,7 @@ body {
   width: 100%;
   min-width: 1280px;
   margin: 0 auto;
+  font-size: $weight_regular;
 }
 
 .mask {
