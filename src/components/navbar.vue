@@ -29,6 +29,7 @@
       .el-submenu__title {
         font-size: 20px;
         width: 200px;
+        text-align: center;
       }
     }
 
