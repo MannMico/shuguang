@@ -76,7 +76,9 @@
             <base-button @click="toIssuePage('haoyimai')">发布需求</base-button>
           </template>
         </bussiness-module>
-        <div class="business__extra">
+      </div>
+      <div class="business__extra">
+        <div class="business-extra__container width-fixed">
           <div class="extra-item">
             <img class="extra-item__img" src="@/assets/option1.png" alt>
             <div class="extra-item__text">专业IP经纪人为品牌匹配门当户对的IP，给予品牌真赋能</div>
@@ -98,10 +100,6 @@
       <a id="partner"></a>
       <div class="home__partner width-fixed">
         <div class="partner__title">全球众多合作伙伴，值得信赖</div>
-        <!-- <div class="partner__items">
-          <partner></partner>
-          <partner></partner>
-        </div>-->
         <div class="partner__items">
           <img
             class="slider__arrow slider__arrow-left"

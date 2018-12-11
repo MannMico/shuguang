@@ -43,7 +43,11 @@
         <div class="form-item__content">
           <div class="form-item__type">
             <div class="form-item__typeitem" v-for="(mode,index) in modes" :key="mode.id">
-              <img :src="mode.image" @click="onSeletcMode(index)">
+              <img
+                :src="mode.image"
+                :class="{'form-item__typeitem--gray': mode.select}"
+                @click="onSeletcMode(index)"
+              >
               <span>
                 <i v-if="mode.select" class="el-icon-circle-check"></i>
                 <i v-else class="el-icon-circle-check-outline"></i>
@@ -126,6 +130,9 @@ export default {
   },
   created() {},
   mounted() {
+    document.body.scrollTop
+      ? (document.body.scrollTop = 0)
+      : (document.documentElement.scrollTop = 0);
     this.fetchModes();
   },
   methods: {

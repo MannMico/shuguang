@@ -94,6 +94,7 @@
       display: flex;
       justify-content: flex-start;
     }
+
     &__typeitem {
       display: block;
       width: 150px;
@@ -101,11 +102,13 @@
       margin-right: 26px;
       margin-top: 10px;
       position: relative;
+
       img {
         display: block;
         width: 150px;
         height: 150px;
       }
+
       span {
         position: absolute;
         width: 26px;
@@ -116,9 +119,15 @@
         right: 10px;
         font-size: 20px;
       }
+
       .el-icon-circle-check {
         color: #0c5ae3;
       }
+    }
+
+    &__typeitem--gray {
+      filter: grayscale(100%);
+      filter: gray;
     }
 
     &__textarea {
