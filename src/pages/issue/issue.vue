@@ -52,10 +52,7 @@
               :class="{'form-item__typeitem--gray': !mode.select}"
               @click="onSeletcMode(index)"
             >
-            <span>
-              <i v-if="mode.select" class="el-icon-circle-check"></i>
-              <i v-else class="el-icon-circle-check-outline"></i>
-            </span>
+            <span :class="{selected:mode.select}"></span>
           </div>
         </div>
       </el-row>
