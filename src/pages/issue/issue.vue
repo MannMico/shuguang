@@ -76,12 +76,14 @@
           <input type="text" placeholder="必填项" v-model="form.nickname">
         </div>
       </div>
-      <div class="form__item--style1">
-        <div class="form-item__title">*联系人电话</div>
-        <div class="form-item__content">
-          <input type="text" placeholder="必填项" v-model="form.phone">
+      <div class="form__item--tight">
+        <div class="form__item--style1">
+          <div class="form-item__title">*联系人电话</div>
+          <div class="form-item__content">
+            <input type="text" placeholder="必填项" v-model="form.phone">
+          </div>
         </div>
-        <div class="form-item__content">
+        <div class="form__item--style1">
           <input type="text" placeholder="请输入短信验证码" v-model="form.vcode">
           <div class="form-item__title form-item__captcha" @click="onCode">获取验证码</div>
         </div>

@@ -4,16 +4,15 @@
   width: 100%;
   height: 100px;
   border-bottom: 1px solid #eee;
+  background-color: #fff;
   &__container {
     position: relative;
     height: 100%;
     padding-left: 160px;
-    padding-right: 100px;
+    padding-right: 260px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    background-color: #fff;
   }
   .navbar {
     &__name-logo {
@@ -35,10 +34,9 @@
 
     &__login-btn {
       position: absolute;
-      margin-left: 60px;
-      display: inline-block;
+      display: block;
       top: 50%;
-      right: -100px;
+      right: 40px;
       transform: translateY(-50%);
     }
   }
