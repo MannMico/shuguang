@@ -97,7 +97,6 @@
 <script>
 export default {
   name: 'base-navbar',
-  props: ['cb'],
   data() {
     return {};
   },

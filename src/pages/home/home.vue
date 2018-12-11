@@ -14,17 +14,8 @@
     </div>
     <a id="home"></a>
     <div class="home__body">
-      <base-navbar
-        :cb="openLoginPop"
-        @change="scrollToDOM"
-        :style="{visibility: showFixed ? 'hidden' : 'visible'}"
-      ></base-navbar>
-      <base-navbar
-        class="base-navbar--fixed"
-        :cb="openLoginPop"
-        @change="scrollToDOM"
-        v-show="showFixed"
-      ></base-navbar>
+      <base-navbar @change="scrollToDOM" :style="{visibility: showFixed ? 'hidden' : 'visible'}"></base-navbar>
+      <base-navbar class="base-navbar--fixed" @change="scrollToDOM" v-show="showFixed"></base-navbar>
       <div class="home__business-container">
         <a id="kjt"></a>
         <bussiness-module class="width-fixed">
@@ -246,9 +237,6 @@ export default {
       document.body.scrollTop
         ? (document.body.scrollTop = destTop)
         : (document.documentElement.scrollTop = destTop);
-    },
-    openLoginPop() {
-      console.log('openLoginPop');
     },
     leftArrowClicked() {
       this.$refs.slider.$emit('slidePre');
