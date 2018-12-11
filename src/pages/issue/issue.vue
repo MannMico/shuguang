@@ -5,7 +5,7 @@
       <div class="header__title">发布需求</div>
       <div class="header__desc">提交后系统立即匹配专业IP经纪人为您定制方案</div>
     </div>
-    <div class="issue__form">
+    <div class="issue__form width-fixed">
       <div class="form__title">您的项目背景和要求：</div>
       <div class="form__item--style1">
         <div class="form-item__title">*品牌或公司名称</div>
