@@ -78,13 +78,13 @@
         </div>
       </div>
       <div class="form__item--tight">
-        <div class="form__item--style1" style="width:60%;">
+        <div class="form__item--style1" style="width:55%;">
           <div class="form-item__title">*联系人电话</div>
           <div class="form-item__content">
             <el-input placeholder="必填项" v-model="form.phone"></el-input>
           </div>
         </div>
-        <div class="form__item--style1" style="marginLeft: 20px;width:40%;">
+        <div class="form__item--style1" style="marginLeft: 20px;width:45%;">
           <el-input placeholder="短信验证码" v-model="form.vcode"></el-input>
           <div class="form-item__title form-item__captcha" v-if="!codeTime" @click="onCode">获取验证码</div>
           <div
@@ -172,6 +172,9 @@ export default {
     },
     onCode() {
       const { phone } = this.form;
+      if (!phone) {
+        this.$message.error('请先输入联系人电话');
+      }
       if (phone && this.codeTime === 0) {
         sendCodeSms({ phone })
           .then(data => {

@@ -73,6 +73,7 @@
 
     &__item--tight {
       display: flex;
+      white-space: nowrap;
     }
 
     &__submit-btn {
