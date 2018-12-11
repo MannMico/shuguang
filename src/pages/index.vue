@@ -82,7 +82,7 @@ body {
 }
 .swiper-pagination {
   bottom: 20px !important;
-  z-index: 999;
+  z-index: 9;
 }
 .swiper-pagination-bullet {
   opacity: 0.5 !important;

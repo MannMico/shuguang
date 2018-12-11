@@ -5,12 +5,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    token: getItem('token')
+    token: getItem('token'),
+    showLogin: false
   },
   mutations: {
     login(state, { token }) {
       setItem('token', token);
       state.token = token;
+    },
+    toggleLogin(state, value) {
+      state.showLogin = value;
     }
   },
   actions: {}
