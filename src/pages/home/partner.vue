@@ -58,6 +58,7 @@
       }
     }
     &__line {
+      flex-shrink: 0;
       width: 1px;
       height: 44px;
       background: #b1b1b1;
