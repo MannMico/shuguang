@@ -153,9 +153,7 @@ export default {
   },
   created() {},
   mounted() {
-    document.body.scrollTop
-      ? (document.body.scrollTop = 0)
-      : (document.documentElement.scrollTop = 0);
+    window.scrollTo(0, 0);
     this.fetchModes();
   },
   beforeDestroy() {

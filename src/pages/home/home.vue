@@ -227,16 +227,14 @@ export default {
         offset = 0;
       }
       console.log('scrollToDOM: ' + s);
+      debugger;
       const destDOM = document.querySelector(s);
       const destTop =
         document.body.scrollTop +
         document.documentElement.scrollTop +
         destDOM.getBoundingClientRect().top -
         offset;
-      // window.scrollTo(0, destTop);
-      document.body.scrollTop
-        ? (document.body.scrollTop = destTop)
-        : (document.documentElement.scrollTop = destTop);
+      window.scrollTo(0, destTop);
     },
     leftArrowClicked() {
       this.$refs.slider.$emit('slidePre');
