@@ -224,17 +224,15 @@ export default {
             return;
           }
           this.requestLimit = true;
-          addDemad(
-            data
-              .then(data => {
-                this.$router.push({ path: '/issue-done' });
-                this.requestLimit = false;
-              })
-              .catch(err => {
-                this.$message.error(err.message);
-                this.requestLimit = false;
-              })
-          );
+          addDemad(data)
+            .then(data => {
+              this.$router.push({ path: '/issue-done' });
+              this.requestLimit = false;
+            })
+            .catch(err => {
+              this.$message.error(err.message);
+              this.requestLimit = false;
+            });
         } else {
           this.$message.error('请先填写必要信息，再发布需求');
           return false;
