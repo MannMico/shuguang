@@ -46,7 +46,8 @@
         text-align: center;
       }
       .el-menu-item:hover,
-      .is-opened .el-submenu__title {
+      .is-opened .el-submenu__title,
+      .is-active .el-submenu__title {
         border-bottom-color: rgb(73, 110, 214) !important;
       }
     }
