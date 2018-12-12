@@ -147,7 +147,8 @@ export default {
         phone: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         vcode: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      codeTime: 0
+      codeTime: 0,
+      requestLimit: false
     };
   },
   created() {},
@@ -219,13 +220,21 @@ export default {
             province: Number(this.form.province),
             city: Number(this.form.city)
           });
-          addDemad(data)
-            .then(data => {
-              this.$router.push({ path: '/issue-done' });
-            })
-            .catch(err => {
-              this.$message.error(err.message);
-            });
+          if (this.requestLimit) {
+            return;
+          }
+          this.requestLimit = true;
+          addDemad(
+            data
+              .then(data => {
+                this.$router.push({ path: '/issue-done' });
+                this.requestLimit = false;
+              })
+              .catch(err => {
+                this.$message.error(err.message);
+                this.requestLimit = false;
+              })
+          );
         } else {
           this.$message.error('请先填写必要信息，再发布需求');
           return false;
