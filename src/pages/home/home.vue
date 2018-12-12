@@ -227,7 +227,7 @@ export default {
         offset = 0;
       }
       console.log('scrollToDOM: ' + s);
-      debugger;
+      // debugger;
       const destDOM = document.querySelector(s);
       const destTop =
         document.body.scrollTop +
