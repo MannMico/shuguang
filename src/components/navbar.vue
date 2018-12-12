@@ -1,9 +1,14 @@
 <style lang="scss">
 @import '~@/styles/var';
 
-.nav__submenu .el-menu-item {
-  font-size: 18px;
-  text-align: center;
+.nav__submenu {
+  .el-menu-item {
+    font-size: 18px;
+    text-align: center;
+  }
+  .is-active {
+    color: #496ed6 !important;
+  }
 }
 .base-navbar {
   width: 100%;
@@ -74,7 +79,6 @@
           class="el-menu-demo navbar__nav"
           mode="horizontal"
           text-color="#000"
-          active-text-color="#496ED6"
           router
           :default-active="`/${$route.hash}`"
           @select="selectMenu"
