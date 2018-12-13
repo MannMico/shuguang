@@ -110,7 +110,6 @@ export default {
   methods: {
     loginBtnClicked() {
       this.$store.commit('toggleLogin', true);
-      this.cb();
     },
     selectMenu(index) {
       const hash = index.split('/')[1];

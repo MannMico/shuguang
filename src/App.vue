@@ -73,22 +73,26 @@
       </div>
       <div class="login-box__body">
         <div class="login-box__label">账号密码登录</div>
-        <el-input placeholder="请输入您的账号"></el-input>
-        <el-input type="password" placeholder="请输入您的密码"></el-input>
+        <el-input placeholder="请输入您的账号" v-model="nickname"></el-input>
+        <el-input type="password" placeholder="请输入您的密码" v-model="password"></el-input>
         <div class="login-box__tips">
           <span>还没有账号？请先发布需求将获得邀请</span>
           <a @click="jmpIssue" href="javascript:;">立即发布需求</a>
         </div>
       </div>
-      <div class="login-box__btn">登录</div>
+      <div class="login-box__btn" @click="loginHandler">登录</div>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import { login } from '@/services/account';
 export default {
   data() {
-    return {};
+    return {
+      nickname: '',
+      password: ''
+    };
   },
   methods: {
     onClose() {
@@ -98,6 +102,16 @@ export default {
     jmpIssue() {
       this.$store.commit('toggleLogin', false);
       this.$router.push('/issue?type=kuajietong');
+    },
+    loginHandler() {
+      login(this.nickname, this.password)
+        .then(data => {
+          this.$store.commit('login', { token: data.token });
+          this.$store.commit('toggleLogin', false);
+        })
+        .catch(err => {
+          this.$message.error(err.message);
+        });
     }
   }
 };

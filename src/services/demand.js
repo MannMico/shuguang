@@ -34,5 +34,9 @@ export function addDemad({
  * @returns
  */
 export function getCooperationModes({ service_code }) {
-  return fetch.post('/demand/getCooperationModes', { service_code });
+  return fetch.post('/demand/getCooperationModes', {
+    service_code
+  });
 }
+
+export function planResult() {}
