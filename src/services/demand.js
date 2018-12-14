@@ -39,4 +39,9 @@ export function getCooperationModes({ service_code }) {
   });
 }
 
-export function planResult() {}
+export function planResult(demand_id, ip_id) {
+  return fetch.post('/demand/getRecommendIp', {
+    demand_id,
+    ip_id
+  });
+}

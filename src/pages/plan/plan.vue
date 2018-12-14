@@ -6,7 +6,7 @@
         <div class="bar__tail">
           <div class="bar__user">
             <img class="user__avator" src="@/assets/user_login.png" alt>
-            <div class="user__name">湖北张学友</div>
+            <div class="user__name">{{ $store.state.nickname}}</div>
           </div>
           <div class="bar__logout">退出</div>
         </div>
@@ -107,6 +107,8 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {}
+  methods: {
+    fetchData() {}
+  }
 };
 </script>

@@ -106,7 +106,7 @@ export default {
     loginHandler() {
       login(this.nickname, this.password)
         .then(data => {
-          this.$store.commit('login', { token: data.token });
+          this.$store.commit('login', { token: data.token, nickname: this.nickname });
           this.$store.commit('toggleLogin', false);
         })
         .catch(err => {
