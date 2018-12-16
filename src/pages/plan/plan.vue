@@ -55,26 +55,35 @@
           </div>
         </div>
       </div>
-      <div class="plan__part2">
+      <div class="plan__part2" v-if="basic">
         <div class="part__title">推荐IP：星座狗主页</div>
-        <img class="part2__img" src alt>
-      </div>
-      <div style="width:70%;margin:20px auto;height:400px">
-        <slider ref="slider" :options="options">
-          <slideritem
-            v-for="(item,index) in someList"
-            :key="index"
-            :style="item.style"
-          >{{item.html}}</slideritem>
-          <div slot="loading">
-            <div class="loadingDot">
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-            </div>
+        <div class="part2__item-group">
+          <div class="part2-item">
+            <!-- 简介及定位 -->
+            <plan-module :images="basic.front_images_introduction"></plan-module>
           </div>
-        </slider>
+          <div class="part2-item">
+            <!-- 人设介绍 -->
+            <plan-module :images="basic.front_images_character"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 粉丝画像 -->
+            <plan-module :images="basic.front_images_portrait"></plan-module>
+          </div>
+
+          <div class="part2-item">
+            <!-- 基础图库 -->
+            <plan-module :images="basic.front_images_basic_resource"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 主题图库 -->
+            <plan-module :images="basic.front_images_theme_resource"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 合作案例 -->
+            <plan-module :images="basic.front_images_case"></plan-module>
+          </div>
+        </div>
       </div>
     </div>
     <base-footer></base-footer>
@@ -82,33 +91,35 @@
 </template>
 
 <script>
-import { slider, slideritem } from 'vue-concise-slider';
+import PlanModule from './plan-module.vue';
+import { getPlanDetail } from '@/services/demand';
 import './plan.scss';
 export default {
   components: {
-    slider,
-    slideritem
+    PlanModule
   },
   data() {
     return {
-      someList: [],
-      //Sliding configuration [obj]
-      options: {
-        pagination: true,
-        thresholdDistance: 100, // 滑动距离阈值判定
-        thresholdTime: 300, // 滑动时间阈值判定
-        grabCursor: true, // 抓标样式
-        speed: 300 // 滑动速度
-        // timingFunction: 'ease', // 滑动方式
-        // loop: false, // 无限循环
-        // autoplay: 0 // 自动播放:时间[ms]
-      }
+      demandId: parseInt(this.$route.query.demandid || 0, 10),
+      ipId: parseInt(this.$route.query.ipid || 0, 10),
+      basic: null
     };
   },
-  created() {},
+  created() {
+    this.fetchData();
+  },
   mounted() {},
   methods: {
-    fetchData() {}
+    fetchData() {
+      getPlanDetail(this.demandId, this.ipId)
+        .then(data => {
+          console.log(data);
+          this.basic = data.ip_basic;
+        })
+        .catch(err => {
+          this.$message.error(err.message);
+        });
+    }
   }
 };
 </script>
