@@ -215,7 +215,14 @@
   }
 
   .case {
+    &__title {
+      font-size: 20px;
+      color: #0B56DC;
+      letter-spacing: 0.9px;
+    }
+
     &__container {
+      margin-top: 16px;
       width: 630px;
       height: 392px;
       display: flex;

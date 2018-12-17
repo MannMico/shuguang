@@ -14,6 +14,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
 
     &-left {
       left: -70px;

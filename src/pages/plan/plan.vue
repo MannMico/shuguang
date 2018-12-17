@@ -2,13 +2,15 @@
   <div class="plan-page">
     <div class="plan-bar">
       <div class="plan-bar__container width-fixed padding-fixed">
-        <img class="bar__name-logo" src="@/assets/logo_up_navigation_white.png" alt>
+        <router-link to="/">
+          <img class="bar__name-logo" src="@/assets/logo_up_navigation_white.png" alt>
+        </router-link>
         <div class="bar__tail">
           <div class="bar__user">
             <img class="user__avator" src="@/assets/user_login.png" alt>
             <div class="user__name">{{ $store.state.nickname}}</div>
           </div>
-          <div class="bar__logout">退出</div>
+          <div class="bar__logout" @click="logoutHandler">退出</div>
         </div>
       </div>
     </div>
@@ -28,15 +30,15 @@
             </div>
           </div>
           <div class="part1__case">
-            <div>相关案例</div>
+            <div class="case__title">相关案例</div>
             <div class="case__container">
               <div class="case__l1">
-                <img class="case__img" src alt>
-                <img class="case__img" src alt>
+                <img class="case__img" src="@/assets/case1.png" alt>
+                <img class="case__img" src="@/assets/case2.png" alt>
               </div>
               <div class="case__l2">
-                <img class="case__img" src alt>
-                <img class="case__img" src alt>
+                <img class="case__img" src="@/assets/case3.png" alt>
+                <img class="case__img" src="@/assets/case4.png" alt>
               </div>
             </div>
           </div>
@@ -106,7 +108,13 @@ export default {
     };
   },
   created() {
-    this.fetchData();
+    if (this.$store.state.token) {
+      this.fetchData();
+    } else {
+      this.$router.push({
+        path: '/'
+      });
+    }
   },
   mounted() {},
   methods: {
@@ -119,6 +127,12 @@ export default {
         .catch(err => {
           this.$message.error(err.message);
         });
+    },
+    logoutHandler() {
+      this.$router.push({
+        path: '/'
+      });
+      this.$store.commit('logout');
     }
   }
 };
