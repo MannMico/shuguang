@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="plan__body width-fixed padding-fixed">
+    <div class="plan__body width-fixed padding-fixed" v-if="basic">
       <div class="plan__part1">
         <div class="part__title">经纪人May为您匹配的IP营销方案</div>
         <div class="part1__main">
@@ -57,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div class="plan__part2" v-if="basic">
+      <div class="plan__part2">
         <div class="part__title">推荐IP：星座狗主页</div>
         <div class="part2__item-group">
           <div class="part2-item">
