@@ -17,11 +17,11 @@
     cursor: pointer;
 
     &-left {
-      left: -70px;
+      left: -40px;
     }
 
     &-right {
-      right: -70px;
+      right: -40px;
     }
   }
 }

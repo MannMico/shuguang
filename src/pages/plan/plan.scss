@@ -19,7 +19,7 @@
       height: 100%;
       padding-left: 80px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
     }
   }
@@ -33,9 +33,7 @@
 
     &__tail {
       display: flex;
-      position: absolute;
-      top: 0;
-      right: -60px;
+      line-height: 100px;
     }
 
     &__user {
