@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="plan__body width-fixed padding-fixed" v-if="basic">
+    <div class="plan__body width-fixed padding-fixed" v-if="detail">
       <div class="plan__part1">
         <div class="part__title">经纪人May为您匹配的IP营销方案</div>
         <div class="part1__main">
@@ -44,17 +44,12 @@
           </div>
         </div>
         <div class="part1__desc">
-          十年营销公司经验，曾任对接联合利华项目经理，深耕快消品行业，洞悉快销品市场的授权合作；对新文旅、新酒店行业有
-          丰富的授权经验。深耕快消品行业，洞悉快销品市场的授权合作。
+          5年策划营销经验，曾任同道大叔品牌经理，实操过百丽、丽星邮轮、唯品会等几十个与同道大叔的IP授权整合营销项目，在
+          美妆、食品、文旅、酒店等行业有丰富的授权经验。擅长挖掘IP价值，从IP营销策略到项目执行，为品牌实现真赋能。
         </div>
         <div class="part1__suggestion">
           <div class="suggestion__title">来自金牌经纪人May的建议:</div>
-          <div class="suggestion__content">
-            五芳斋是中华传统品牌，具备传统节日的天然大流量；但是新生代人群对于传统食品关注度下降；需要从新生代
-            关注点去切入兴趣点，星座狗是网生第一个团体IP，有丰富的人设故事。在加班场景里有天然的契合度；五芳
-            斋新推出的营养外包套餐，恰恰也是这个人群需要的产品，加班狗好好吃饭，90后开始养生，都很好的切入了
-            这个话题。
-          </div>
+          <div class="suggestion__content">{{detail.recommendation}}</div>
         </div>
       </div>
       <div class="plan__part2">
@@ -62,28 +57,28 @@
         <div class="part2__item-group">
           <div class="part2-item">
             <!-- 简介及定位 -->
-            <plan-module :images="basic.front_images_introduction"></plan-module>
+            <plan-module :images="detail.front_images_introduction"></plan-module>
           </div>
           <div class="part2-item">
             <!-- 人设介绍 -->
-            <plan-module :images="basic.front_images_character"></plan-module>
+            <plan-module :images="detail.front_images_character"></plan-module>
           </div>
           <div class="part2-item">
             <!-- 粉丝画像 -->
-            <plan-module :images="basic.front_images_portrait"></plan-module>
+            <plan-module :images="detail.front_images_portrait"></plan-module>
           </div>
 
           <div class="part2-item">
             <!-- 基础图库 -->
-            <plan-module :images="basic.front_images_basic_resource"></plan-module>
+            <plan-module :images="detail.front_images_basic_resource"></plan-module>
           </div>
           <div class="part2-item">
             <!-- 主题图库 -->
-            <plan-module :images="basic.front_images_theme_resource"></plan-module>
+            <plan-module :images="detail.front_images_theme_resource"></plan-module>
           </div>
           <div class="part2-item">
             <!-- 合作案例 -->
-            <plan-module :images="basic.front_images_case"></plan-module>
+            <plan-module :images="detail.front_images_case"></plan-module>
           </div>
         </div>
       </div>
@@ -102,9 +97,8 @@ export default {
   },
   data() {
     return {
-      demandId: parseInt(this.$route.query.demandid || 0, 10),
-      ipId: parseInt(this.$route.query.ipid || 0, 10),
-      basic: null
+      recommendId: parseInt(this.$route.query.recommendid || 0, 10),
+      detail: null
     };
   },
   created() {
@@ -119,10 +113,10 @@ export default {
   mounted() {},
   methods: {
     fetchData() {
-      getPlanDetail(this.demandId, this.ipId)
+      getPlanDetail(this.recommendId)
         .then(data => {
           console.log(data);
-          this.basic = data.ip_basic;
+          this.detail = data;
         })
         .catch(err => {
           this.$message.error(err.message);
