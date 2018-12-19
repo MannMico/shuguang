@@ -210,9 +210,13 @@ export default {
     onSend() {
       this.$refs.issue_form.validate(valid => {
         if (valid) {
-          const mode_ids = this.modes.map(mode => {
-            return mode.id;
-          });
+          const mode_ids = this.modes
+            .filter(mode => {
+              return mode.select;
+            })
+            .map(mode => {
+              return mode.id;
+            });
           const data = Object.assign({}, this.form, {
             mode_ids: mode_ids,
             province: Number(this.form.province),
