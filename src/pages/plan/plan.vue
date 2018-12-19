@@ -64,10 +64,13 @@
             <plan-module :images="detail.front_images_character"></plan-module>
           </div>
           <div class="part2-item">
+            <!-- 传播数据 -->
+            <plan-module :images="detail.front_images_platform"></plan-module>
+          </div>
+          <div class="part2-item">
             <!-- 粉丝画像 -->
             <plan-module :images="detail.front_images_portrait"></plan-module>
           </div>
-
           <div class="part2-item">
             <!-- 基础图库 -->
             <plan-module :images="detail.front_images_basic_resource"></plan-module>
@@ -77,8 +80,16 @@
             <plan-module :images="detail.front_images_theme_resource"></plan-module>
           </div>
           <div class="part2-item">
+            <!-- 衍生品 -->
+            <plan-module :images="detail.front_images_derivative"></plan-module>
+          </div>
+          <div class="part2-item">
             <!-- 合作案例 -->
             <plan-module :images="detail.front_images_case"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 内容创作计划 -->
+            <plan-module :images="detail.front_images_creation"></plan-module>
           </div>
         </div>
       </div>
