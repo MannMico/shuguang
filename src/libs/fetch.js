@@ -41,9 +41,9 @@ fetch.interceptors.response.use(
   err => {
     console.log(err);
     if (err.response && err.response.status) {
-      if (err.response.status === 401) {
+      if (err.response.status === 401 || err.response.status === 400) {
         router.push({
-          path: '/login'
+          path: '/'
         });
       }
     }

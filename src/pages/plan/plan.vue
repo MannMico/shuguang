@@ -2,17 +2,19 @@
   <div class="plan-page">
     <div class="plan-bar">
       <div class="plan-bar__container width-fixed padding-fixed">
-        <img class="bar__name-logo" src="@/assets/logo_up_navigation_white.png" alt>
+        <router-link to="/">
+          <img class="bar__name-logo" src="@/assets/logo_up_navigation_white.png" alt>
+        </router-link>
         <div class="bar__tail">
           <div class="bar__user">
             <img class="user__avator" src="@/assets/user_login.png" alt>
-            <div class="user__name">湖北张学友</div>
+            <div class="user__name">{{ $store.state.nickname}}</div>
           </div>
-          <div class="bar__logout">退出</div>
+          <div class="bar__logout" @click="logoutHandler">退出</div>
         </div>
       </div>
     </div>
-    <div class="plan__body width-fixed padding-fixed">
+    <div class="plan__body width-fixed padding-fixed" v-if="detail">
       <div class="plan__part1">
         <div class="part__title">经纪人May为您匹配的IP营销方案</div>
         <div class="part1__main">
@@ -28,53 +30,68 @@
             </div>
           </div>
           <div class="part1__case">
-            <div>相关案例</div>
+            <div class="case__title">相关案例</div>
             <div class="case__container">
               <div class="case__l1">
-                <img class="case__img" src alt>
-                <img class="case__img" src alt>
+                <img class="case__img" src="@/assets/case1.png" alt>
+                <img class="case__img" src="@/assets/case2.png" alt>
               </div>
               <div class="case__l2">
-                <img class="case__img" src alt>
-                <img class="case__img" src alt>
+                <img class="case__img" src="@/assets/case3.png" alt>
+                <img class="case__img" src="@/assets/case4.png" alt>
               </div>
             </div>
           </div>
         </div>
         <div class="part1__desc">
-          十年营销公司经验，曾任对接联合利华项目经理，深耕快消品行业，洞悉快销品市场的授权合作；对新文旅、新酒店行业有
-          丰富的授权经验。深耕快消品行业，洞悉快销品市场的授权合作。
+          5年策划营销经验，曾任同道大叔品牌经理，实操过百丽、丽星邮轮、唯品会等几十个与同道大叔的IP授权整合营销项目，在
+          美妆、食品、文旅、酒店等行业有丰富的授权经验。擅长挖掘IP价值，从IP营销策略到项目执行，为品牌实现真赋能。
         </div>
         <div class="part1__suggestion">
           <div class="suggestion__title">来自金牌经纪人May的建议:</div>
-          <div class="suggestion__content">
-            五芳斋是中华传统品牌，具备传统节日的天然大流量；但是新生代人群对于传统食品关注度下降；需要从新生代
-            关注点去切入兴趣点，星座狗是网生第一个团体IP，有丰富的人设故事。在加班场景里有天然的契合度；五芳
-            斋新推出的营养外包套餐，恰恰也是这个人群需要的产品，加班狗好好吃饭，90后开始养生，都很好的切入了
-            这个话题。
-          </div>
+          <div class="suggestion__content">{{detail.recommendation}}</div>
         </div>
       </div>
       <div class="plan__part2">
         <div class="part__title">推荐IP：星座狗主页</div>
-        <img class="part2__img" src alt>
-      </div>
-      <div style="width:70%;margin:20px auto;height:400px">
-        <slider ref="slider" :options="options">
-          <slideritem
-            v-for="(item,index) in someList"
-            :key="index"
-            :style="item.style"
-          >{{item.html}}</slideritem>
-          <div slot="loading">
-            <div class="loadingDot">
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-            </div>
+        <div class="part2__item-group">
+          <div class="part2-item">
+            <!-- 简介及定位 -->
+            <plan-module :images="detail.front_images_introduction"></plan-module>
           </div>
-        </slider>
+          <div class="part2-item">
+            <!-- 人设介绍 -->
+            <plan-module :images="detail.front_images_character"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 传播数据 -->
+            <plan-module :images="detail.front_images_platform"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 粉丝画像 -->
+            <plan-module :images="detail.front_images_portrait"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 基础图库 -->
+            <plan-module :images="detail.front_images_basic_resource"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 主题图库 -->
+            <plan-module :images="detail.front_images_theme_resource"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 衍生品 -->
+            <plan-module :images="detail.front_images_derivative"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 合作案例 -->
+            <plan-module :images="detail.front_images_case"></plan-module>
+          </div>
+          <div class="part2-item">
+            <!-- 内容创作计划 -->
+            <plan-module :images="detail.front_images_creation"></plan-module>
+          </div>
+        </div>
       </div>
     </div>
     <base-footer></base-footer>
@@ -82,31 +99,46 @@
 </template>
 
 <script>
-import { slider, slideritem } from 'vue-concise-slider';
+import PlanModule from './plan-module.vue';
+import { getPlanDetail } from '@/services/demand';
 import './plan.scss';
 export default {
   components: {
-    slider,
-    slideritem
+    PlanModule
   },
   data() {
     return {
-      someList: [],
-      //Sliding configuration [obj]
-      options: {
-        pagination: true,
-        thresholdDistance: 100, // 滑动距离阈值判定
-        thresholdTime: 300, // 滑动时间阈值判定
-        grabCursor: true, // 抓标样式
-        speed: 300 // 滑动速度
-        // timingFunction: 'ease', // 滑动方式
-        // loop: false, // 无限循环
-        // autoplay: 0 // 自动播放:时间[ms]
-      }
+      recommendId: parseInt(this.$route.query.recommendid || 0, 10),
+      detail: null
     };
   },
-  created() {},
+  created() {
+    if (this.$store.state.token) {
+      this.fetchData();
+    } else {
+      this.$router.push({
+        path: '/'
+      });
+    }
+  },
   mounted() {},
-  methods: {}
+  methods: {
+    fetchData() {
+      getPlanDetail(this.recommendId)
+        .then(data => {
+          console.log(data);
+          this.detail = data;
+        })
+        .catch(err => {
+          this.$message.error(err.message);
+        });
+    },
+    logoutHandler() {
+      this.$router.push({
+        path: '/'
+      });
+      this.$store.commit('logout');
+    }
+  }
 };
 </script>

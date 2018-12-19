@@ -207,12 +207,13 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 
   &-left {
-    left: -76px;
+    left: -40px;
   }
 
   &-right {
-    right: -76px;
+    right: -40px;
   }
 }
