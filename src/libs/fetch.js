@@ -6,8 +6,6 @@ const fetch = axios.create({
   baseURL: `${process.env.VUE_APP_APIURL}`,
   transformRequest: [
     function(data, headers) {
-      console.log('headers');
-      console.log(headers);
       if (headers['Content-Type'] === 'application/json') {
         return JSON.stringify(data);
       }
@@ -42,9 +40,8 @@ fetch.interceptors.response.use(
     console.log(err);
     if (err.response && err.response.status) {
       if (err.response.status === 401 || err.response.status === 400) {
-        router.push({
-          path: '/'
-        });
+        // store.commit('toggleLogin', true);  如果 为plan页 弹出登录窗
+        store.commit('tokenValid', false);
       }
     }
     return Promise.reject(err);

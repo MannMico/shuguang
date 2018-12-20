@@ -6,3 +6,7 @@ export function login(nickname, password) {
     password
   });
 }
+
+export function getUser() {
+  return fetch.post('/customer/getInfo');
+}

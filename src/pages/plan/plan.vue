@@ -2,15 +2,17 @@
   <div class="plan-page">
     <div class="plan-bar">
       <div class="plan-bar__container width-fixed padding-fixed">
-        <router-link to="/">
+        <router-link :to="`/?recommendid=${recommendId}`">
           <img class="bar__name-logo" src="@/assets/logo_up_navigation_white.png" alt>
         </router-link>
         <div class="bar__tail">
-          <div class="bar__user">
-            <img class="user__avator" src="@/assets/user_login.png" alt>
-            <div class="user__name">{{ $store.state.nickname}}</div>
-          </div>
-          <div class="bar__logout" @click="logoutHandler">退出</div>
+          <template v-if="$store.state.loginValid">
+            <div class="bar__user">
+              <img class="user__avator" src="@/assets/user_login.png" alt>
+              <div class="user__name">{{ $store.state.nickname }}</div>
+            </div>
+            <div class="bar__logout" @click="logoutHandler">退出</div>
+          </template>
         </div>
       </div>
     </div>
@@ -109,21 +111,52 @@ export default {
   data() {
     return {
       recommendId: parseInt(this.$route.query.recommendid || 0, 10),
-      detail: null
+      detail: null,
+      hasFetch: false
     };
   },
+  watch: {
+    '$store.state.loginValid'(val, oldVal) {
+      console.log('loginValid changed: ' + this.$store.state.loginValid);
+      if (val) {
+        this.fetchData();
+        this.hasFetch = true;
+      }
+    }
+  },
   created() {
-    if (this.$store.state.token) {
-      this.fetchData();
+    if (!this.$store.state.token) {
+      // 弹出登录框
+      console.log('没有token，弹出登录框');
+      this.$store.commit('toggleLogin', true);
     } else {
-      this.$router.push({
-        path: '/'
-      });
+      // 1. token过期 -> 弹出登录框   2. token有效 this.fetchData()
+      if (!this.$store.state.loginValid) {
+        this.$store
+          .dispatch('checkUser')
+          .then(() => {
+            console.log('token有效');
+            if (!this.hasFetch) {
+              this.fetchData();
+            }
+          })
+          .catch(err => {
+            // token过期 -> 弹出登录框
+            console.log('token失效 -> 弹出登录框');
+            this.$store.commit('toggleLogin', true);
+          });
+      } else {
+        console.log('token有效');
+        if (!this.hasFetch) {
+          this.fetchData();
+        }
+      }
     }
   },
   mounted() {},
   methods: {
     fetchData() {
+      this.hasFetch = true;
       getPlanDetail(this.recommendId)
         .then(data => {
           console.log(data);

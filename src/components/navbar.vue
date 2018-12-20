@@ -57,6 +57,17 @@
     &__login-btn {
       margin-left: 58px;
     }
+    &__nickname {
+      font-size: 20px;
+      color: #0654d6;
+      cursor: pointer;
+    }
+    &__logout {
+      margin-left: 20px;
+      font-size: 20px;
+      color: #0d1014;
+      cursor: pointer;
+    }
   }
 
   .nav {
@@ -92,7 +103,15 @@
             </el-submenu>
             <el-menu-item index="/#partner">合作品牌</el-menu-item>
           </el-menu>
-          <base-button class="navbar__login-btn" @click="loginBtnClicked">客户登录</base-button>
+          <base-button
+            class="navbar__login-btn"
+            @click="loginBtnClicked"
+            v-if="!$store.state.loginValid"
+          >客户登录</base-button>
+          <div class="navbar__user-info" v-else>
+            <span class="navbar__nickname" @click="toPlanPage">{{$store.state.nickname}}</span>
+            <span class="navbar__logout" @click="logoutBtnClicked">退出</span>
+          </div>
         </div>
       </div>
     </div>
@@ -103,13 +122,39 @@
 export default {
   name: 'base-navbar',
   data() {
-    return {};
+    return {
+      recommendId: this.$route.query.recommendid
+    };
   },
-  created() {},
+  created() {
+    console.log('new base-navbar');
+    // token存在 && 未验证 :  验证token是否有效
+    let _this = this;
+    if (!this.$store.state.loginValid && this.$store.state.token) {
+      this.$store
+        .dispatch('checkUser')
+        .then(() => {
+          console.log('已登录');
+        })
+        .catch(err => {
+          console.log('未登录');
+        });
+    }
+  },
   mounted() {},
   methods: {
     loginBtnClicked() {
       this.$store.commit('toggleLogin', true);
+    },
+    logoutBtnClicked() {
+      this.$store.commit('logout', true);
+    },
+    toPlanPage() {
+      if (this.recommendId) {
+        this.$router.push({
+          path: `/plan?recommendid=${this.recommendId}`
+        });
+      }
     },
     selectMenu(index) {
       const hash = index.split('/')[1];
