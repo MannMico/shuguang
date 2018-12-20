@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="plan__part2">
-        <div class="part__title">推荐IP：星座狗主页</div>
+        <div class="part__title">推荐IP：{{detail.ip_name}}</div>
         <div class="part2__item-group">
           <div class="part2-item">
             <!-- 简介及定位 -->
