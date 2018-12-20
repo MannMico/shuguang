@@ -1,6 +1,5 @@
 import axios from 'axios';
 import store from '@/store';
-import router from '@/router';
 
 const fetch = axios.create({
   baseURL: `${process.env.VUE_APP_APIURL}`,
