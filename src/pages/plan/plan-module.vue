@@ -5,6 +5,8 @@
     &__img {
       width: 1120px;
       height: auto;
+      display: block;
+      margin: 0 auto;
     }
   }
   .slider__arrow {
