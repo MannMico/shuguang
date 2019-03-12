@@ -17,6 +17,22 @@ body {
   font-size: $weight_regular;
 }
 
+/* 清除浮动 */
+.clearfix {
+  *zoom:1;/*IE/7/6*/
+  &:after {
+      content:"\200B";
+      display:block;
+      height:0;
+      clear:both;
+  }
+}
+
+.content{
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .mask {
   position: fixed;
   z-index: 10;
@@ -33,4 +49,21 @@ body {
 .padding-fixed {
   padding-left: 40px;
   padding-right: 40px;
+}
+.ip-title{
+  font-size: 22px;
+  line-height: 22px;
+  padding: 30px 0;
+  color: #494949;
+  .title-small{
+    font-size: 14px;
+    color: #494949;
+    margin-left: 10px;
+  }
+}
+.hide{
+  display: none;
+}
+.show{
+  display: block;
 }

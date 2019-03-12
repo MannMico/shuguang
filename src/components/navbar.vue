@@ -29,10 +29,10 @@
     align-items: center;
   }
   .navbar {
-    &__name-logo {
-      width: 68px;
-      height: 36px;
-    }
+    // &__name-logo {
+      // width: 404px;
+      // height: 102px;
+    // }
     &__right {
       display: flex;
       align-items: center;
@@ -44,8 +44,9 @@
       .el-menu-item,
       .el-submenu__title {
         font-size: 20px;
-        width: 200px;
+        // width: 200px;
         text-align: center;
+        padding: 0 30px;
       }
       .el-menu-item:hover,
       .is-opened .el-submenu__title,
@@ -95,19 +96,20 @@
             @select="selectMenu"
           >
             <el-menu-item index="/#home">首页</el-menu-item>
-            <el-submenu index="2" popper-class="nav__submenu">
-              <template slot="title">产品服务</template>
+            <!-- <el-submenu index="2" popper-class="nav__submenu">
+              <template slot="title">成功案例</template>
               <el-menu-item index="/#kjt">跨界通</el-menu-item>
               <el-menu-item index="/#xyd">效易达</el-menu-item>
               <el-menu-item index="/#hym">好易卖</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="/#partner">合作品牌</el-menu-item>
+            </el-submenu> -->
+            <el-menu-item index="/#partner">成功案例</el-menu-item>
+            <el-menu-item index="/#partner">关于我们</el-menu-item>
           </el-menu>
           <base-button
             class="navbar__login-btn"
             @click="loginBtnClicked"
             v-if="!$store.state.loginValid"
-          >客户登录</base-button>
+          >登录</base-button>
           <div class="navbar__user-info" v-else>
             <span class="navbar__nickname" @click="toPlanPage">{{$store.state.nickname}}</span>
             <span class="navbar__logout" @click="logoutBtnClicked">退出</span>

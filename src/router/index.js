@@ -9,7 +9,7 @@ import IssueDone from '@/pages/issue/issue-done';
 Vue.use(Router);
 
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     // {
     //   path: '/',
@@ -19,7 +19,10 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      meta: {
+        title: '首页'
+      }
     },
     {
       path: '/plan',

@@ -2,12 +2,16 @@
 @import '~@/styles/var';
 .base-button {
   display: inline-block;
-  color: #fff;
+  color: #333;
   font-size: 20px;
   font-weight: $weight_medium;
-  padding: 10px 38px;
-  background-image: linear-gradient(-143deg, #1068fa 0%, #3b23e6 94%);
+  width: 128px;
+  height: 45px;
+  border: 1px solid #121212;
+  // background-image: linear-gradient(-143deg, #1068fa 0%, #3b23e6 94%);
   border-radius: 25px;
+  text-align: center;
+  line-height: 45px;
   cursor: pointer;
 }
 </style>
