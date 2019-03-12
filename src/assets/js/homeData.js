@@ -78,7 +78,7 @@ export default {
     }
   ],
   ipPart3: {
-    resourceList:[ 
+    resourceList:[      //ip版权产品同道大叔部分
       {
         bigTitle: '23213',
         smallTitle: '23213',
@@ -135,7 +135,7 @@ export default {
       {
         name: '艺术',
         bg: require('../art.png'),
-        lists: [  //动漫类数据
+        lists: [  //艺术类数据
           {
             img: require('../home/list1.jpg'),
             alt: '第一张'
@@ -145,7 +145,7 @@ export default {
       {
         name: '亲子',
         bg: require('../parent.png'),
-        lists: [  //动漫类数据
+        lists: [  //亲子类数据
           {
             img: require('../home/list1.jpg'),
             alt: '第一张'
@@ -157,5 +157,31 @@ export default {
         ]
       }
     ]
-  }
+  },
+  ipPart5: [ //合作伙伴信息和内容
+    {
+      headImg: require('../profile_1.png'),
+      eval: 'dsasda1111',
+      name: 'Miko',
+      labels: ['百丽跨界项目负责人']
+    },
+    {
+      headImg: require('../profile_2.png'),
+      eval: 'dsasda23232',
+      name: '张国强',
+      labels: ['良品铺子 ', '联合创始人／首席品牌文化官']
+    },
+    {
+      headImg: require('../profile_3.png'),
+      eval: 'dsasda3333',
+      name: '邱伟',
+      labels: ['吴茂兴本帮面', '品牌创始人']
+    },
+    {
+      headImg: require('../profile_4.png'),
+      eval: 'dsasda444',
+      name: '樊雪峰',
+      labels: ['五芳斋', '品牌中心项目总监']
+    }
+  ]
 }

@@ -55,6 +55,7 @@ body {
   line-height: 22px;
   padding: 30px 0;
   color: #494949;
+  letter-spacing: 1px;
   .title-small{
     font-size: 14px;
     color: #494949;
@@ -66,4 +67,7 @@ body {
 }
 .show{
   display: block;
+}
+.white-text{
+  color: #fff!important;
 }
