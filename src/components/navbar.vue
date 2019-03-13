@@ -129,7 +129,6 @@ export default {
     };
   },
   created() {
-    console.log('new base-navbar');
     // token存在 && 未验证 :  验证token是否有效
     if (!this.$store.state.loginValid && this.$store.state.token) {
       this.$store

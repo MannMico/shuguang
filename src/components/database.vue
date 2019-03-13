@@ -7,13 +7,13 @@
 }
 .ip-lists {
   width: 1220px;
-  margin-bottom: 40px;
   color: #fff;
   .ip-part {
     position: relative;
     float: left;
     width: 285px;
     height: 380px;
+    margin-bottom: 40px;
     margin-right: 20px;
     background-size: contain;
     border-radius: 3px;
@@ -136,10 +136,23 @@
           </ul>
           <span v-if="textFlage" class="ip-check-more">查看更多</span>
         </li>
-        <li class="ip-part ip-list-hover" v-for="(item, key) in items.conetents" :key="key">
-          <img :src="item.ctBg" alt="" width="285" height="285" />
-          <p class="ip-list-name" v-text="item.name"></p>
-          <p class="ip-list-desc" v-text="item.desc"></p>
+        <li v-if="textFlage">
+          <ul>
+            <li class="ip-part ip-list-hover" v-for="(item, k) in items.conetents" v-if="k < 3" :key="k">
+              <img :src="item.ctBg" alt="" width="285" height="285" />
+              <p class="ip-list-name" v-text="item.name"></p>
+              <p class="ip-list-desc" v-text="item.desc"></p>
+            </li>
+          </ul>
+        </li>
+        <li v-else>
+          <ul>
+            <li class="ip-part ip-list-hover" v-for="(item, k) in items.conetents" :key="k">
+              <img :src="item.ctBg" alt="" width="285" height="285" />
+              <p class="ip-list-name" v-text="item.name"></p>
+              <p class="ip-list-desc" v-text="item.desc"></p>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

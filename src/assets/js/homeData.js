@@ -14,13 +14,33 @@ export default {
           ctBg: require('../banner1.png')
         },
         {
-          name: 'jihui1',
-          desc: 'sdasda',
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
           ctBg: require('../banner1.png')
         },
         {
-          name: 'jihui1',
-          desc: 'sdasda',
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
           ctBg: require('../banner1.png')
         }
       ]
