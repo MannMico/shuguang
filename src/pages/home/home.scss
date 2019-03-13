@@ -168,6 +168,32 @@
       width: 224px;
       height: 436px;
       margin-right: 20px;
+      background: #fff;
+      border-radius: 2px;
+      text-align: center;
+      &:hover{
+        position: relative;
+        top: -2px;
+        box-shadow: 0 5px 5px rgba($color: #333, $alpha: .1);
+      }
+      p{
+        font-size: 16px;
+        line-height: 16px;
+      }
+      .product-line{
+        width: 22px;
+        height: 3px;
+        background: #333;
+        margin: 12px auto 27px;
+      }
+      .product-desc{
+        font-size: 14px;
+        line-height: 14px;
+        margin-bottom: 13px;
+      }
+      img{
+        margin: 84px 0 45px;
+      }
     }
   }
   .ip-btn{
@@ -188,6 +214,14 @@
     .ip-resource{
       float: left;
       margin-right: 20px;
+      background-size: contain!important;
+      color: #fff;
+      font-size: 13px;
+      &:hover {
+        position: relative;
+        top: -2px;
+        box-shadow: 0 5px 5px rgba($color: #000, $alpha: .3);
+      }
       &.resource-main{
         width: 590px;
         height: 285px;
@@ -195,6 +229,50 @@
       &.resource-other{
         width: 285px;
         height: 285px;
+      }
+      .resource{
+        &-wrap{
+          width: 100%;
+          height: 100%;
+          background: rgba($color: #000, $alpha: .5);
+          padding: 25px 0 25px 35px;
+        }
+        &-bigTitle{
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        &-smallTitle{
+          margin-bottom: 12px;
+        }
+        &-desc{
+          position: relative;
+          width: 85%;
+          padding-left: 20px;
+          line-height: 27px;
+          letter-spacing: 1px;
+          word-wrap: break-word;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+          &::before{
+            position: absolute;
+            left: 0;
+            top: 9px;
+            content: '';
+            width: 9px;
+            height: 9px;
+            background:#fe992b;
+            border-radius: 9px;
+          }
+        }
+        &-label{
+          display: inline-block;
+          margin:30px 16px 0 0;
+          padding: 9px 13px;
+          border-radius: 31px;
+          border: 1px solid #fff;
+        }
       }
     }
   }

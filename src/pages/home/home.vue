@@ -7,7 +7,7 @@
       <swiper-slide class="header-slide" :class="`header-slide2${isMobile?'-m':''}`"></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <base-data :dataChose="homeIpList"/>
+    <base-data :dataChose="homeIpList" :textFlage="true" />
     <div class="ip-part2">
       <div class="content">
         <p class="ip-title">
@@ -15,9 +15,11 @@
           <span class="title-small">行业专业IP经济团队 提供定制化服务</span>
         </p>
         <ul class="partTwo-ul clearfix">
-          <li class="partTwo-li" v-for="(item, index) in ipPartTwoList" :key="index" :style="{ background: 'url(' + item.bg + ') no-repeat' }">
-            <span v-text="item.title"></span>
-            <span v-text="item.desc"></span>
+          <li class="partTwo-li" v-for="(item, index) in ipPartTwoList" :key="index">
+            <img :src="item.bg" alt="">
+            <p v-text="item.title"></p>
+            <p class="product-line"></p>
+            <p class="product-desc" v-for="(v, k) in item.desc" :key="k" v-text="v"></p>
           </li>
         </ul>
         <p class="ip-btn">提交跨界授权合作</p>
@@ -32,10 +34,14 @@
         <ul class="clearfix">
           <li class="ip-resource" v-for="(item, index) in ipPartThreeList" :key="index" 
           :class="index > 0 ? 'resource-other' : 'resource-main'" 
-          :style="{ background: 'url(' + item.bg + ') no-repeat' }">
-          <div class="resource-wrap">
-            <p v-text="item.bigTitle"></p>
-            <p v-text="item.smallTitle"></p>
+          :style="{ background: 'url(' + item.bg + ') no-repeat' }"
+          @mousemove="isWrap = index" @mouseout="isWrap = -1"
+          >
+          <div class="resource-wrap hide" :class="isWrap == index ? 'show' : ''">
+            <p class="resource-bigTitle" v-text="item.bigTitle"></p>
+            <p class="resource-smallTitle" v-text="item.smallTitle"></p>
+            <p class="resource-desc" v-text="item.desc"></p>
+            <p class="resource-label" v-for="(v, k) in item.labels" :key="k" v-text="v"></p>
           </div>
           </li>
         </ul>
@@ -131,6 +137,7 @@ export default {
       profileLists: DataChose.ipPart5,
       profileIndex: 0,
       typeIndex: 0,
+      isWrap: -1,
       swiperOption: {
         autoplay: true,
         speed: 500,
