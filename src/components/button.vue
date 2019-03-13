@@ -3,7 +3,7 @@
 .base-button {
   display: inline-block;
   color: #333;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: $weight_medium;
   width: 128px;
   height: 45px;

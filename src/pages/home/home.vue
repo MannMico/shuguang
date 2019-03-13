@@ -40,8 +40,8 @@
           </li>
         </ul>
         <ul class="clearfix">
-          <li class="resouce-type" @click="typeIndex=index" v-for="(items, index) in ipPartThreeType" :key="index" :class="typeIndex==index?'active':''">
-            <span v-text="items.name" :style="{ background: 'url(' + items.bg + ') no-repeat' }"></span>
+          <li class="resouce-type" @click="typeIndex=index" v-for="(items, index) in ipPartThreeType" :key="index" :class="[typeIndex==index?'active':'','resouce-type'+index]">
+            <span v-text="items.name"></span>
           </li>
         </ul>
         <div v-for="(items, index) in ipPartThreeType" :key="index">

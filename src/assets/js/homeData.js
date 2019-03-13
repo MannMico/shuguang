@@ -26,6 +26,106 @@ export default {
       ]
     },
     {
+      part: {            //IP授权大板块数据
+        name: '联合推广',
+        desc: 'cdsdf',
+        labels: ['sda', 'sdasdas'],
+        bg: require('../home/ipList/list1.jpg')
+      },
+      conetents: [      //IP授权大板块下各案例数据
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        }
+      ]
+    },
+    {
+      part: {            //IP授权大板块数据
+        name: '联合推广',
+        desc: 'cdsdf',
+        labels: ['sda', 'sdasdas'],
+        bg: require('../home/ipList/list1.jpg')
+      },
+      conetents: [      //IP授权大板块下各案例数据
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        }
+      ]
+    },
+    {
+      part: {            //IP授权大板块数据
+        name: '联合推广',
+        desc: 'cdsdf',
+        labels: ['sda', 'sdasdas'],
+        bg: require('../home/ipList/list1.jpg')
+      },
+      conetents: [      //IP授权大板块下各案例数据
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        }
+      ]
+    },
+    {
+      part: {            //IP授权大板块数据
+        name: '联合推广',
+        desc: 'cdsdf',
+        labels: ['sda', 'sdasdas'],
+        bg: require('../home/ipList/list1.jpg')
+      },
+      conetents: [      //IP授权大板块下各案例数据
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        },
+        {
+          name: 'jihui1',
+          desc: 'sdasda',
+          ctBg: require('../banner1.png')
+        }
+      ]
+    },
+    {
       part: {
         name: '联合推广1',
         desc: 'cdsdf1',
@@ -104,7 +204,6 @@ export default {
     resourceType:[      //ip版权产品分类
       {
         name: '动漫',
-        bg: require('../anima.png'),
         lists: [  //动漫类数据
           {
             img: require('../home/list1.jpg'),
@@ -134,7 +233,6 @@ export default {
       },
       {
         name: '艺术',
-        bg: require('../art.png'),
         lists: [  //艺术类数据
           {
             img: require('../home/list1.jpg'),
@@ -144,7 +242,6 @@ export default {
       },
       {
         name: '亲子',
-        bg: require('../parent.png'),
         lists: [  //亲子类数据
           {
             img: require('../home/list1.jpg'),

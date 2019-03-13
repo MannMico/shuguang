@@ -27,7 +27,7 @@
 <template>
   <div>
     <div class="content">
-      <p class="ip-title"><span>ip授权案例</span><a href="#" class="title-small title-a">查看更多<img src="../assets/at.png" alt=""></a></p>
+      <p class="ip-title"><span>IP授权案例</span><a href="#" class="title-small title-a">查看全部<img src="../assets/at.png" alt=""></a></p>
       <ul class="ip-lists clearfix" v-for="(items, index) in dataChose" :key="index">
         <li class="ip-part" :style="{ background: 'url(' + items.part.bg + ') no-repeat' }">
           <span>{{ items.part.name }}</span>

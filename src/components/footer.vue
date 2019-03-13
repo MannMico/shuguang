@@ -1,26 +1,50 @@
 <template>
-  <div class="base-footer">
-    <div class="base-footer__container width-fixed">
-      <div class="footer__container">
-        <div class="footer__left">
-          <img class="footer__name-logo" src="@/assets/logo_up_navigation.png" alt>
-          <div class="footer__desc">专注IP的创新经纪营销平台</div>
-        </div>
-        <div class="footer__mid">
-          <div class="footer__main-text">IP授权营销</div>
-          <div class="footer__sub-text">
-            <div>邮箱：may@shujiguang.com</div>
-            <div>电话：13537520823</div>
-          </div>
-        </div>
-        <div class="footer__right">
-          <div class="footer__main-text">IP版权入驻</div>
-          <div class="footer__sub-text">邮箱：crater@shujiguang.com</div>
+  <div class="footer-bg">
+    <div class="footer-bg-top">
+      <div class="content">
+        <div class="base-footer clearfix">
+          <ul class="footer-part">
+            <li class="footer-title">我是IP版权</li>
+            <li class="footer-ct"><a href="#">版权入驻流程</a></li>
+            <li class="footer-ct"><a href="#">合作模式</a></li>
+            <li class="footer-ct"><a href="#">版权成长</a></li>
+          </ul>
+          <ul class="footer-part">
+            <li class="footer-title">我是企业</li>
+            <li class="footer-ct"><a href="#">需求发布</a></li>
+            <li class="footer-ct"><a href="#">合作方式</a></li>
+            <li class="footer-ct"><a href="#">付款方式</a></li>
+            <li class="footer-ct"><a href="#">IP匹配</a></li>
+          </ul>
+          <ul class="footer-part">
+            <li class="footer-title">关于IP经纪人</li>
+            <li class="footer-ct"><a href="#">工作机制</a></li>
+            <li class="footer-ct"><a href="#">角色定位</a></li>
+            <li class="footer-ct"><a href="#">平台资源</a></li>
+          </ul>
+          <ul class="footer-part">
+            <li class="footer-title">联系我正版</li>
+            <li class="footer-ct">联系邮箱：<span class="mt10">bd@shujiguang.com</span></li>
+            <li class="footer-ct"><img src="../assets/ewm.png" /></li>
+          </ul>
         </div>
       </div>
-      <div class="footer__copyright">
-        COPYRIGHT © 2018 深圳市束光文化科技有限公司
-        <a href="http://www.miit.gov.cn/">粤ICP备18071035号-1</a>
+    </div>
+    <div class="footer-bg-btm">
+      <div class="content">
+        <dl class="clearfix">
+          <dt><img src="../assets/bt_logo.png" alt="" /></dt>
+          <dd>
+            <ul class="footer-about clearfix">
+              <li><a href="#">关于我们</a></li>
+              <li><a href="#">成功案例</a></li>
+              <li><a href="#">跨界授权</a></li>
+              <li><a href="#">服务流程</a></li>
+              <li><a href="#">服务规则</a></li>
+            </ul>
+            <p class="foot-coryright">＠copyright2018 深圳市束光文化科技有限公司 粤ICP备168876666号</p>
+          </dd>
+        </dl>
       </div>
     </div>
   </div>
@@ -28,59 +52,79 @@
 
 <style lang="scss">
 @import '~@/styles/var';
-.base-footer {
-  background: #f6f6f6;
-  height: 300px;
-
-  box-sizing: border-box;
-  color: #000;
-  position: relative;
-  &__container {
-    padding: 60px 128px;
+.mt10{
+  display: block;
+  margin-top: 10px;
+}
+.footer-bg-top {
+  background: url(../assets/footer-bg.png) center no-repeat;
+}
+.footer-bg {
+  background: #212834;
+  color: #fff;
+  a{
+    color: #fff;
   }
-  .footer {
-    &__container {
-      display: flex;
-      justify-content: space-between;
-    }
-    &__name-logo {
-      display: block;
-      width: 68px;
-      height: 36px;
-    }
-    &__desc {
-      margin-top: 26px;
-      font-size: 24px;
-      font-weight: $weight_light;
-      letter-spacing: 1.08px;
-    }
-    &__main-text {
-      font-size: 22px;
-      font-weight: $weight_medium;
-      letter-spacing: 0.99px;
-    }
-    &__sub-text {
+}
+.base-footer {
+  width: 1200px + 140;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+  .footer-part {
+    float: left;
+    width: 195px;
+    margin-right: 140px - 15;
+    margin-left: 15px;
+    li {
       margin-top: 30px;
-      font-size: 18px;
-      font-weight: $weight_regular;
-      letter-spacing: 0.81px;
-    }
-    &__copyright {
-      position: absolute;
-      bottom: 35px;
-      left: 50%;
-      transform: translate(-50%, 0);
-      text-align: center;
       font-size: 16px;
-      font-weight: $weight-light;
-
-      letter-spacing: 0.72px;
-      text-align: center;
+      line-height: 16px;
+      letter-spacing: 3px;
+    }
+    .footer-title {
+      font-size: 18px;
+      position: relative;
+      line-height: 18px;
+      &::before {
+        position: absolute;
+        left: -15px;
+        top: 50%;
+        margin-top: -4px;
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #fe992a;
+      }
     }
   }
 }
+.footer-bg-btm {
+  padding: 50px 0 25px;
+  dt {
+    width: 175px;
+    float: left;
+    margin-right: 165px;
+  }
+  dd {
+    float: left;
+    .footer-about {
+      margin-left: 8px;
+      li {
+        float: left;
+        margin-right: 98px;
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+  .foot-coryright {
+    font-size: 12px;
+    margin-top: 45px;
+  }
+}
 </style>
-
 
 <script>
 export default {

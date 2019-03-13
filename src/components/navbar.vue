@@ -43,7 +43,7 @@
 
       .el-menu-item,
       .el-submenu__title {
-        font-size: 20px;
+        font-size: 19px;
         // width: 200px;
         text-align: center;
         padding: 0 30px;
@@ -56,7 +56,7 @@
     }
 
     &__login-btn {
-      margin-left: 58px;
+      margin-left: 103px;
     }
     &__nickname {
       font-size: 20px;
