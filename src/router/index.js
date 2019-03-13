@@ -4,6 +4,7 @@ import Home from '@/pages/home/home';
 import Plan from '@/pages/plan/plan';
 import Issue from '@/pages/issue/issue';
 import IssueDone from '@/pages/issue/issue-done';
+import CaseList from '@/pages/case/';
 // import Index from '@/pages/index';
 
 Vue.use(Router);
@@ -38,6 +39,11 @@ export default new Router({
       path: '/issue-done',
       name: 'IssueDone',
       component: IssueDone
+    },
+    {
+      path: '/case-list',
+      name: 'CaseList',
+      component: CaseList
     }
   ]
 });

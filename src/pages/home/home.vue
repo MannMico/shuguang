@@ -7,7 +7,7 @@
       <swiper-slide class="header-slide" :class="`header-slide2${isMobile?'-m':''}`"></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <base-data :dataChose="homeIpList" :textFlage="true" />
+    <base-data/>
     <div class="ip-part2">
       <div class="content">
         <p class="ip-title">
@@ -118,8 +118,6 @@
 <script>
 import './home.scss';
 import { throttle } from '@/libs/util';
-// import { slider, slideritem } from 'vue-concise-slider';
-// import BussinessModule from './business-module.vue';
 import DataChose from '@/assets/js/homeData.js';
 export default {
   // components: {
@@ -130,7 +128,6 @@ export default {
   // },
   data() {
     return {
-      homeIpList: DataChose.ipPart1,
       ipPartTwoList: DataChose.ipPart2,
       ipPartThreeList: DataChose.ipPart3.resourceList,
       ipPartThreeType: DataChose.ipPart3.resourceType,

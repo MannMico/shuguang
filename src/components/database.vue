@@ -126,7 +126,7 @@
         <span v-text="textFlage ? 'IP授权案例' : 'IP授权成功案例'"></span>
         <a v-if="textFlage" href="#" class="title-small title-a">查看全部<img src="../assets/at.png" alt=""></a>
       </p>
-      <ul class="ip-lists clearfix" v-for="(items, index) in dataChose" :key="index">
+      <ul class="ip-lists clearfix" v-for="(items, index) in homeIpList" :key="index">
         <li class="ip-part ip-type-hover" :style="{ background: 'url(' + items.part.bg + ') no-repeat' }">
           <p class="ip-first-name ml30" v-text="items.part.name"></p>
           <p class="ip-first-line ml30"></p>
@@ -134,7 +134,7 @@
           <ul class="ip-first-labes ml30 clearfix">
             <li class="ip-first-label" v-for="(label, key) in items.part.labels" :key="key" v-text="'#' + label + '#'"></li>
           </ul>
-          <span class="ip-check-more">查看更多</span>
+          <span v-if="textFlage" class="ip-check-more">查看更多</span>
         </li>
         <li class="ip-part ip-list-hover" v-for="(item, key) in items.conetents" :key="key">
           <img :src="item.ctBg" alt="" width="285" height="285" />
@@ -147,16 +147,18 @@
 </template>
 
 <script>
+import DataChose from '@/assets/js/homeData.js';
 export default {
   name: 'base-data',
   props: {
-    dataChose: {
-      type: Array,
-      required: true
-    },
     textFlage: {
       type: Boolean,
-      required: true
+      default: true
+    }
+  },
+  data() {
+    return {
+      homeIpList: DataChose.ipPart1
     }
   }
 };

@@ -197,7 +197,7 @@ export default {
       {
         bigTitle: '23213',
         smallTitle: '23213',
-        desc: '同道大叔十二星座IP以星座特质为内涵，通过特点鲜明、萌系的风格创作出12个星座的卡通形象，占据星座文化社交入口，作为极具影响力的本土IP，与多品牌合作，实战证同道IP有效为品牌实现多维度赋能。',
+        desc: '同道大叔十二星座IP以星座特质为内涵，通过特点鲜明',
         bg: require('../home/list1.jpg'),
         labels: ['sda', 'sada']
       }
