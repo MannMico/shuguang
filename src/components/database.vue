@@ -127,7 +127,7 @@
         <a v-if="textFlage" href="#" class="title-small title-a">查看全部<img src="../assets/at.png" alt=""></a>
       </p>
       <ul class="ip-lists clearfix" v-for="(items, index) in homeIpList" :key="index">
-        <li class="ip-part ip-type-hover" :style="{ background: 'url(' + items.part.bg + ') no-repeat' }">
+        <li class="ip-part ip-type-hover" :style="{ background: 'url(' + items.part.bg + ') no-repeat'}">
           <p class="ip-first-name ml30" v-text="items.part.name"></p>
           <p class="ip-first-line ml30"></p>
           <p class="ip-first-desc ml30" v-text="items.part.desc"></p>
@@ -136,23 +136,10 @@
           </ul>
           <span v-if="textFlage" class="ip-check-more">查看更多</span>
         </li>
-        <li v-if="textFlage">
-          <ul>
-            <li class="ip-part ip-list-hover" v-for="(item, k) in items.conetents" v-if="k < 3" :key="k">
-              <img :src="item.ctBg" alt="" width="285" height="285" />
-              <p class="ip-list-name" v-text="item.name"></p>
-              <p class="ip-list-desc" v-text="item.desc"></p>
-            </li>
-          </ul>
-        </li>
-        <li v-else>
-          <ul>
-            <li class="ip-part ip-list-hover" v-for="(item, k) in items.conetents" :key="k">
-              <img :src="item.ctBg" alt="" width="285" height="285" />
-              <p class="ip-list-name" v-text="item.name"></p>
-              <p class="ip-list-desc" v-text="item.desc"></p>
-            </li>
-          </ul>
+        <li class="ip-part ip-list-hover" v-for="(item, k) in showLists(items.conetents, textFlage)" :key="k">
+          <img :src="item.ctBg" alt="" width="285" height="285" />
+          <p class="ip-list-name" v-text="item.name"></p>
+          <p class="ip-list-desc" v-text="item.desc"></p>
         </li>
       </ul>
     </div>
@@ -172,6 +159,24 @@ export default {
   data() {
     return {
       homeIpList: DataChose.ipPart1
+    }
+  },
+  computed: {
+    getbg() {
+      return function(bg) {
+        return `background: url(${bg}) no-repeat}`;
+      };
+    },
+    showLists: function() {
+      return function(lists, textFlage) {
+        let changeLists;
+        if (textFlage) {
+          changeLists = lists.slice(0, 3);
+        } else {
+          changeLists = lists;
+        }
+        return changeLists;
+      }
     }
   }
 };
