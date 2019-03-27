@@ -2,12 +2,13 @@
   <div class="issue-page">
     <base-navbar></base-navbar>
     <div class="issue__header">
-      <div class="header__title">发布需求</div>
-      <div class="header__desc">提交后系统立即匹配专业IP经纪人为您定制方案</div>
+      <div class="header__title content">发布您的授权任务</div>
+      <div class="header__desc content">提交后系统立即匹配专业IP经纪人为您定制方案</div>
     </div>
+    <div class="content clearfix">
     <el-form
       ref="issue_form"
-      class="issue__form width-fixed"
+      class="issue__form"
       label-position="left"
       label-width="224px"
       :model="form"
@@ -15,7 +16,7 @@
     >
       <div class="form__title">您的项目背景和要求：</div>
       <el-form-item class="form__border-bottom" label="品牌或公司名称" prop="company">
-        <el-input v-model="form.company" placeholder="必填项"></el-input>
+        <el-input v-model="form.company" placeholder=""></el-input>
       </el-form-item>
       <el-form-item class="form__border-bottom" label="所在地区" required>
         <el-col :span="12">
@@ -72,35 +73,33 @@
       <el-form-item class="form__border-bottom" label="联系人姓名" prop="nickname">
         <el-input placeholder="必填项" v-model="form.nickname"></el-input>
       </el-form-item>
-      <el-row>
-        <el-col :span="14">
-          <el-form-item label="联系人电话" class="form__border-bottom" prop="phone">
-            <el-input placeholder="必填项" v-model="form.phone"></el-input>
-          </el-form-item>
+      <el-form-item class="form__border-bottom" label="联系电话" prop="nickname">
+        <el-input placeholder="必填项" v-model="form.nickname"></el-input>
+      </el-form-item>
+      <el-form-item class="form__border-bottom" label="短信验证码" prop="vcode">
+        <el-col :span="12">
+          <el-input placeholder="短信验证码" v-model="form.vcode"></el-input>
         </el-col>
-        <el-col :span="10">
-          <el-form-item class="form__border-bottom" label-width="10px" prop="vcode">
-            <el-col :span="12">
-              <el-input placeholder="短信验证码" v-model="form.vcode"></el-input>
-            </el-col>
-            <el-col :span="12">
-              <div
-                class="form-item__title form-item__captcha"
-                v-if="!codeTime"
-                @click="onCode"
-              >获取验证码</div>
-              <div
-                class="form-item__title form-item__captcha form-item__captcha--gray"
-                v-else
-              >{{codeTime}}s后重新发送</div>
-            </el-col>
-          </el-form-item>
+        <el-col :span="12">
+          <div
+            class="form-item__title form-item__captcha"
+            v-if="!codeTime"
+            @click="onCode"
+          >获取验证码</div>
+          <div
+            class="form-item__title form-item__captcha form-item__captcha--gray"
+            v-else
+          >{{codeTime}}s后重新发送</div>
         </el-col>
-      </el-row>
+      </el-form-item>
       <div class="form__submit-btn">
         <base-button @click="onSend">立即发布需求</base-button>
       </div>
     </el-form>
+    <div class="issue-right">
+      dfsfssf
+    </div>
+    </div>
     <base-footer></base-footer>
   </div>
 </template>

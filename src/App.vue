@@ -55,6 +55,18 @@
     line-height: 64px;
   }
 }
+.pop__back-btn {
+  display: inline-block;
+  margin-top: 72px;
+  padding: 0 30px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  // border-radius: 31px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
 </style>
 
 <template>

@@ -1,5 +1,5 @@
 <style lang="scss">
-.ml30{
+.ml30 {
   margin-left: 30px;
 }
 .all-case {
@@ -136,7 +136,7 @@
           </ul>
           <span v-if="textFlage" class="ip-check-more">查看更多</span>
         </li>
-        <li class="ip-part ip-list-hover" v-for="(item, k) in showLists(items.conetents, textFlage)" :key="k">
+        <li class="ip-part ip-list-hover" v-for="(item, k) in showLists(items.conetents, textFlage)" :key="k" @click="goToDetail(item.tid)" :data-tid="item.tid">
           <img :src="item.ctBg" alt="" width="285" height="285" />
           <p class="ip-list-name" v-text="item.name"></p>
           <p class="ip-list-desc" v-text="item.desc"></p>
@@ -162,11 +162,6 @@ export default {
     }
   },
   computed: {
-    getbg() {
-      return function(bg) {
-        return `background: url(${bg}) no-repeat}`;
-      };
-    },
     showLists: function() {
       return function(lists, textFlage) {
         let changeLists;
@@ -177,6 +172,11 @@ export default {
         }
         return changeLists;
       }
+    }
+  },
+  methods:{
+    goToDetail(tid) {
+      this.$router.push({ path: '/case-detail/'+tid });
     }
   }
 };
