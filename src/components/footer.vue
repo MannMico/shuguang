@@ -25,7 +25,7 @@
           <ul class="footer-part">
             <li class="footer-title">联系我正版</li>
             <li class="footer-ct">联系邮箱：<span class="mt10">bd@shujiguang.com</span></li>
-            <li class="footer-ct"><img src="../assets/ewm.png" /></li>
+            <li class="footer-ct"><img src="~@/assets/ewm.png" /></li>
           </ul>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="footer-bg-btm">
       <div class="content">
         <dl class="clearfix">
-          <dt><img src="../assets/bt_logo.png" alt="" /></dt>
+          <dt><img src="~@/assets/bt_logo.png" alt="" /></dt>
           <dd>
             <ul class="footer-about clearfix">
               <li><a href="#">关于我们</a></li>
@@ -57,7 +57,7 @@
   margin-top: 10px;
 }
 .footer-bg-top {
-  background: url(../assets/footer-bg.png) center no-repeat;
+  background: url(~@/assets/footer-bg.png) center no-repeat;
 }
 .footer-bg {
   background: #212834;
@@ -67,14 +67,16 @@
   }
 }
 .base-footer {
-  width: 1200px + 140;
   overflow-x: hidden;
   padding-bottom: 40px;
   .footer-part {
     float: left;
     width: 195px;
-    margin-right: 140px - 15;
+    margin-right: 120px;
     margin-left: 15px;
+    &:last-child{
+      margin-right: 0;
+    }
     li {
       margin-top: 30px;
       font-size: 16px;

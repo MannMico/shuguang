@@ -51,8 +51,8 @@
           </li>
         </ul>
         <div v-for="(items, index) in ipPartThreeType" :key="index">
-          <ul class="hide" v-for="(item, key) in items.lists" :key="key" :class="typeIndex==index?'show':''">
-            <li class="type-img">
+          <ul class="hide" :class="typeIndex==index?'show':''">
+            <li class="type-img" v-for="(item, key) in items.lists" :key="key" >
               <img :src="item.img" :alt="item.alt" />
             </li>
           </ul>
@@ -68,7 +68,7 @@
         <div class="ip-introduce">
           <div class="ip-detail clearfix">
             <dl class="ip-detail-title clearfix">
-              <dt><img src="../../assets/qa.png" alt=""></dt>
+              <dt><img src="~@/assets/qa.png" alt=""></dt>
               <dd>
                 <p>传统IP授权：</p>
                 <span>1、大部分所谓IP只限于“有一个形象”，立不了人设；2、简单粗暴，把IP形象直接用在产品／推广上</span>
@@ -77,7 +77,7 @@
             </dl>
             <dl class="detail-produce">
               <dt>
-                <img src="../../assets/detail.png" alt="">
+                <img src="~@/assets/detail.png" alt="">
               </dt>
               <dd>
                 <span class="detail-line"></span>
@@ -98,9 +98,9 @@
         <p class="part5-title">合作伙伴这样评价束光</p>
         <p class="part5-line"></p>
         <div class="part5-eval clearfix">
-          <p class="quot-left"><img src="../../assets/quot-left.png" alt="" /></p>
+          <p class="quot-left"><img src="~@/assets/quot-left.png" alt="" /></p>
           <p class="quot-text hide" :class="profileIndex==index?'show':''" v-for="(item, index) in profileLists" :key="index" v-text="item.eval"></p>
-          <p class="quot-right"><img src="../../assets/quot-right.png" alt="" /></p>
+          <p class="quot-right"><img src="~@/assets/quot-right.png" alt="" /></p>
         </div>
         <ul class="clearfix">
           <li class="profile-list" @click="profileIndex=index" :class="profileIndex==index?'active':''" v-for="(item, index) in profileLists" :key="index">

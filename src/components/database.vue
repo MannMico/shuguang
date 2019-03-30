@@ -6,7 +6,6 @@
   text-align: center;
 }
 .ip-lists {
-  width: 1220px;
   color: #fff;
   .ip-part {
     position: relative;
@@ -17,6 +16,9 @@
     margin-right: 20px;
     background-size: contain;
     border-radius: 3px;
+    &:nth-child(4n){
+      margin-right: 0;
+    }
     cursor: pointer;
     &.ip-type-hover {
       &:hover {
@@ -124,7 +126,7 @@
     <div class="content">
       <p class="ip-title" :class="textFlage ? '' : 'all-case'">
         <span v-text="textFlage ? 'IP授权案例' : 'IP授权成功案例'"></span>
-        <a v-if="textFlage" href="#" class="title-small title-a">查看全部<img src="../assets/at.png" alt=""></a>
+        <a v-if="textFlage" href="#" class="title-small title-a">查看全部<img src="~@/assets/at.png" alt=""></a>
       </p>
       <ul class="ip-lists clearfix" v-for="(items, index) in homeIpList" :key="index">
         <li class="ip-part ip-type-hover" :style="{ background: 'url(' + items.part.bg + ') no-repeat'}">

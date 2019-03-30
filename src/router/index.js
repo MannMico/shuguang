@@ -7,6 +7,7 @@ import IssueDone from '@/pages/issue/issue-done';
 import CaseList from '@/pages/case/';
 import CaseDetail from '@/pages/case/detail';
 import About from '@/pages/about/';
+import PlanMobile from '@/pages/plan/plan-mobile';
 // import Index from '@/pages/index';
 
 Vue.use(Router);
@@ -30,7 +31,10 @@ export default new Router({
     {
       path: '/plan',
       name: 'Plan',
-      component: Plan
+      component: Plan,
+      meta: {
+        title: '预览'
+      }
     },
     {
       path: '/issue',
@@ -70,6 +74,15 @@ export default new Router({
       component: About,
       meta: {
         title: '关于我们'
+      }
+    },
+    {
+      path: '/plan-mobile',
+      name: 'PlanMobile',
+      component: PlanMobile,
+      meta: {
+        title: '预览',
+        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0'
       }
     }
   ]

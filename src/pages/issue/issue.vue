@@ -9,8 +9,8 @@
     <el-form
       ref="issue_form"
       class="issue__form"
-      label-position="left"
-      label-width="224px"
+      label-position="right"
+      label-width="130px"
       :model="form"
       :rules="rules"
     >
@@ -18,6 +18,10 @@
       <el-form-item class="form__border-bottom" label="品牌或公司名称" prop="company">
         <el-input v-model="form.company" placeholder=""></el-input>
       </el-form-item>
+      <!-- <el-cascader
+        :options="district"
+        @active-item-change="changeProvince"
+      ></el-cascader> -->
       <el-form-item class="form__border-bottom" label="所在地区" required>
         <el-col :span="12">
           <el-form-item prop="province">
@@ -45,14 +49,12 @@
         </el-col>
       </el-form-item>
       <el-row>
-        <el-form-item label="选择合作类型（可多选）" label-width="400px"></el-form-item>
+        <el-form-item label="选择合作类型（可多选）" label-width="178px"></el-form-item>
         <div class="form-item__type">
-          <div class="form-item__typeitem" v-for="(mode,index) in modes" :key="mode.id">
-            <img
-              :src="mode.image"
-              :class="{'form-item__typeitem--gray': !mode.select}"
-              @click="onSeletcMode(index)"
-            >
+          <div class="form-item__typeitem" v-for="(mode,index) in modes" :key="mode.id"
+          :class="{'form-item__typeitem--gray': mode.select}"
+            @click="onSeletcMode(index)">
+            <img :src="mode.image">
             <span :class="{selected:mode.select}"></span>
           </div>
         </div>
@@ -67,14 +69,14 @@
       </el-row>
 
       <el-form-item class="form__border-bottom" label="期待上线日期" prop="publish_time">
-        <el-date-picker v-model="form.publish_time" type="date" placeholder="请选择"></el-date-picker>
+        <el-date-picker v-model="form.publish_time" type="date" placeholder="年/月/日"></el-date-picker>
       </el-form-item>
       <div class="form__title">联系方式：</div>
       <el-form-item class="form__border-bottom" label="联系人姓名" prop="nickname">
         <el-input placeholder="必填项" v-model="form.nickname"></el-input>
       </el-form-item>
-      <el-form-item class="form__border-bottom" label="联系电话" prop="nickname">
-        <el-input placeholder="必填项" v-model="form.nickname"></el-input>
+      <el-form-item class="form__border-bottom" label="联系电话" prop="phone">
+        <el-input placeholder="必填项" v-model="form.phone"></el-input>
       </el-form-item>
       <el-form-item class="form__border-bottom" label="短信验证码" prop="vcode">
         <el-col :span="12">
@@ -82,22 +84,48 @@
         </el-col>
         <el-col :span="12">
           <div
-            class="form-item__title form-item__captcha"
+            class="form-item__captcha"
             v-if="!codeTime"
             @click="onCode"
           >获取验证码</div>
           <div
-            class="form-item__title form-item__captcha form-item__captcha--gray"
+            class="form-item__captcha form-item__captcha--gray"
             v-else
           >{{codeTime}}s后重新发送</div>
         </el-col>
       </el-form-item>
-      <div class="form__submit-btn">
-        <base-button @click="onSend">立即发布需求</base-button>
-      </div>
+      <div class="form__submit-btn" @click="onSend">立即发布</div>
     </el-form>
     <div class="issue-right">
-      dfsfssf
+      <div class="issue-right-team">
+        <p class="related-title title-position">国内唯一IP全运营链团队</p>
+        <ul class="clearfix">
+          <li class="ip-icon ip-icon1">专业IP顾问全程跟进项目</li>
+          <li class="ip-icon ip-icon2">100+品牌授权成功案例</li>
+          <li class="ip-icon ip-icon3">300+优质供应商合作支持</li>
+          <li class="ip-icon ip-icon4">1亿+IP粉丝全媒介触达</li>
+        </ul>
+      </div>
+      <div class="issue-right-team">
+        <p class="issue-border-title"><span>真IP</span>流量+内容+转化</p>
+        <div class="issue-content">
+          <p>好IP就像明星，有血有肉，还能把人格 化带给品牌;有粉丝，还能带货。</p>
+        </div>
+        <p class="issue-border-title color-change"><span>赋能</span>产品溢价>品牌价值>消费者心智</p>
+        <div class="issue-content">
+          <p>我正版全程提供：创意产品
+设计、主题营销策划、创意
+内容传播、粉丝社群传播、
+线下实体赋能。</p>
+        </div>
+      </div>
+      <div class="issue-right-team">
+        <p class="related-title title-position">热线电话</p>
+        <div class="issue-phone">
+          <p>400-800-1234</p>
+          <p>周一至周日9:00～21:00</p>
+        </div>
+      </div>
     </div>
     </div>
     <base-footer></base-footer>
@@ -125,6 +153,11 @@ export default {
       provinces: district.provinces, // 省份
       cities: [], // 城市
       modes: [],
+      district: [],
+      props: {
+          value: 'provinces',
+          children: 'cities'
+        },
       form: {
         nickname: '', //	String	联系人姓名
         phone: '', //	String	联系电话
@@ -150,7 +183,9 @@ export default {
       requestLimit: false
     };
   },
-  created() {},
+  created() {
+    
+  },
   mounted() {
     window.scrollTo(0, 0);
     this.fetchModes();
@@ -159,13 +194,33 @@ export default {
     clearInterval(this.interval);
   },
   methods: {
+    handleItemChange(val) {
+      console.log('active item:', val);
+      setTimeout(_ => {
+        if (val.indexOf('江苏') > -1 && !district.provinceId[0].cities.length) {
+          district.cities[0].cities = [{
+            label: '南京'
+          }];
+        } else if (val.indexOf('浙江') > -1 && !district.provinceId[1].cities.length) {
+          district.cities[1].cities = [{
+            label: '杭州'
+          }];
+        }
+      }, 300);
+    },
     changeProvince(id) {
       this.cities = [];
-      district.cities.forEach(ctiy => {
-        if (ctiy.provinceId === id) {
-          this.cities.push(ctiy);
+      setTimeout(_ => {
+        district.cities.forEach(city => {
+        if (city.provinceId === id) {
+          this.cities.push(city);
+          this.district.provinces = city.provinceName
+          this.district.cities = this.cities
+          console.log('this.district'+ this.district)
         }
       });
+      }, 300);
+      
     },
     onSeletcMode(index) {
       const mode = this.modes[index];

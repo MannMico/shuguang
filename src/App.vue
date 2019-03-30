@@ -6,53 +6,68 @@
     border-radius: 2px;
   }
   .el-dialog__body {
-    padding: 0 72px 72px 72px;
+    padding: 49px 40px;
+  }
+  &__header{
+    padding: 0;
+  }
+  &__headerbtn{
+    top: 14px;
+    right: 14px;
   }
   &__title {
     display: flex;
-    justify-content: center;
-    font-size: 24px;
+    font-size: 14px;
     color: #000000;
     letter-spacing: 1.08px;
     span {
-      margin-left: 6px;
+      position: relative;
+      bottom: -6px;
+      margin-left: 13px;
+    }
+    img{
+      width: auto;
+      height: auto;
     }
   }
   &__body {
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 20px;
     color: #000000;
     letter-spacing: 0.9px;
   }
   &__label {
     color: #000;
-    font-size: 20px;
-    line-height: 50px;
-    margin-top: 10px;
+    font-size: 14px;
   }
   .el-input {
-    margin-bottom: 24px;
+    margin-top: 17px;
   }
   .el-input__inner {
-    height: 64px;
-    line-height: 64px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
   }
   &__tips {
-    font-size: 20px;
+    font-size: 12px;
     color: #888888;
     letter-spacing: 0.9px;
+    margin-top: 17px;
+    a {
+      color:#4b9efe
+    }
   }
   &__btn {
-    margin-top: 22px;
-    background-image: linear-gradient(-143deg, #1068fa 0%, #3b23e6 94%);
+    margin-top: 18px;
+    background-image: linear-gradient(-143deg, #ff9600 0%, #ff9600 94%);
     font-weight: $weight_medium;
-    font-size: 24px;
+    font-size: 12px;
     color: #ffffff;
     letter-spacing: 1.08px;
     text-align: center;
     border-radius: 4px;
     cursor: pointer;
-    line-height: 64px;
+    line-height: 35px;
   }
 }
 .pop__back-btn {
@@ -67,6 +82,22 @@
   border: 1px solid #333;
   cursor: pointer;
 }
+.el-icon-account{
+    background: url('assets/account.png') center no-repeat;
+}
+.el-icon-account:before{
+    content: "";
+    font-size: 16px;
+    visibility: hidden;
+}
+.el-icon-keyword{
+    background: url('assets/keyword.png') center no-repeat;
+}
+.el-icon-keyword:before{
+    content: "";
+    font-size: 16px;
+    visibility: hidden;
+}
 </style>
 
 <template>
@@ -77,16 +108,16 @@
       :modal-append-to-body="true"
       class="login-box"
       :before-close="onClose"
-      width="640px"
+      width="405px"
     >
       <div class="login-box__title">
-        <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
+        <img class="navbar__name-logo" src="@/assets/login_logo.png" alt>
         <span>专注IP的创新经纪营销平台</span>
       </div>
       <div class="login-box__body">
         <div class="login-box__label">账号密码登录</div>
-        <el-input placeholder="请输入您的账号" v-model="nickname"></el-input>
-        <el-input type="password" placeholder="请输入您的密码" v-model="password"></el-input>
+        <el-input placeholder="请输入您的账号" v-model="nickname" prefix-icon="el-icon-account"></el-input>
+        <el-input type="password" placeholder="请输入您的密码" v-model="password" prefix-icon="el-icon-keyword"></el-input>
         <div class="login-box__tips">
           <span>还没有账号？请先发布需求将获得邀请</span>
           <a @click="jmpIssue" href="javascript:;">立即发布需求</a>

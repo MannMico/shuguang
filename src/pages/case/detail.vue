@@ -8,6 +8,21 @@ body,html{
 .all-case {
   text-align: center;
 }
+.related-title{
+  position: relative;
+  font-size: 18px;
+  &:before{
+    position: absolute;
+    left: -13px;
+    top:50%;
+    margin-top:-9px;
+    content:'';
+    width: 4px;
+    height: 18px;
+    background: #fe992a;
+    border-radius: 2px;
+  }
+}
 .detail-left{
   float: left;
   width: 895px;
@@ -28,21 +43,6 @@ body,html{
       padding: 24px 16px;
       .related-title{
         margin-left: 13px;
-      }
-    }
-    .related-title{
-      position: relative;
-      font-size: 18px;
-      &:before{
-        position: absolute;
-        left: -13px;
-        top:50%;
-        margin-top:-9px;
-        content:'';
-        width: 4px;
-        height: 18px;
-        background: #fe992a;
-        border-radius: 2px;
       }
     }
     .related-ul{
@@ -176,7 +176,7 @@ body,html{
       <p class="detail-title-big">全部授权案例  /案例详情</p>
       <div class="detail-left">
         <div class="detail-content-txt">
-          <h2 v-text="caseDats.caseDetail.caseName">213231</h2>
+          <h2 v-text="caseDats.caseDetail.caseName"></h2>
           <p class="detail-title-big">案例详情</p>
           <div class="detail-content-paragraph" v-for="(v, index) in caseDats.caseDetail.caseTxt" :key="index">
             <p v-if="v.type=='p'" :class="v.isBold ? 'detail-bold' : ''" v-text="v.content"></p>
@@ -281,7 +281,7 @@ export default {
       window.scrollTo(0, destTop);
     },
     goToDetail(tid) {
-      this.$router.push({ path: '/case-detail/'+tid });
+      this.$router.push({ path: '/case-detail/' + tid });
     }
   }
 };
