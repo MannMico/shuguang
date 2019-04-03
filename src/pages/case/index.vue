@@ -9,6 +9,7 @@
     </swiper>
     <base-data :textFlage="false" />
     <base-footer></base-footer>
+    <fix-btn :isIssue="false"/>
   </div>
 </template>
 

@@ -19,7 +19,7 @@
 
   .el-menu-item,
   .el-submenu {
-    border-bottom: 2px solid transparent;
+    color: #fe992a;
   }
   &__container {
     position: relative;
@@ -39,7 +39,7 @@
     }
     &__nav {
       display: inline-block;
-      border-bottom: none;
+      border-bottom: none!important;
 
       .el-menu-item,
       .el-submenu__title {
@@ -51,7 +51,7 @@
       .el-menu-item:hover,
       .is-opened .el-submenu__title,
       .is-active .el-submenu__title {
-        border-bottom-color: rgb(73, 110, 214) !important;
+        color: #fe992a;
       }
     }
 
@@ -78,6 +78,14 @@
       }
     }
   }
+  .el-menu--horizontal>.el-menu-item{
+    &:hover{
+      color:#fe992a!important;
+    }
+    &.is-active{
+      border-bottom: none;
+    }
+  }
 }
 </style>
 
@@ -88,22 +96,16 @@
         <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
         <div class="navbar__right">
           <el-menu
+            :default-active="`${$route.path}`"
             class="el-menu-demo navbar__nav"
             mode="horizontal"
             text-color="#000"
             router
-            :default-active="`/${$route.hash}`"
-            @select="selectMenu"
+            active-text-color="#fe992a"
           >
-            <el-menu-item index="/#home">首页</el-menu-item>
-            <!-- <el-submenu index="2" popper-class="nav__submenu">
-              <template slot="title">成功案例</template>
-              <el-menu-item index="/#kjt">跨界通</el-menu-item>
-              <el-menu-item index="/#xyd">效易达</el-menu-item>
-              <el-menu-item index="/#hym">好易卖</el-menu-item>
-            </el-submenu> -->
-            <el-menu-item index="/#partner">成功案例</el-menu-item>
-            <el-menu-item index="/#partner">关于我们</el-menu-item>
+            <el-menu-item index="/">首页</el-menu-item>
+            <el-menu-item index="/case-list">成功案例</el-menu-item>
+            <el-menu-item index="/about">关于我们</el-menu-item>
           </el-menu>
           <base-button
             class="navbar__login-btn"

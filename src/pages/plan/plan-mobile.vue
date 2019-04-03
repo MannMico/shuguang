@@ -1,22 +1,21 @@
 <template>
-    <div>
+    <div v-if="mobileData!=null">
       <p class="moblie-plan-top"><img src="~@/assets/mobile_logo.png" alt=""></p>
       <p class="moblie-plan-title">IP授权营销方案书</p>
       <div class="moblie-plan-part moblie-plan-part1">
 
         <h2>基于您的需求定制的IP匹配建议</h2>
-        <p class="moblie-plan-part-content">星座狗IP占据“星座+职场+萌宠”三大流量入口，是目前年轻人喜欢的社交话题。可围绕十二星座的不同特点，打造星座主题联名产品，配合创意文案，讲述十二星座的不同
-“美好时光”。同时可以把十二星座打造成为品牌的【首席美好官】，为品牌传达“美好时光，快乐成长”的理念，在线上线下多渠道创意推广，为品牌综合赋能。</p>
+        <p class="moblie-plan-part-content" v-text="mobileData.recommendation"></p>
       </div>
       <p class="moblie-plan-manage">来自金牌经纪人May的建议</p>
-      <p class="moblie-plan-title color-black">推荐IP</p>    
+      <p class="moblie-plan-title color-black">推荐IP：</p>    
       <div class="moblie-plan-part moblie-plan-part2">
         <dl class="moblie-plan-dl clearfix">
           <dt><img src="~@/assets/p1.png" alt=""></dt>
-          <dd>
+          <dd class="clearfix">
             <p class="moblie-plan-icon"><img src="~@/assets/fangan.png" alt=""></p>
-            <p class="moblie-plan-ip-title">推荐IP:星座加班狗</p>
-            <p class="moblie-plan-book">查看星座狗IP书</p>
+            <p class="moblie-plan-ip-title">推荐IP:{{mobileData.ip_name}}</p>
+            <p class="moblie-plan-book clearfix" @click="OpenPDF('http://soonlight-1256797458.cos.ap-guangzhou.myqcloud.com/ip/1554208955709.pdf')">查看星座狗IP书</p>
           </dd>
         </dl>
       </div>  
@@ -76,10 +75,18 @@
 </template>
 <script>
 import './plan.scss';
+let Base64 = require('js-base64').Base64
 export default {
-  created(){
+  props:{
+    mobileData:{
+      type: Object,
+      required: true
+    }
   },
   methods:{
+    OpenPDF (url) {
+      this.$router.push({ name: 'PDF', query: { url: Base64.encode(url) } })
+    }
   }
 }
 </script>

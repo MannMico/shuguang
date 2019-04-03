@@ -11,13 +11,20 @@
       <p class="about-title">致力IP＋行业解决方案</p>
       <p class="about-desc">在成功合作400+品牌与企业，覆盖20+行业的经验之上。束光致力于有效链接IP与品牌，通过“筛选／评估／策动／创意／执行／管
 控”的规范化流程，为各个行业提供IP的不同价值，包括流量、认知、场景、转化、产品力、视觉等等。</p>
-      <p class="about-manage"><img src="~@/assets/manage.png" alt=""></p>
+      <p class="about-manage"><img src="~@/assets/manage.png" alt=""></p> 
       <ul class="magage-list clearfix">
-        <li><img src="~@/assets/p1.png" alt=""></li>
-        <li><img src="~@/assets/p2.png" alt=""></li>
-        <li><img src="~@/assets/p3.png" alt=""></li>
-        <li><img src="~@/assets/p4.png" alt=""></li>
-      </ul>
+        <li v-for="(item,index) in ceoList" :key="index" 
+        @mousemove="isIndex = index" 
+      @mouseout="ishover=-1">
+          <div class="ceo-produce" :class="isIndex==index?'show':'hide'">
+            <p class="ceo-name" v-text="item.bigProduce"></p>
+            <p v-text="item.mediumProduce"></p>
+            <div class="ceo-profile">
+              <p  v-for="(v,k) in item.smallProduce" :key="k" v-text="v"></p>
+            </div>
+          </div>
+          <img :src="item.bgImg" alt=""></li>
+      </ul> 
       <p class="about-title">具备成功经验的本土团队</p>
       <p class="about-desc">束光核心人马以原“同道大叔”IP运营团队建成，是一手打造中国新兴IP收入、估值、盈利的行业标杆，本土唯一一个从0开始，贯通
 整个IP运营链，所有环节都有成功经验的团队。</p>
@@ -27,10 +34,11 @@
         <p>地址：广东省深圳市南山区软件产业园基地6栋801</p>
         <p>邮编：51800</p>
         <p>邮箱：bd@shujiguang.com</p>
-        <p class="pop__back-btn">发布跨界授权合作</p>
+        <p class="pop__back-btn" @click="toThisRoute('issue')">发布跨界授权合作</p>
       </div>
     </div>
     <base-footer></base-footer>
+    <fix-btn :isIssue="false"/>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -65,8 +73,9 @@ body, html{
 }
 .magage-list {
   li {
+    position: relative;
     float: left;
-    margin-right: 10px;
+    margin-right: 16px;
   }
 }
 .contact-detail {
@@ -78,6 +87,28 @@ body, html{
   text-align: center;
   margin: 112px auto;
 }
+.ceo-produce{
+  position: absolute;
+  left: 0;
+  width: 285px;
+  height: 460px;
+  float: left;
+  background: #242a36;
+  color: #fff;
+  font-size: 14px;
+  padding-left: 20px;
+  line-height: 14px;
+  .ceo-name{
+    margin-top: 109px;
+    margin-bottom: 11px;
+    font-size: 18px;
+  }
+  .ceo-profile{
+    width: 248px;
+    margin-top: 135px;
+    line-height: 24px;
+  }
+}
 </style>
 
 <script>
@@ -85,6 +116,7 @@ import { throttle } from '@/libs/util';
 export default {
   data() {
     return {
+      isIndex: -1,
       swiperOption: {
         autoplay: true,
         speed: 500,
@@ -97,7 +129,33 @@ export default {
       },
       isMobile: false,
       showLoginBox: false,
-      showFixed: false
+      showFixed: false,
+      ceoList:[
+        {
+          bigProduce:'李晗 Hamlee',
+          mediumProduce:'束光文化创始人  CEO',
+          smallProduce:['前“脉脉”创始团队员工','产品经理 前“陪我”APP创始人','前“同道大叔”联合创始人、COO'],
+          bgImg:require('../../assets/p1.png')
+        },
+        {
+          bigProduce:'sad',
+          mediumProduce:'sad',
+          smallProduce:['sadasd','sadasdas','sdadas'],
+          bgImg:require('../../assets/p2.png')
+        },
+        {
+          bigProduce:'sad',
+          mediumProduce:'sad',
+          smallProduce:['sadasd','sadasdas','sdadas'],
+          bgImg:require('../../assets/p3.png')
+        },
+        {
+          bigProduce:'sad',
+          mediumProduce:'sad',
+          smallProduce:['sadasd','sadasdas','sdadas'],
+          bgImg:require('../../assets/p4.png')
+        }
+      ]
     };
   },
   created() {

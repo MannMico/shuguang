@@ -5,22 +5,22 @@
         <div class="base-footer clearfix">
           <ul class="footer-part">
             <li class="footer-title">我是IP版权</li>
-            <li class="footer-ct"><a href="#">版权入驻流程</a></li>
-            <li class="footer-ct"><a href="#">合作模式</a></li>
-            <li class="footer-ct"><a href="#">版权成长</a></li>
+            <li class="footer-ct">版权入驻流程</li>
+            <li class="footer-ct">合作模式</li>
+            <li class="footer-ct">版权成长</li>
           </ul>
           <ul class="footer-part">
             <li class="footer-title">我是企业</li>
-            <li class="footer-ct"><a href="#">需求发布</a></li>
-            <li class="footer-ct"><a href="#">合作方式</a></li>
-            <li class="footer-ct"><a href="#">付款方式</a></li>
-            <li class="footer-ct"><a href="#">IP匹配</a></li>
+            <li class="footer-ct">需求发布</li>
+            <li class="footer-ct">合作方式</li>
+            <li class="footer-ct">付款方式</li>
+            <li class="footer-ct">IP匹配</li>
           </ul>
           <ul class="footer-part">
             <li class="footer-title">关于IP经纪人</li>
-            <li class="footer-ct"><a href="#">工作机制</a></li>
-            <li class="footer-ct"><a href="#">角色定位</a></li>
-            <li class="footer-ct"><a href="#">平台资源</a></li>
+            <li class="footer-ct">工作机制</li>
+            <li class="footer-ct">角色定位</li>
+            <li class="footer-ct">平台资源</li>
           </ul>
           <ul class="footer-part">
             <li class="footer-title">联系我正版</li>
@@ -36,11 +36,11 @@
           <dt><img src="~@/assets/bt_logo.png" alt="" /></dt>
           <dd>
             <ul class="footer-about clearfix">
-              <li><a href="#">关于我们</a></li>
-              <li><a href="#">成功案例</a></li>
-              <li><a href="#">跨界授权</a></li>
-              <li><a href="#">服务流程</a></li>
-              <li><a href="#">服务规则</a></li>
+              <li @click="toThisRoute('about')">关于我们</li>
+              <li @click="toThisRoute('case-list')">成功案例</li>
+              <li @click="toThisRoute('issue')">跨界授权</li>
+              <li>服务流程</li>
+              <li>服务规则</li>
             </ul>
             <p class="foot-coryright">＠copyright2018 深圳市束光文化科技有限公司 粤ICP备168876666号</p>
           </dd>
@@ -62,6 +62,13 @@
 .footer-bg {
   background: #212834;
   color: #fff;
+  .footer-ct{
+    cursor: pointer;
+    color: rgba($color: #fff, $alpha: .7);
+    &:hover{
+      color: rgba($color: #fff, $alpha: 1);
+    }
+  }
   a{
     color: #fff;
   }
@@ -86,7 +93,12 @@
     .footer-title {
       font-size: 18px;
       position: relative;
+      color: rgba($color: #fff, $alpha: 1);
       line-height: 18px;
+      cursor: pointer;
+      &:hover{
+        color: #fe992a;
+      }
       &::before {
         position: absolute;
         left: -15px;

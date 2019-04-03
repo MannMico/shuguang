@@ -10,3 +10,15 @@ Vue.prototype.$getPX = function (design, designWidth = 750) { // 750为设计稿
     // 获取实时尺寸
     return design * scale
 }
+
+Vue.prototype.toThisRoute = function (toThis){
+  if (toThis) {
+    this.$router.push({
+      path: `/${toThis}`
+    });
+  } else {
+    this.$router.push({
+      path: '/'
+    });
+  } 
+}

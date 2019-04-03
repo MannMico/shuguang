@@ -129,6 +129,7 @@
     </div>
     </div>
     <base-footer></base-footer>
+    <fix-btn :isIssue="false"/>
   </div>
 </template>
 

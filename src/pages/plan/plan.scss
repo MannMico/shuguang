@@ -345,6 +345,8 @@ html,body{
     dd{
       float: left;
       .moblie-plan-icon{
+        width: torem(158);
+        height: torem(145);
         margin: torem(61px) 0 0 torem(47px);
         img{
           width: torem(158);
@@ -353,8 +355,10 @@ html,body{
         }
       }
       .moblie-plan-ip-title{
+        width: torem(280px);
         text-align: center;
         margin-top: torem(10);
+        word-break: break-all;
       }
       .moblie-plan-book{
         width: torem(274);
@@ -366,6 +370,7 @@ html,body{
         border-radius: torem(67);
         margin-top: torem(40);
         letter-spacing: torem(1px);
+        padding-bottom: torem(67);
       }
     }
   }
@@ -472,6 +477,9 @@ html,body{
   float: left;
   width: torem(128);
   margin-top: torem(38px);
+  img{
+    width: 100%;
+  }
 }
 .moblie-copyrigt-ul{
   margin-bottom: torem(60);

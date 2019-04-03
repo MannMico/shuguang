@@ -22,7 +22,7 @@
             <p class="product-desc" v-for="(v, k) in item.desc" :key="k" v-text="v"></p>
           </li>
         </ul>
-        <p class="ip-btn">提交跨界授权合作</p>
+        <p class="ip-btn" @click="toThisRoute('issue')">提交跨界授权合作</p>
       </div>
     </div>
     <div class="ip-part3 clearfix">
@@ -112,6 +112,7 @@
       </div>
     </div>
     <base-footer></base-footer>
+    <fix-btn/>
   </div>
 </template>
 

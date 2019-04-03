@@ -201,7 +201,7 @@ body,html{
         </div>
         <div class="detail-related">
           <p class="related-title">有相似授权需求？</p>
-          <p class="related-btn">发布授权任务</p>
+          <p class="related-btn" @click="toThisRoute('issue')">发布授权任务</p>
           <p class="related-person">联系经纪人：May  18128857007 </p>
         </div>
         <div class="detail-related">
@@ -214,6 +214,7 @@ body,html{
       </div>
     </div>
     <base-footer></base-footer>
+    <fix-btn :isIssue="false"/>
   </div>
 </template>
 
@@ -223,7 +224,7 @@ import { throttle } from '@/libs/util';
 export default {
   data() {
     return {
-      caseDats: caseData.caseList[0],
+      caseDats: Array,
       swiperOption: {
         autoplay: true,
         speed: 500,
@@ -236,7 +237,8 @@ export default {
       },
       isMobile: false,
       showLoginBox: false,
-      showFixed: false
+      showFixed: false,
+      id: this.$route.params.tid
     }
   },
   created() {
@@ -247,6 +249,11 @@ export default {
     const isAndroid = ua.match(/(Android)\s+([\d.]+)/);
     const isMobile = isIphone || isAndroid;
     this.isMobile = isMobile;
+    const idSet = caseData.caseList.findIndex((value,index,arr) => {
+      if(value.tid== this.$route.params.tid){
+        this.caseDats = caseData.caseList[index]
+      }
+    })
   },
   mounted() {
     const dNavbar = document.querySelector('.base-navbar');

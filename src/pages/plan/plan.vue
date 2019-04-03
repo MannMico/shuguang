@@ -1,5 +1,5 @@
 <template>
-  <div class="plan-page">
+  <div class="plan-page" v-if="!isMobile">
     <div class="plan-bar">
       <div class="plan-bar__container width-fixed padding-fixed">
         <router-link :to="`/?recommendid=${recommendId}`">
@@ -97,22 +97,29 @@
       </div>
     </div>
     <base-footer></base-footer>
-  </div>
+    <fix-btn :isIssue="false"/>
+    </div>
+    <div v-else>
+      <planMoblie v-if="detail" :mobileData="detail"/>
+    </div>
 </template>
 
 <script>
 import PlanModule from './plan-module.vue';
 import { getPlanDetail } from '@/services/demand';
 import './plan.scss';
+import planMoblie from './plan-mobile';
 export default {
   components: {
-    PlanModule
+    PlanModule,
+    planMoblie
   },
   data() {
     return {
       recommendId: parseInt(this.$route.query.recommendid || 0, 10),
       detail: null,
-      hasFetch: false
+      hasFetch: false,
+      isMobile: false
     };
   },
   watch: {
@@ -125,35 +132,18 @@ export default {
     }
   },
   created() {
-    if (!this.$store.state.token) {
-      // 弹出登录框
-      console.log('没有token，弹出登录框');
-      this.$store.commit('toggleLogin', true);
-    } else {
-      // 1. token过期 -> 弹出登录框   2. token有效 this.fetchData()
-      if (!this.$store.state.loginValid) {
-        this.$store
-          .dispatch('checkUser')
-          .then(() => {
-            console.log('token有效');
-            if (!this.hasFetch) {
-              this.fetchData();
-            }
-          })
-          .catch(err => {
-            // token过期 -> 弹出登录框
-            console.log('token失效 -> 弹出登录框');
-            this.$store.commit('toggleLogin', true);
-          });
-      } else {
-        console.log('token有效');
-        if (!this.hasFetch) {
-          this.fetchData();
-        }
-      }
-    }
+    const ua = window.navigator.userAgent;
+
+    const ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+    const isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+    const isAndroid = ua.match(/(Android)\s+([\d.]+)/);
+    const isMobile = isIphone || isAndroid;
+    this.isMobile = isMobile;
+    this.fetchData();
+
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     fetchData() {
       this.hasFetch = true;

@@ -13,6 +13,10 @@
   text-align: center;
   line-height: 45px;
   cursor: pointer;
+  &:hover{
+    background: #000;
+    color: #fff;
+  }
 }
 </style>
 

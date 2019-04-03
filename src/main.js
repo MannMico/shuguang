@@ -12,6 +12,7 @@ import Button from './components/button.vue';
 import Footer from './components/footer.vue';
 import Navbar from './components/navbar.vue';
 import DataBase from './components/database.vue';
+import FixBtn from './components/fixright.vue';
 
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css';
@@ -28,6 +29,7 @@ router.beforeEach((to, from, next) => {
   /*修改页面title */
   if (to.meta.title) {
     document.title = to.meta.title;
+    window.scrollTo(0,0)
   }
   next();
 });
@@ -40,6 +42,7 @@ Vue.component(Button.name, Button);
 Vue.component(Footer.name, Footer);
 Vue.component(Navbar.name, Navbar);
 Vue.component(DataBase.name, DataBase);
+Vue.component(FixBtn.name, FixBtn);
 
 new Vue({
   router,
