@@ -31,6 +31,13 @@ router.beforeEach((to, from, next) => {
     document.title = to.meta.title;
     window.scrollTo(0,0)
   }
+  if (to.name == "Issue" || to.name == "IssueDone" || to.name =="CaseDetail"){
+    document.body.style.backgroundColor = "#f5f5f5"
+    document.documentElement.backgroundColor = "#f5f5f5"
+  }else{
+    document.body.style.backgroundColor = "#fff"
+    document.documentElement.backgroundColor = "#fff"
+  }
   next();
 });
 Vue.config.productionTip = false;

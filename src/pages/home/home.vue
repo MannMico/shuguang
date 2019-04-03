@@ -191,10 +191,6 @@ export default {
     scrollToDOM(select) {
       let offset = 60; // 偏移量
       const s = select || this.$route.hash;
-      if (s === '#home') {
-        offset = 0;
-      }
-      console.log('scrollToDOM: ' + s);
       // debugger;
       const destDOM = document.querySelector(s);
       const destTop =
@@ -202,7 +198,6 @@ export default {
         document.documentElement.scrollTop +
         destDOM.getBoundingClientRect().top -
         offset;
-      window.scrollTo(0, destTop);
     },
     leftArrowClicked() {
       this.$refs.slider.$emit('slidePre');

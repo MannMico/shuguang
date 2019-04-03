@@ -1,6 +1,7 @@
 <template>
-  <div class="issue-page">
-    <base-navbar></base-navbar>
+  <div class="issue-page home-page">
+    <base-navbar @change="scrollToDOM" :style="{visibility: showFixed ? 'hidden' : 'visible'}"></base-navbar>
+    <base-navbar class="base-navbar--fixed" @change="scrollToDOM" v-show="showFixed"></base-navbar>
     <div class="issue__header">
       <div class="header__title content">发布您的授权任务</div>
       <div class="header__desc content">提交后系统立即匹配专业IP经纪人为您定制方案</div>
@@ -43,6 +44,7 @@
                 :key="item.cityId"
                 :label="item.cityName"
                 :value="item.cityId"
+                 label-width="78px"
               ></el-option>
             </el-select>
           </el-form-item>
@@ -138,8 +140,9 @@ import { Form, Input, Col, Row } from 'element-ui';
 import { addDemad, getCooperationModes } from '@/services/demand';
 import { sendCodeSms } from '@/services/code';
 import district from './district.js';
+import { throttle } from '@/libs/util';
 
-import './issue.scss';
+// import './issue.scss';
 export default {
   components: {
     elForm: Form,
@@ -181,20 +184,48 @@ export default {
         vcode: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
       codeTime: 0,
-      requestLimit: false
+      requestLimit: false,
+      showFixed: false
     };
   },
   created() {
     
   },
   mounted() {
-    window.scrollTo(0, 0);
     this.fetchModes();
+    const dNavbar = document.querySelector('.base-navbar');
+    var throttled = throttle(() => {
+      if (dNavbar.getBoundingClientRect().top <= 0) {
+        this.showFixed = true;
+      } else {
+        this.showFixed = false;
+      }
+    }, 60);
+    window.onscroll = throttled; // 根据hash跳转到指定位置
+    if (this.$route.hash) {
+      this.scrollToDOM(this.$route.hash);
+    }
   },
   beforeDestroy() {
     clearInterval(this.interval);
   },
   methods: {
+    scrollToDOM(select) {
+      let offset = 60; // 偏移量
+      const s = select || this.$route.hash;
+      if (s === '#home') {
+        offset = 0;
+      }
+      console.log('scrollToDOM: ' + s);
+      // debugger;
+      const destDOM = document.querySelector(s);
+      const destTop =
+        document.body.scrollTop +
+        document.documentElement.scrollTop +
+        destDOM.getBoundingClientRect().top -
+        offset;
+      window.scrollTo(0, destTop);
+    },
     handleItemChange(val) {
       console.log('active item:', val);
       setTimeout(_ => {

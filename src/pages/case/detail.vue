@@ -1,7 +1,4 @@
 <style lang="scss">
-body,html{
-  background: #f5f5f5;
-}
 .ml30{
   margin-left: 30px;
 }
