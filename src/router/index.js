@@ -13,7 +13,7 @@ import PlanMobile from '@/pages/plan/plan-mobile';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',   //后台链接模式固定，不设置history
   routes: [
     // {
     //   path: '/',
