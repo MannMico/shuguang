@@ -15,7 +15,7 @@
           <dd class="clearfix">
             <p class="moblie-plan-icon"><img src="~@/assets/fangan.png" alt=""></p>
             <p class="moblie-plan-ip-title">推荐IP:{{mobileData.ip_name}}</p>
-            <p class="moblie-plan-book clearfix" @click="OpenPDF('http://soonlight-1256797458.cos.ap-guangzhou.myqcloud.com/ip/1554208955709.pdf')">查看星座狗IP书</p>
+            <a class="moblie-plan-book clearfix" href="http://soonlight-1256797458.cos.ap-guangzhou.myqcloud.com/ip/1554208955709.pdf" target="_blank">查看星座狗IP书</a>
           </dd>
         </dl>
       </div>  
