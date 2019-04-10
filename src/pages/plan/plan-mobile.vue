@@ -15,7 +15,7 @@
           <dd class="clearfix">
             <p class="moblie-plan-icon"><img src="~@/assets/fangan.png" alt=""></p>
             <p class="moblie-plan-ip-title">推荐IP:{{mobileData.ip_name}}</p>
-            <p class="moblie-plan-book clearfix" @click="OpenPDF(mobileData.ip_pdf)" target="_blank">查看IP详情</p>
+            <p class="moblie-plan-book clearfix" @click="OpenPDF(mobileData.ip_pdf)">查看IP详情</p>
           </dd>
         </dl>
       </div>  
@@ -51,25 +51,25 @@
           <li class="clearfix">
             <div class="moblie-footer-left">
               <p class="moblie-footer-title">IP版权合作</p>
-              <p class="moblie-footer-ways">电话：13523458888</p>
-              <p class="moblie-footer-ways">邮箱：may@shujiguang.com</p>
-              <p class="moblie-footer-title">IP版权入驻</p>
+              <p class="moblie-footer-ways">电话：400-8888-1234</p>
+              <p class="moblie-footer-ways">邮箱：wzb@shujiguang.com</p>
+              <!-- <p class="moblie-footer-title">IP版权入驻</p>
             <p class="moblie-footer-ways">电话：13523458888</p>
-            <p class="moblie-footer-ways">邮箱：crater@shujiguang.com</p>
+            <p class="moblie-footer-ways">邮箱：crater@shujiguang.com</p> -->
             </div>
             <div class="moblie-footer-right">
               <img src="~@/assets/ewm.png" alt="">
             </div>
           </li>
         </ul>
-        <div class="moblie-copyrigt">
+        <!-- <div class="moblie-copyrigt">
           <ul class="moblie-copyrigt-ul clearfix">
             <li>关于我们</li>
             <li>IP匹配方案书</li>
           </ul>
           <p class="moblie-footer-copyright">@copyright2018 深圳市束光文化科技有限公司</p>
           <p class="moblie-footer-copyright">粤ICP备168876666号</p>
-        </div>
+        </div> -->
       </div>
     </div>
 </template>
