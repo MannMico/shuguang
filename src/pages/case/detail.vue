@@ -137,6 +137,9 @@
   font-size: 13px;
   color:#999;
   margin: 30px 0 20px;
+  span{
+    cursor: pointer;
+  }
 }
 .detail-content-txt {
   background: #fff;
@@ -170,7 +173,7 @@
     <base-navbar @change="scrollToDOM" :style="{visibility: showFixed ? 'hidden' : 'visible'}"></base-navbar>
     <base-navbar class="base-navbar--fixed" @change="scrollToDOM" v-show="showFixed"></base-navbar>
     <div class="content clearfix">
-      <p class="detail-title-big">全部授权案例  /案例详情</p>
+      <p class="detail-title-big"><span @click="toThisRoute('case-list')">全部授权案例</span>  /案例详情</p>
       <div class="detail-left">
         <div class="detail-content-txt">
           <h2 v-text="caseDats.caseDetail.caseName"></h2>

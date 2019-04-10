@@ -1,5 +1,5 @@
 <template>
-  <div class="fix-btn" :class="isshowFixed?'show':'hide'" :data-id="isMatchShow">
+  <div class="fix-btn">
     <div class="is-fix-icon is-issue" 
     :class="isIssue?'show':'hide'" 
     @mousemove="ishover = true" 
@@ -11,7 +11,7 @@
        <img src="~@/assets/issue_hover.png" alt="">
       </div>
     </div>
-    <div class="is-fix-icon is-go-back" :class="isToBack?'show':'hide'" @click="handlerClick">
+    <div class="is-fix-icon is-go-back" :class="isshowFixed&&isToBack?'show':'hide'" @click="handlerClick">
       <img src="~@/assets/go_back.png" alt="">
     </div>
   </div>
@@ -21,6 +21,8 @@
     position: fixed;
     bottom: 100px;
     right: 40px;
+    height: 100px;
+    z-index: 10;
     .is-fix-icon{
       position: relative;
       margin-top: 10px;

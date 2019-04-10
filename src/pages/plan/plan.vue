@@ -149,7 +149,7 @@ export default {
       this.hasFetch = true;
       getPlanDetail(this.recommendId)
         .then(data => {
-          console.log(data);
+          // console.log(data);
           this.detail = data;
         })
         .catch(err => {

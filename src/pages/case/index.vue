@@ -2,7 +2,7 @@
   <div class="home-page">
     <base-navbar @change="scrollToDOM" :style="{visibility: showFixed ? 'hidden' : 'visible'}"></base-navbar>
     <base-navbar class="base-navbar--fixed" @change="scrollToDOM" v-show="showFixed"></base-navbar>
-    <swiper class="home__header" :options="swiperOption">
+    <swiper class="home__header case__header" :options="swiperOption">
       <swiper-slide class="header-slide" :class="`header-slide1${isMobile?'-m':''}`"></swiper-slide>
       <swiper-slide class="header-slide" :class="`header-slide2${isMobile?'-m':''}`"></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>

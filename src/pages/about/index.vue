@@ -15,7 +15,7 @@
       <ul class="magage-list clearfix">
         <li v-for="(item,index) in ceoList" :key="index" 
         @mousemove="isIndex = index" 
-      @mouseout="ishover=-1">
+      @mouseout="isIndex=-1">
           <div class="ceo-produce" :class="isIndex==index?'show':'hide'">
             <p class="ceo-name" v-text="item.bigProduce"></p>
             <p v-text="item.mediumProduce"></p>

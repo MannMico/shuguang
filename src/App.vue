@@ -137,6 +137,12 @@ export default {
       password: ''
     };
   },
+  mounted(){
+    if(this.$route.name == 'Plan'){
+      let getWidth = document.querySelector('#app')
+      getWidth.style.minWidth = 0
+    }
+  },
   methods: {
     onClose() {
       this.$store.commit('toggleLogin', false);

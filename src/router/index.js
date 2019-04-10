@@ -33,7 +33,8 @@ export default new Router({
       name: 'Plan',
       component: Plan,
       meta: {
-        title: '预览'
+        title: '找IP授权，就上我正版',
+        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0'
       }
     },
     {

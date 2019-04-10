@@ -22,3 +22,6 @@ Vue.prototype.toThisRoute = function (toThis){
     });
   } 
 }
+Vue.prototype.goToDetail = function (tid) {
+  this.$router.push({ path: '/case-detail/' + tid });
+}

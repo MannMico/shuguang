@@ -1,7 +1,7 @@
 <template>
     <div v-if="mobileData!=null">
-      <p class="moblie-plan-top"><img src="~@/assets/mobile_logo.png" alt=""></p>
-      <p class="moblie-plan-title">IP授权营销方案书</p>
+      <p class="moblie-plan-top"><img src="~@/assets/logo_top.png" alt=""></p>
+      <p class="moblie-plan-title color-black">IP授权营销方案书</p>
       <div class="moblie-plan-part moblie-plan-part1">
 
         <h2>基于您的需求定制的IP匹配建议</h2>
@@ -11,11 +11,12 @@
       <p class="moblie-plan-title color-black">推荐IP：</p>    
       <div class="moblie-plan-part moblie-plan-part2">
         <dl class="moblie-plan-dl clearfix">
-          <dt><img src="~@/assets/p1.png" alt=""></dt>
+          <!-- <dt><img :src="mobileData.basic_resource_attachments[0]" alt=""></dt> -->
+          <dt><img src="~@/assets/fangan.png" alt=""></dt>
           <dd class="clearfix">
             <p class="moblie-plan-icon"><img src="~@/assets/fangan.png" alt=""></p>
             <p class="moblie-plan-ip-title">推荐IP:{{mobileData.ip_name}}</p>
-            <p class="moblie-plan-book clearfix" @click="OpenPDF('http://soonlight-1256797458.cos.ap-guangzhou.myqcloud.com/ip/1554208955709.pdf')">查看IP详情</p>
+            <p class="moblie-plan-book clearfix" @click="OpenPDF(mobileData.ip_pdf)">查看IP详情</p>
           </dd>
         </dl>
       </div>  
@@ -37,13 +38,9 @@
       </div>
       <p class="moblie-plan-title color-black fz40">经纪人成功案例</p> 
       <ul class="moblie-anli-ul">
-        <li>
-          <p class="moblie-anli-img"><img src="~@/assets/bussiness-xyd.png" alt=""></p>
-          <p class="moblie-anli-title">dasdaad</p>
-        </li>
-        <li>
-          <p class="moblie-anli-img"><img src="~@/assets/bussiness-xyd.png" alt=""></p>
-          <p class="moblie-anli-title">dadasdaaddasdaaddasdaaddasdaaddasdaaddasdaaddasdaadsdaad</p>
+        <li v-for="(v,index) in successList" :key="index" @click="goToDetail(v.tid)">
+          <p class="moblie-anli-img"><img :src="v.ctBg" alt=""></p>
+          <p class="moblie-anli-title" v-text="v.name"></p>
         </li>
       </ul>
       <div class="moblie-footer">
@@ -81,6 +78,24 @@ export default {
     mobileData:{
       type: Object,
       required: true
+    }
+  },
+  data(){
+    return {
+      successList:[
+        {
+          tid: 1,
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
+          ctBg: require('../../assets/bussiness-xyd.png')
+        },
+        {
+          tid: 1,
+          name: '甘源食品x一禅小和尚   试吃推荐人',
+          desc: '变，是旅程，发现更好的自己。 变，是终点， 不惧非议，一往无前。',
+          ctBg: require('../../assets/bussiness-kjt.png')
+        }
+      ]
     }
   },
   methods:{

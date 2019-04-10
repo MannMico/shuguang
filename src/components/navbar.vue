@@ -93,7 +93,7 @@
   <div>
     <div class="base-navbar">
       <div class="base-navbar__container width-fixed padding-fixed">
-        <img class="navbar__name-logo" src="@/assets/logo_up_navigation.png" alt>
+        <img class="navbar__name-logo" src="@/assets/logo_top.png" alt>
         <div class="navbar__right">
           <el-menu
             :default-active="`${$route.path}`"

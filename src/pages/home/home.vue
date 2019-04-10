@@ -103,7 +103,7 @@
           <p class="quot-right"><img src="~@/assets/quot-right.png" alt="" /></p>
         </div>
         <ul class="clearfix">
-          <li class="profile-list" @click="profileIndex=index" :class="profileIndex==index?'active':''" v-for="(item, index) in profileLists" :key="index">
+          <li class="profile-list" @mousemove="profileIndex=index" :class="profileIndex==index?'active':''" v-for="(item, index) in profileLists" :key="index">
             <img class="profile-img" :src="item.headImg" alt="" />
             <p class="profile-name" v-text="item.name"></p>
             <p class="profile-label" v-for="(v, k) in item.labels" :key="k" v-text="v"></p>

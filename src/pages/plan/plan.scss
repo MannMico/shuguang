@@ -263,9 +263,7 @@
 
 
 /*手机端预览开始*/
-#app{
-  min-width: 0;
-}
+
 .moblie-plan{
   &-top {
     width: 100%;
@@ -274,8 +272,7 @@
     border-bottom: torem(1) solid #eee;
     z-index: 10;
     img{
-      width: torem(206);
-      height: torem(64);
+      width: 30%;
       margin: torem(25px) 0 0 torem(45px);
     }
   }

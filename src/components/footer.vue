@@ -39,10 +39,10 @@
               <li @click="toThisRoute('about')">关于我们</li>
               <li @click="toThisRoute('case-list')">成功案例</li>
               <li @click="toThisRoute('issue')">跨界授权</li>
-              <li>服务流程</li>
-              <li>服务规则</li>
+              <li @click="toThisRoute('about')">服务流程</li>
+              <li @click="toThisRoute('about')">服务规则</li>
             </ul>
-            <p class="foot-coryright">＠copyright2018 深圳市束光文化科技有限公司 粤ICP备168876666号</p>
+            <p  class="foot-coryright">＠copyright2018 深圳市束光文化科技有限公司 <a href="http://www.miit.gov.cn/">粤ICP备168876666号</a></p>
           </dd>
         </dl>
       </div>
@@ -130,6 +130,7 @@
         font-size: 16px;
         line-height: 16px;
         letter-spacing: 2px;
+        cursor: pointer;
       }
     }
   }
