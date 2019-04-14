@@ -18,7 +18,7 @@
             <p class="moblie-plan-ip-title">推荐IP:{{mobileData.ip_name}}</p>
             <p class="moblie-plan-book clearfix" @click="OpenPDF(mobileData.ip_pdf)">查看IP详情</p>
           </dd>
-          
+
         </dl>
       </div>  
       <p class="moblie-plan-title color-black fz40">经纪人介绍</p> 

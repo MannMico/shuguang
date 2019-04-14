@@ -1,9 +1,19 @@
 <template>
-  <div>
+    <div>
+    <p v-if="isload" class="load-set el-icon-loading"></p>
+    <!-- <p v-if="isload" v-text="percentThat"></p> -->
     <canvas v-for="page in pages" :id="'the-canvas'+page" :key="page"></canvas>
   </div>
 </template>
 
+<style lang="scss" scoped>
+  .load-set{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+</style>
 <script>
 import PDFJS from 'pdfjs-dist'
 let Base64 = require('js-base64').Base64
@@ -13,8 +23,20 @@ export default {
       title: '',
       pdfDoc: null,
       loadding: false,
-      pages: 0
+      isload:true,
+      pages: 0,
+      nums:0,
+      percentNum:0
     }
+  },
+  computed:{
+    percentThat(){
+      let _this=this;
+      console.log(parseInt(_this.nums/_this.pages*100))
+      console.log(parseInt(_this.nums/_this.pages*100) + '时间' + new Date())
+      // debugger
+      return parseInt(_this.nums/_this.pages*100||0)
+    },
   },
   methods: {
     renderPage (num) {
@@ -40,9 +62,14 @@ export default {
           viewport: viewport
         }
         page.render(renderContext)
-        if (_this.pages > num) {
-          _this.renderPage(num + 1)
-        }
+          if (_this.pages > num) {
+          // debugger
+          _this.renderPage(num + 1);
+          _this.isload = true;
+          _this.nums= num
+          }else{
+            _this.isload = false;
+          }
       })
     },
     loadFile (url) {
@@ -50,6 +77,7 @@ export default {
       PDFJS.getDocument(url).then(function (pdf) {
         _this.pdfDoc = pdf
         _this.pages = _this.pdfDoc.numPages
+        // debugger
         _this.$nextTick(() => {
           _this.renderPage(1)
         })
@@ -62,10 +90,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-canvas {
-  display: block;
-  border-bottom: 1px solid black;
-}
-</style>
