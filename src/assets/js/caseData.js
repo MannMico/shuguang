@@ -68,12 +68,12 @@ export default {
         ],
         caseRelated:[
           {
-            relatedTid: 1,
+            relatedTid: 35,
             name: 'sadsa23131',
             ctBg: require('../banner1.png')
           },
           {
-            relatedTid: 1,
+            relatedTid: 10,
             name: 'sadsa23131',
             ctBg: require('../banner1.png')
           }
@@ -148,13 +148,13 @@ export default {
         ],
         caseRelated: [
           {
-            relatedTid: 1,
-            name: 'sadsa23131',
+            relatedTid: 35,
+            name: 'sadsa2313sadadasdasdas1',
             ctBg: require('../banner1.png')
           },
           {
-            relatedTid: 1,
-            name: 'sadsa23131',
+            relatedTid: 10,
+            name: 'sadsa231asdasd31',
             ctBg: require('../banner1.png')
           }
         ]

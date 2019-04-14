@@ -33,6 +33,12 @@
       // width: 404px;
       // height: 102px;
     // }
+    &__slogan{
+      position: absolute;
+      bottom: 9px;
+      left: 52px;
+      font-size: 12px;
+    }
     &__right {
       display: flex;
       align-items: center;
@@ -94,6 +100,7 @@
     <div class="base-navbar">
       <div class="base-navbar__container width-fixed padding-fixed">
         <img class="navbar__name-logo" src="@/assets/logo_top.png" alt>
+        <p class="navbar__slogan">找IP授权，就上我正版</p>
         <div class="navbar__right">
           <el-menu
             :default-active="`${$route.path}`"

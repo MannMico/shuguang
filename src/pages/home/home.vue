@@ -52,9 +52,17 @@
         </ul>
         <div v-for="(items, index) in ipPartThreeType" :key="index">
           <ul class="hide" :class="typeIndex==index?'show':''">
-            <li class="type-img" v-for="(item, key) in items.lists" :key="key" >
-              <img :src="item.img" :alt="item.alt" />
-            </li>
+          <li class="type-img" v-for="(item, key) in items.lists" :key="key"
+          :style="{ background: 'url(' + item.bg + ') no-repeat' }"
+          @mousemove="issmallWrap = key" @mouseout="issmallWrap = -1"
+          >
+          <div class="resource-wrap hide" :class="issmallWrap == key ? 'show' : ''">
+            <p class="resource-bigTitle" v-text="item.bigTitle"></p>
+            <p class="resource-smallTitle" v-text="item.smallTitle"></p>
+            <p class="resource-desc" v-text="item.desc"></p>
+            <p class="resource-label" v-for="(v, k) in item.labels" :key="k" v-text="v"></p>
+          </div>
+          </li>
           </ul>
         </div>
       </div>
@@ -136,6 +144,7 @@ export default {
       profileIndex: 0,
       typeIndex: 0,
       isWrap: -1,
+      issmallWrap:-1,
       swiperOption: {
         autoplay: true,
         speed: 500,

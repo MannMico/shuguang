@@ -4,18 +4,16 @@
     <base-navbar class="base-navbar--fixed" @change="scrollToDOM" v-show="showFixed"></base-navbar>
     <div class="about-top"></div>
     <div class="content clearfix">
-      <img class="about-logo" src="~@/assets/about_logo.png" alt=""/>
-      <p class="about-title">中国最大的全运营链IP经纪机构</p>
-      <p class="about-desc"> 束光文化是中国IP行业新环境下应运而生的新型IP经纪、孵化、运营机构。是具备IP产业链驾驭能力，涵盖商业模式、策略、内容、
-传播、设计、营销、商品、授权整个链条。</p>
-      <p class="about-title">致力IP＋行业解决方案</p>
-      <p class="about-desc">在成功合作400+品牌与企业，覆盖20+行业的经验之上。束光致力于有效链接IP与品牌，通过“筛选／评估／策动／创意／执行／管
-控”的规范化流程，为各个行业提供IP的不同价值，包括流量、认知、场景、转化、产品力、视觉等等。</p>
+      <img class="about-logo" :src="aboutAllData.topImgLogo" />
+      <div v-for="(item,ckey) in aboutAllData.topText" :key="ckey+'a'">
+        <p class="about-title" v-text="item.bigTitle"></p>
+        <p class="about-desc" v-text="item.content"> </p>
+      </div>
       <p class="about-manage"><img src="~@/assets/manage.png" alt=""></p> 
       <ul class="magage-list clearfix">
-        <li v-for="(item,index) in ceoList" :key="index" 
+        <li v-for="(item,index) in aboutAllData.centerCeo" :key="index" 
         @mousemove="isIndex = index" 
-      @mouseout="isIndex=-1">
+        @mouseout="isIndex=-1">
           <div class="ceo-produce" :class="isIndex==index?'show':'hide'">
             <p class="ceo-name" v-text="item.bigProduce"></p>
             <p v-text="item.mediumProduce"></p>
@@ -23,17 +21,16 @@
               <p  v-for="(v,k) in item.smallProduce" :key="k" v-text="v"></p>
             </div>
           </div>
-          <img :src="item.bgImg" alt=""></li>
-      </ul> 
-      <p class="about-title">具备成功经验的本土团队</p>
-      <p class="about-desc">束光核心人马以原“同道大叔”IP运营团队建成，是一手打造中国新兴IP收入、估值、盈利的行业标杆，本土唯一一个从0开始，贯通
-整个IP运营链，所有环节都有成功经验的团队。</p>
+          <img :src="item.bgImg" alt="">
+        </li>
+      </ul>
+      <div v-for="(item,bkey) in aboutAllData.bottomText" :key="bkey+'b'">
+        <p class="about-title" v-text="item.bigTitle"></p>
+        <p class="about-desc" v-text="item.content"></p>
+      </div>
       <p class="about-manage"><img src="~@/assets/contact.png" alt=""></p>
       <div class="contact-detail">
-        <p>公司全称：深圳市束光文化科技有限公司</p>
-        <p>地址：广东省深圳市南山区软件产业园基地6栋801</p>
-        <p>邮编：51800</p>
-        <p>邮箱：bd@shujiguang.com</p>
+        <p v-for="(item,cindex) in aboutAllData.contactText" :key="cindex+'c'" v-text="item"></p>
         <p class="pop__back-btn" @click="toThisRoute('issue')">发布跨界授权合作</p>
       </div>
     </div>
@@ -113,6 +110,7 @@ body, html{
 
 <script>
 import { throttle } from '@/libs/util';
+import aboutData from '@/assets/js/aboutData.js';
 export default {
   data() {
     return {
@@ -130,6 +128,7 @@ export default {
       isMobile: false,
       showLoginBox: false,
       showFixed: false,
+      aboutAllData:aboutData.aboutData,
       ceoList:[
         {
           bigProduce:'李晗 Hamlee',

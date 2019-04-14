@@ -68,6 +68,7 @@
       font-size: 13px;
     }
     .related-dl{
+      cursor: pointer;
       margin-top: 20px;
       dt{
         width: 246px;
@@ -77,6 +78,21 @@
       dd{
         font-size: 16px;
         padding: 0 6px;
+      }
+      &:hover{
+        dt {
+          position: relative;
+          top: -2px;
+          box-shadow: 0 5px 5px rgba($color: #000, $alpha: .3);
+        }
+        dd {
+          color: #fe992a;
+          word-wrap: break-word;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
       }
     }
   }
@@ -206,7 +222,7 @@
         </div>
         <div class="detail-related">
           <p class="related-title">相关案例</p>
-          <dl class="related-dl" v-for="(caseThe, index) in caseDats.caseDetail.caseRelated" :key="index">
+          <dl class="related-dl" v-for="(caseThe, index) in caseDats.caseDetail.caseRelated" :key="index" @click="goToDetail(caseThe.relatedTid)" :data-id="caseThe.relatedTid">
             <dt><img :src="caseThe.ctBg" alt="" width="246" height="246"></dt>
             <dd v-text="caseThe.name"></dd>
           </dl>
@@ -249,7 +265,7 @@ export default {
     const isAndroid = ua.match(/(Android)\s+([\d.]+)/);
     const isMobile = isIphone || isAndroid;
     this.isMobile = isMobile;
-    const idSet = caseData.caseList.findIndex((value,index,arr) => {
+    caseData.caseList.findIndex((value,index,arr) => {
       if(value.tid== this.$route.params.tid){
         this.caseDats = caseData.caseList[index]
       }

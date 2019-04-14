@@ -249,28 +249,46 @@ export default {
         name: '动漫',
         lists: [  //动漫类数据
           {
-            img: require('../home/list1.jpg'),
-            alt: '第一张'
+            bigTitle: '23213',
+            smallTitle: '23213',
+            desc: 'sdaasdada',
+            bg: require('../home/list1.jpg'),
+            labels: ['sda', 'sada']
           },
           {
-            img: require('../home/list1.jpg'),
-            alt: '第一张'
+            bigTitle: '23213',
+            smallTitle: '23213',
+            desc: 'sdaasdada',
+            bg: require('../home/list1.jpg'),
+            labels: ['sda', 'sada']
           },
           {
-            img: require('../home/list1.jpg'),
-            alt: '第一张'
+            bigTitle: '23213',
+            smallTitle: '23213',
+            desc: 'sdaasdada',
+            bg: require('../home/list1.jpg'),
+            labels: ['sda', 'sada']
           },
           {
-            img: require('../home/list1.jpg'),
-            alt: '第一张'
+            bigTitle: '23213',
+            smallTitle: '23213',
+            desc: 'sdaasdada',
+            bg: require('../home/list1.jpg'),
+            labels: ['sda', 'sada']
           },
           {
-            img: require('../home/list1.jpg'),
-            alt: '第一张'
+            bigTitle: '23213',
+            smallTitle: '23213',
+            desc: 'sdaasdada',
+            bg: require('../home/list1.jpg'),
+            labels: ['sda', 'sada']
           },
           {
-            img: require('../home/list1.jpg'),
-            alt: '第一张'
+            bigTitle: '23213',
+            smallTitle: '23213',
+            desc: 'sdaasdada',
+            bg: require('../home/list1.jpg'),
+            labels: ['sda', 'sada']
           }
         ]
       },

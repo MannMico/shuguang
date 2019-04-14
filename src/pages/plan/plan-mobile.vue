@@ -11,13 +11,14 @@
       <p class="moblie-plan-title color-black">推荐IP：</p>    
       <div class="moblie-plan-part moblie-plan-part2">
         <dl class="moblie-plan-dl clearfix">
-          <!-- <dt><img :src="mobileData.basic_resource_attachments[0]" alt=""></dt> -->
-          <dt><img src="~@/assets/fangan.png" alt=""></dt>
+          <dt><img :src="mobileData.basic_resource_attachments[0]" alt=""></dt>
+          <!-- <dt><img src="~@/assets/fangan.png" alt=""></dt> -->
           <dd class="clearfix">
             <p class="moblie-plan-icon"><img src="~@/assets/fangan.png" alt=""></p>
             <p class="moblie-plan-ip-title">推荐IP:{{mobileData.ip_name}}</p>
             <p class="moblie-plan-book clearfix" @click="OpenPDF(mobileData.ip_pdf)">查看IP详情</p>
           </dd>
+          
         </dl>
       </div>  
       <p class="moblie-plan-title color-black fz40">经纪人介绍</p> 
